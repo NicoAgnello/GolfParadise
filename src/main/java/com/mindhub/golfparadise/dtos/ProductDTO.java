@@ -4,11 +4,6 @@ import com.mindhub.golfparadise.models.Category;
 import com.mindhub.golfparadise.models.OrderProduct;
 import com.mindhub.golfparadise.models.Product;
 
-import javax.persistence.FetchType;
-import javax.persistence.OneToMany;
-import java.util.HashSet;
-import java.util.Set;
-
 public class ProductDTO {
 
     private Long id;
