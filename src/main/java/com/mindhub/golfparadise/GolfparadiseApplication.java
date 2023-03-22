@@ -40,17 +40,17 @@ public class GolfparadiseApplication {
 			Client client1 = new Client ("Rory","Mcylroy","rm@gmail.com","*******");
 			Client client2 = new Client("Tiger","Woods","tw@gmail.com","*******");
 
-			OrderPurchase order1 = new OrderPurchase(5000.00,"cll central 234", LocalDateTime.now());
+			OrderPurchase order1 = new OrderPurchase(659.00,"cll central 234", LocalDateTime.now());
 			client1.addOrders(order1);
 
-			OrderPurchase order2 = new OrderPurchase(78000.00,"cll cruzada 743", LocalDateTime.now());
-			client2.addOrders(order2);
+//			OrderPurchase order2 = new OrderPurchase(78000.00,"cll cruzada 743", LocalDateTime.now());
+//			client2.addOrders(order2);
 
 			Product proV1 = new Product("ball", "ball pro V1", "https/img.com",30.00,5, Category.BALLS);
 
 			Product tsr2  = new Product("driver", "TSR2 Driver", "https/img.com",599.00,60, Category.CLUBS);
 
-			Product MidSizeBag = new Product("bag", "Mid Size Bag", "https/img.com",380.00,3, Category.BAGS);
+			Product midSizeBag = new Product("bag", "Mid Size Bag", "https/img.com",380.00,3, Category.BAGS);
 
 			OrderProduct orderProduct1 = new OrderProduct(2, 60.0);
 			order1.addOrderProduct(orderProduct1);
@@ -58,7 +58,7 @@ public class GolfparadiseApplication {
 
 
 			OrderProduct orderProduct2 = new OrderProduct(1, 599.0);
-			order2.addOrderProduct(orderProduct2);
+			order1.addOrderProduct(orderProduct2);
 			tsr2.addOrderProduct(orderProduct2);
 
 
@@ -67,10 +67,10 @@ public class GolfparadiseApplication {
 
 			productRepository.save(proV1);
 			productRepository.save(tsr2);
-			productRepository.save(MidSizeBag);
+			productRepository.save(midSizeBag);
 
 			orderRepository.save(order1);
-			orderRepository.save(order2);
+//			orderRepository.save(order2);
 
 			orderProductRepository.saveAll(List.of(orderProduct1,orderProduct2));
 		};
