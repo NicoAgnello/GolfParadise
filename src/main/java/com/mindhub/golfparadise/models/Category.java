@@ -1,7 +1,7 @@
 
 package com.mindhub.golfparadise.models;
 
-public enum Categories {
+public enum Category {
     CLUBS,
     BAGS,
     BALLS,

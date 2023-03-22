@@ -1,9 +1,8 @@
 package com.mindhub.golfparadise.models;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -11,21 +10,23 @@ import java.util.Set;
 public class Product {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
+    @GenericGenerator(name = "native", strategy = "native")
+
     private Long id;
     private String name;
     private String description;
     private String img;
     private Double price;
     private int stock;
-    private Categories category;
+    private Category category;
     @OneToMany(mappedBy = "product", fetch= FetchType.EAGER)
     Set<OrderProduct> orderProducts= new HashSet<>();
 
     public Product() {
     }
 
-    public Product(Long id, String name, String description, String img, Double price, int stock, Categories category) {
-        this.id = id;
+    public Product( String name, String description, String img, Double price, int stock, Category category) {
         this.name = name;
         this.description = description;
         this.img = img;
@@ -34,12 +35,13 @@ public class Product {
         this.category = category;
     }
 
-    public Long getId() {
-        return id;
+    public void addOrderProduct(OrderProduct orderProduct){
+        orderProduct.setProduct(this);
+        orderProducts.add(orderProduct);
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public Long getId() {
+        return id;
     }
 
     public String getName() {
@@ -82,11 +84,11 @@ public class Product {
         this.stock = stock;
     }
 
-    public Categories getCategory() {
+    public Category getCategory() {
         return category;
     }
 
-    public void setCategory(Categories category) {
+    public void setCategory(Category category) {
         this.category = category;
     }
 

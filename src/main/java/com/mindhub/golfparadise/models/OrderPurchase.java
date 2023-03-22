@@ -1,6 +1,8 @@
 
 package com.mindhub.golfparadise.models;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.HashSet;
@@ -10,6 +12,8 @@ import java.util.Set;
 public class OrderPurchase {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
+    @GenericGenerator(name = "native", strategy = "native")
     private Long id;
     private Double amount;
     private String deliveryAddress;
@@ -24,19 +28,19 @@ public class OrderPurchase {
     public OrderPurchase() {
     }
 
-    public OrderPurchase(Long id, Double amount, String deliveryAddress, LocalDateTime date) {
-        this.id = id;
+    public OrderPurchase( Double amount, String deliveryAddress, LocalDateTime date) {
         this.amount = amount;
         this.deliveryAddress = deliveryAddress;
         this.date = date;
     }
 
-    public Long getId() {
-        return id;
+    public void addOrderProduct( OrderProduct orderProduct){
+        orderProduct.setOrderPurchase(this);
+        orderProducts.add(orderProduct);
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public Long getId() {
+        return id;
     }
 
     public Double getAmount() {
@@ -63,8 +67,6 @@ public class OrderPurchase {
         this.date = date;
     }
 
-
-
     public Client getClient() {
         return client;
     }
@@ -72,9 +74,6 @@ public class OrderPurchase {
     public void setClient(Client client) {
         this.client = client;
     }
-    public void AddProducts( OrderProduct orderProduct){
-       orderProduct.setOrderPurchase(this);
-        orderProducts.add(orderProduct);
-    }
+
 }
 

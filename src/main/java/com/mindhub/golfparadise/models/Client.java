@@ -19,25 +19,25 @@ public class Client {
     private String password;
 
     @OneToMany(mappedBy="client", fetch=FetchType.EAGER)
-    Set<OrderPurchase> products = new HashSet<>();
+    Set<OrderPurchase> orders = new HashSet<>();
 
     public Client() {
     }
 
-    public Client(Long id, String first_name, String last_name, String email, String password) {
-        this.id = id;
+    public Client( String first_name, String last_name, String email, String password) {
         this.first_name = first_name;
         this.last_name = last_name;
         this.email = email;
         this.password = password;
     }
 
-    public Long getId() {
-        return id;
+    public void addOrders(OrderPurchase orderPurchase){
+        orderPurchase.setClient(this);
+        orders.add(orderPurchase);
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public Long getId() {
+        return id;
     }
 
     public String getFirst_name() {
@@ -72,18 +72,12 @@ public class Client {
         this.password = password;
     }
 
-    public Set<OrderPurchase> getProducts() {
-        return products;
+    public Set<OrderPurchase> getOrders() {
+        return orders;
     }
 
-    public void setProducts(Set<OrderPurchase> products) {
-        this.products = products;
+    public void setOrders(Set<OrderPurchase> orders) {
+        this.orders = orders;
     }
 
-
-
-    public void addProducts(OrderPurchase orderProducts){
-        orderProducts.setClient(this);
-        products.add(orderProducts);
-    }
 }

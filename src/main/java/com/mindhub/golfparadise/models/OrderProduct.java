@@ -1,6 +1,8 @@
 
 package com.mindhub.golfparadise.models;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -10,38 +12,28 @@ public class OrderProduct {
 
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
+    @GenericGenerator(name = "native", strategy = "native")
     private Long id;
+    private Integer quantity;
+    private Double totalAmount;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "product_id")
     private Product product;
-    private Integer quantity;
-    private Double totalAmount;
-
-
-
-
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="order_Purchase_id")
     private OrderPurchase orderPurchase;
+
     public OrderProduct() {
     }
 
-
-    public OrderProduct(Long id, OrderPurchase orderPurchase, Product product, Integer quantity, Double totalAmount) {
-        this.id = id;
-        this.orderPurchase = orderPurchase;
-        this.product = product;
+    public OrderProduct( Integer quantity, Double totalAmount) {
         this.quantity = quantity;
         this.totalAmount = totalAmount;
-
-
     }
+
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public OrderPurchase getOrderPurchase() {
