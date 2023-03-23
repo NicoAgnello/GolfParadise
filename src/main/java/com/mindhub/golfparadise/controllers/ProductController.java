@@ -2,14 +2,13 @@ package com.mindhub.golfparadise.controllers;
 
 import com.mindhub.golfparadise.dtos.ProductDTO;
 import com.mindhub.golfparadise.models.Category;
-import com.mindhub.golfparadise.models.Client;
 import com.mindhub.golfparadise.models.Product;
+import com.mindhub.golfparadise.repositories.ProductRepository;
 import com.mindhub.golfparadise.services.ClientService;
 import com.mindhub.golfparadise.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,6 +20,8 @@ public class ProductController {
     ProductService productService;
     @Autowired
     ClientService clientService;
+    @Autowired
+    private ProductRepository productRepository;
 
     @GetMapping("/products")
     public List<ProductDTO> getProducts() {
@@ -65,13 +66,35 @@ public class ProductController {
                                               @RequestParam int stock) {
 
         Product product = productService.findById(id);
-        if (stock <= 0) {
-            return new ResponseEntity<>("Stock can't be lower than 0.", HttpStatus.BAD_REQUEST);
+        if (product != null) {
+            if (stock < 0) {
+                return new ResponseEntity<>("Stock can't be lower than 0.", HttpStatus.BAD_REQUEST);
+            }
+            product.setStock(stock);
+            productService.save(product);
+            return new ResponseEntity<>("Stock updated", HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("Product not found.", HttpStatus.BAD_REQUEST);
         }
 
-        product.setStock(stock);
-        productService.save(product);
-        return new ResponseEntity<>("Stock updated", HttpStatus.OK);
+    }
+
+    @PatchMapping("/products/{id}")
+    public ResponseEntity<Object> deleteProduct(@PathVariable Long id) {
+
+        Product product = productService.findById(id);
+        if (product != null && product.getStock() == 0 && product.isActive()) {
+            product.setActive(false);
+            productService.save(product);
+            return new ResponseEntity<>("Product deleted", HttpStatus.OK);
+        } else if (product == null){
+            return new ResponseEntity<>("Product not found.", HttpStatus.BAD_REQUEST);
+        } else if (!product.isActive()) {
+            return new ResponseEntity<>("Product is already inactive", HttpStatus.BAD_REQUEST);
+        } else {
+            return new ResponseEntity<>("Can't delete products with stock higher than 1.", HttpStatus.BAD_REQUEST);
+        }
+
     }
 
 }
