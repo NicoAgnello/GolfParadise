@@ -20,8 +20,6 @@ public class ProductController {
     ProductService productService;
     @Autowired
     ClientService clientService;
-    @Autowired
-    private ProductRepository productRepository;
 
     @GetMapping("/products")
     public List<ProductDTO> getProducts() {
