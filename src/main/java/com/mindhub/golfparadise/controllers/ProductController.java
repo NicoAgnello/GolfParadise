@@ -1,6 +1,8 @@
 package com.mindhub.golfparadise.controllers;
 
 import com.mindhub.golfparadise.dtos.ProductDTO;
+import com.mindhub.golfparadise.models.Category;
+import com.mindhub.golfparadise.models.Product;
 import com.mindhub.golfparadise.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -29,9 +31,9 @@ public class ProductController {
     public ResponseEntity<Object> addProduct(@RequestParam String name,
                                              @RequestParam String description,
                                              @RequestParam String img,
-                                             @RequestParam double price,
+                                             @RequestParam Double price,
                                              @RequestParam int stock,
-                                             @RequestParam String category) {
+                                             @RequestParam Category category) {
 
         if (name.isEmpty()) {
             return new ResponseEntity<>("Missing name.", HttpStatus.BAD_REQUEST);
@@ -39,8 +41,6 @@ public class ProductController {
             return new ResponseEntity<>("Missing description.", HttpStatus.BAD_REQUEST);
         } else if (img.isEmpty()) {
             return new ResponseEntity<>("Missing img.", HttpStatus.BAD_REQUEST);
-        } else if (category.isEmpty()) {
-            return new ResponseEntity<>("Missing category.", HttpStatus.BAD_REQUEST);
         }
 
         if (price <= 0.0) {
@@ -48,6 +48,9 @@ public class ProductController {
         } else if (stock <= 0) {
             return new ResponseEntity<>("Stock can't be lower than zero.", HttpStatus.BAD_REQUEST);
         }
+
+        Product product = new Product(name, description, img, price, stock, category);
+        productService.save(product);
 
         return new ResponseEntity<>("Product added.", HttpStatus.CREATED);
     }
