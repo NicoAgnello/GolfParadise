@@ -6,6 +6,7 @@ import com.mindhub.golfparadise.services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -47,6 +48,11 @@ public class ClientController {
         Client client = new Client(firstName, lastName, email, password);
         clientService.save(client);
         return new ResponseEntity<>("Client created.", HttpStatus.CREATED);
+    }
+
+    @GetMapping("/clients/current")
+    public ClientDTO getCurrentClient(Authentication authentication) {
+        return new ClientDTO(clientService.findByEmail(authentication.getName()));
     }
 
 }

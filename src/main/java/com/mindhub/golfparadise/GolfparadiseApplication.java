@@ -7,6 +7,7 @@ import com.mindhub.golfparadise.repositories.ClientRepository;
 import com.mindhub.golfparadise.repositories.OrderProductRepository;
 import com.mindhub.golfparadise.repositories.OrderRepository;
 import com.mindhub.golfparadise.repositories.ProductRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -16,6 +17,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.repository.query.FluentQuery;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -25,20 +27,24 @@ import java.util.function.Function;
 @SpringBootApplication
 public class GolfparadiseApplication {
 
+	@Autowired
+	PasswordEncoder passwordEncoder;
+
 	public static void main(String[] args) {
 
 		SpringApplication.run(GolfparadiseApplication.class, args);
 
 	}
 	@Bean
-	public CommandLineRunner initData(ClientRepository clientRepository
-									, OrderRepository orderRepository
-									, ProductRepository productRepository
-									, OrderProductRepository orderProductRepository) {
+	public CommandLineRunner initData(ClientRepository clientRepository,
+									  OrderRepository orderRepository,
+									  ProductRepository productRepository,
+									 OrderProductRepository orderProductRepository) {
 		return (args) -> {
 
-			Client client1 = new Client ("Rory","Mcylroy","rm@gmail.com","*******");
-			Client client2 = new Client("Tiger","Woods","tw@gmail.com","*******");
+			Client client1 = new Client ("Rory","Mcylroy","rm@gmail.com", passwordEncoder.encode("password1"));
+			Client client2 = new Client("Tiger","Woods","tw@gmail.com", passwordEncoder.encode("password2"));
+			Client client3 = new Client("Admin","Admin","admin@admin.com", passwordEncoder.encode("admin"));
 
 			OrderPurchase order1 = new OrderPurchase(659.00,"cll central 234", LocalDateTime.now());
 			client1.addOrders(order1);
@@ -64,6 +70,7 @@ public class GolfparadiseApplication {
 
 			clientRepository.save(client1);
 			clientRepository.save(client2);
+			clientRepository.save(client3);
 
 			productRepository.save(proV1);
 			productRepository.save(tsr2);
