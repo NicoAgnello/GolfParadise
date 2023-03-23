@@ -10,5 +10,7 @@ public interface ClientService {
 
     ClientDTO findById(Long id);
 
+    Client findByEmail(String email);
+
     void save(Client client);
 }
