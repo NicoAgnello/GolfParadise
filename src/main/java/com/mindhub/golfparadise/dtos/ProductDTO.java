@@ -13,6 +13,7 @@ public class ProductDTO {
     private Double price;
     private int stock;
     private Category category;
+    private boolean active;
 //    Set<OrderProduct> orderProducts= new HashSet<>();
 
     public ProductDTO(Product product) {
@@ -23,6 +24,7 @@ public class ProductDTO {
         this.price = product.getPrice();
         this.stock = product.getStock();
         this.category = product.getCategory();
+        this.active = product.isActive();
     }
 
     public Long getId() {
@@ -53,7 +55,11 @@ public class ProductDTO {
         return category;
     }
 
-//    public Set<OrderProduct> getOrderProducts() {
+    public boolean isActive() {
+        return active;
+    }
+
+    //    public Set<OrderProduct> getOrderProducts() {
 //        return orderProducts;
 //    }
 }
