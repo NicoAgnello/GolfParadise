@@ -75,5 +75,12 @@ public class OrderPurchase {
         this.client = client;
     }
 
+    public Set<OrderProduct> getOrderProducts() {
+        return orderProducts;
+    }
+
+    public void setOrderProducts(Set<OrderProduct> orderProducts) {
+        this.orderProducts = orderProducts;
+    }
 }
 

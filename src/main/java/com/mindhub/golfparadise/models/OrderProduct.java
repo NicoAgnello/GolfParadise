@@ -10,7 +10,6 @@ import java.util.Set;
 @Entity
 public class OrderProduct {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
@@ -21,7 +20,7 @@ public class OrderProduct {
     @JoinColumn(name = "product_id")
     private Product product;
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="order_Purchase_id")
+    @JoinColumn(name="order_purchase_id")
     private OrderPurchase orderPurchase;
 
     public OrderProduct() {
