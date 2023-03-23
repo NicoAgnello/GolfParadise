@@ -21,7 +21,12 @@ public class ProductServiceImplementation implements ProductService {
     }
 
     @Override
-    public ProductDTO findById(Long id) {
+    public Product findById(Long id) {
+        return productRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public ProductDTO getProduct(Long id) {
         return productRepository.findById(id).map(ProductDTO::new).orElse(null);
     }
 
