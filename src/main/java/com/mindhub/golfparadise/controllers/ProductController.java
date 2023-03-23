@@ -3,7 +3,6 @@ package com.mindhub.golfparadise.controllers;
 import com.mindhub.golfparadise.dtos.ProductDTO;
 import com.mindhub.golfparadise.models.Category;
 import com.mindhub.golfparadise.models.Product;
-import com.mindhub.golfparadise.repositories.ProductRepository;
 import com.mindhub.golfparadise.services.ClientService;
 import com.mindhub.golfparadise.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
