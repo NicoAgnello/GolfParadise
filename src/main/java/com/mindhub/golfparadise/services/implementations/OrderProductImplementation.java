@@ -22,6 +22,6 @@ public class OrderProductImplementation implements OrderProductService {
 
     @Override
     public void save(OrderProduct orderProduct) {
-
+        orderProductRepository.save(orderProduct);
     }
 }

@@ -23,6 +23,6 @@ public class OrderPurchaseServiceImplementation implements OrderPurchaseService 
 
     @Override
     public void save(OrderPurchase orderPurchase) {
-
+        orderRepository.save(orderPurchase);
     }
 }
