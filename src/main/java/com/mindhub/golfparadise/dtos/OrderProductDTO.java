@@ -18,6 +18,11 @@ public class OrderProductDTO {
         totalAmount = orderProduct.getTotalAmount();
     }
 
+    public OrderProductDTO(Long productId, int quantity) {
+        this.productId = productId;
+        this.quantity = quantity;
+    }
+
     public Long getId() {
         return id;
     }

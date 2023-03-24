@@ -17,12 +17,17 @@ public class OrderPurchaseServiceImplementation implements OrderPurchaseService 
     OrderRepository orderRepository;
 
     @Override
+    public OrderPurchaseDTO getOrderPurchase(Long id) {
+        return orderRepository.findById(id).map(OrderPurchaseDTO::new).orElse(null);
+    }
+
+    @Override
     public List<OrderPurchaseDTO> getOrderPurchases() {
         return orderRepository.findAll().stream().map(OrderPurchaseDTO::new).collect(Collectors.toList());
     }
 
     @Override
     public void save(OrderPurchase orderPurchase) {
-
+        orderRepository.save(orderPurchase);
     }
 }

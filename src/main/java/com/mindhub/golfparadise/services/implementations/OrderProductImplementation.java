@@ -16,12 +16,17 @@ public class OrderProductImplementation implements OrderProductService {
     OrderProductRepository orderProductRepository;
 
     @Override
+    public OrderProductDTO getOrderProduct(Long id) {
+        return orderProductRepository.findById(id).map(OrderProductDTO::new).orElse(null);
+    }
+
+    @Override
     public List<OrderProductDTO> getOrderProducts() {
         return orderProductRepository.findAll().stream().map(OrderProductDTO::new).collect(Collectors.toList());
     }
 
     @Override
     public void save(OrderProduct orderProduct) {
-
+        orderProductRepository.save(orderProduct);
     }
 }
