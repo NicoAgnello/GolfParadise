@@ -6,6 +6,9 @@ import com.mindhub.golfparadise.models.OrderPurchase;
 import java.util.List;
 
 public interface OrderPurchaseService {
+
+    OrderPurchaseDTO getOrderPurchase(Long id);
+
     List<OrderPurchaseDTO> getOrderPurchases();
 
     void save(OrderPurchase orderPurchase);

@@ -1,12 +1,10 @@
 package com.mindhub.golfparadise.controllers;
 
+import com.itextpdf.text.DocumentException;
 import com.mindhub.golfparadise.dtos.OrderProductDTO;
 import com.mindhub.golfparadise.dtos.OrderPurchaseDTO;
 import com.mindhub.golfparadise.dtos.PurchaseDTO;
-import com.mindhub.golfparadise.models.Client;
-import com.mindhub.golfparadise.models.OrderProduct;
-import com.mindhub.golfparadise.models.OrderPurchase;
-import com.mindhub.golfparadise.models.Product;
+import com.mindhub.golfparadise.models.*;
 import com.mindhub.golfparadise.services.ClientService;
 import com.mindhub.golfparadise.services.OrderProductService;
 import com.mindhub.golfparadise.services.OrderPurchaseService;
@@ -17,10 +15,18 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.transaction.Transactional;
+import java.io.IOException;
+import java.time.Instant;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api")
@@ -94,6 +100,24 @@ public class OrderPurchaseController {
         orderPurchaseService.save(orderPurchase);
         return new ResponseEntity<>("Purchase order created.", HttpStatus.CREATED);
 
+    }
+
+    @GetMapping("/pdf/generate")
+    public void generateOrderPurchasePdf(Authentication authentication,
+                                        HttpServletResponse response)
+                                        throws IOException, DocumentException {
+
+        Set<OrderProductDTO> orderProducts = new HashSet<>(orderProductService.getOrderProducts());
+        OrderPurchaseDTO orderPurchaseDTO = orderPurchaseService.getOrderPurchase(1L);
+
+        Pdf pdf = new Pdf();
+        pdf.createDocument(response);
+        pdf.addTitle("Order");
+        pdf.addLineJumps();
+        pdf.addLineJumps();
+        pdf.addOrderProductsTable(orderProducts);
+        pdf.addTotalAmountTable(orderPurchaseDTO);
+        pdf.closeDocument();
     }
 
 }
