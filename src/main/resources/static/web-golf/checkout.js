@@ -26,7 +26,7 @@ createApp({
                         this.products.forEach(prod => {
                             if (prod.id == order.id) {
                                 order.price = prod.price
-                                if (prod.stock - 100 >= 0 ) {
+                                if (prod.stock - order.quantity >= 0 ) {
                                     order.stock = prod.stock - order.quantity
                                 } else {
                                     this.stockInconsistency = true
