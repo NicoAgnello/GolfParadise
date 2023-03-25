@@ -3,9 +3,10 @@ const { createApp } = Vue
 createApp({
     data() {
         return {
-            products: [],
-            cart:     [],
-            total:    0,
+            products:           [],
+            cart:               [],
+            total:              0,
+            stockInconsistency: false
         }
     },
     created() {
@@ -21,8 +22,33 @@ createApp({
                 .then(response => {
                     console.log(response)
                     this.products = response.data
+                    this.cart.forEach(order => {
+                        this.products.forEach(prod => {
+                            if (prod.id == order.id) {
+                                order.price = prod.price
+                                if (prod.stock - 100 >= 0 ) {
+                                    order.stock = prod.stock - order.quantity
+                                } else {
+                                    this.stockInconsistency = true
+                                }
+                            }
+                        })
+                    })
+                    if (this.stockInconsistency) {
+                        console.log('Stock inconsistency.')
+                        localStorage.clear()
+                        Swal.fire({
+                            showConfirmButton: false,
+                            timer:            2000,
+                            timerProgressBar: true,
+                            icon:             'error',
+                            title:            `Stock inconsistency`,
+                        })
+                        setTimeout(() => location.replace("/web-golf/mockup.html"),2000)
+                    }
                 })
                 .catch(error => console.log(error))
+
         },
         checkProductInCart(product) {
             return this.cart.find(prod => product.id === prod.id)
