@@ -11,5 +11,7 @@ public interface OrderPurchaseService {
 
     List<OrderPurchaseDTO> getOrderPurchases();
 
+    OrderPurchaseDTO findLastOne();
+
     void save(OrderPurchase orderPurchase);
 }

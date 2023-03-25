@@ -27,6 +27,11 @@ public class OrderPurchaseServiceImplementation implements OrderPurchaseService 
     }
 
     @Override
+    public OrderPurchaseDTO findLastOne() {
+        return new OrderPurchaseDTO(orderRepository.findFirstByOrderByIdDesc());
+    }
+
+    @Override
     public void save(OrderPurchase orderPurchase) {
         orderRepository.save(orderPurchase);
     }
