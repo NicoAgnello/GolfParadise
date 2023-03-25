@@ -1,0 +1,79 @@
+body {
+    background-color: whitesmoke;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/*
+    ***************
+    OFF-CANVAS CART
+    ***************
+*/
+
+.offcanvas-header {
+    background-image: url("./assets/golf-field-cart-bg.jpg");
+    background-size: cover;
+    min-height: 12.5rem;
+    background-position: center bottom;
+    align-items: flex-start;
+    color: whitesmoke;
+}
+
+.cart-btn {
+    border-radius: 50%;
+    margin: auto;
+    background: none;
+    border: none
+}
+
+.cart-icon {
+    font-size: 0.75rem;
+}
+
+.cart-product-container {
+    border-bottom: 1px solid #F4F8DF;
+}
+
+.offcanvas-category {
+    font-weight: 700;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.trash-icon {
+    cursor: pointer;
+}
+
+.btn-continue-cart {
+    background-color: #F6C26E;
+    border: 2px solid #F6C26E;
+    border-radius: 0;
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+.btn-continue-cart:hover {
+    background-color: #FFFFFF;
+    border: 2px solid #F6C26E;
+}
+
+.btn-empty-cart {
+    background-color: #FFFFFF;
+    border-left: 2px solid #FDDC96;
+    border-right: 2px solid #FDDC96;
+    border-bottom: 2px solid #FDDC96;
+    border-radius: 0;
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+.btn-empty-cart:hover {
+    background-color: #FDDC96;
+    border: 2px solid #FDDC96;
+    color: #000;
+}
+
+.purchase-total {
+    border-left: 1px solid #F4F8DF;
+    border-right: 1px solid #F4F8DF;
+}

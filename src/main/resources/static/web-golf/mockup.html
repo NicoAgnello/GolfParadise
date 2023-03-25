@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+  <link rel="stylesheet" href="./main.css">
+  <title>Golf Paradise | Products</title>
+</head>
+<body>
+  <div id="app">
+
+    <main class="my-4">
+      <div class="offcanvas offcanvas-start " data-bs-scroll="true" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasExampleLabel">My Cart</h5>
+          <button type="button" class="btn-close btn-close-white fs-5" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <div v-if="cart.length > 0">
+            <div v-for="product in cart" class="items-carrito container">
+              <div class="row d-flex cart-product-container py-3 align-items-center">
+                <img :src="product.img" class="col-3 m-0 text-center"></img>
+                <div class="col-7">
+                  <p class="m-0">{{ product.name }}</p>
+                  <p class="mb-3 offcanvas-category text-success">{{ product.category }}</p>
+                  <p class="m-0"> ${{ product.price }}</p>
+                  <p v-if="product.stock == 0" class="text-danger">No stock</p>
+                </div>
+                <div class="col-1 m-0 d-flex p-0 flex-column gap-1 align-items-center">
+                  <button class="cart-btn w-100"
+                          @click="addProduct(product)"
+                          :disabled="product.stock == 0 ? true : false"
+                  >
+                    <i class="fa-solid fa-plus cart-icon" :class="product.stock == 0 ? 'text-danger' : ''"></i>
+                  </button>
+                  <p class="m-0"> {{ product.quantity }} </p>
+                  <button class="cart-btn w-100"
+                          @click="removeProductQuantity(product)"
+                  >
+                    <i class="fa-solid fa-minus cart-icon"></i>
+                  </button>
+                </div>
+                <div class="col-1">
+                  <i class="fa-solid fa-trash trash-icon" @click="removeProduct(product)"></i>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="d-flex justify-content-between purchase-total">
+                <p class="p-2 m-0 fw-bold">Total</p>
+                <p class="p-2 m-0 fw-bold">${{ total }}</p>
+              </div>
+              <button class="btn btn-continue-cart w-100 py-3 text-uppercase">Continue</button>
+              <button class="btn btn-empty-cart w-100 py-3 text-uppercase" @click="emptyCart">Empty Cart</button>
+            </div>
+          </div>
+          <div v-else>
+            <p>No products added!</p>
+          </div>
+        </div>
+
+      </div>
+      <div class="container">
+        <div class="row" v-if="products.length > 0">
+          <div class="col-md-4" v-for="product of products">
+            <div class="card">
+              <img :src="product.img" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">{{ product.name.toUpperCase() }}</h5>
+                <p class="card-text">{{ product.description }}</p>
+                <p class="card-text">${{ product.price.toLocaleString('de-DE') }}</p>
+                <div class="d-flex justify-content-between">
+                  <a href="#" class="btn btn-success">See details</a>
+                  <button class="btn btn-warning" @click="addProduct(product)">Buy</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container text-center fw-bold mt-4">
+        <button class="btn cart" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+<!--          <p v-if="cart.length > 0" class="contador-carrito rounded-pill ">{{ contadorCarrito }}</p>-->
+          <i class="fa-solid fa-cart-shopping"></i>
+        </button>
+      </div>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/2cd05a3c76.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script src="./mockup.js"></script>
+</body>
+</html>
