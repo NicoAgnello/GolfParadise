@@ -107,8 +107,15 @@ public class OrderPurchaseController {
                                         HttpServletResponse response)
                                         throws IOException, DocumentException {
 
-        Set<OrderProductDTO> orderProducts = new HashSet<>(orderProductService.getOrderProducts());
-        OrderPurchaseDTO orderPurchaseDTO = orderPurchaseService.getOrderPurchase(1L);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM-dd-yyyy HH:mm:ss");
+        response.setContentType("application/pdf");
+        LocalDateTime currentDateTime = LocalDateTime.now();
+        String headerKey = "Content-Disposition";
+        String headerValue = "attachment; filename=order_details_" + currentDateTime.format(formatter) + ".pdf";
+        response.setHeader(headerKey, headerValue);
+
+        OrderPurchaseDTO orderPurchaseDTO = orderPurchaseService.findLastOne();
+        Set<OrderProductDTO> orderProducts = orderPurchaseDTO.getOrderProducts();
 
         Pdf pdf = new Pdf();
         pdf.createDocument(response);
