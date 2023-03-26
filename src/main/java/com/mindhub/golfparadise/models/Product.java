@@ -19,6 +19,7 @@ public class Product {
     private String img;
     private Double price;
     private int stock;
+    @Enumerated(EnumType.STRING)
     private Category category;
     private boolean active;
     @OneToMany(mappedBy = "product", fetch= FetchType.EAGER)
