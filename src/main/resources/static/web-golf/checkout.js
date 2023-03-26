@@ -1,18 +1,57 @@
 const { createApp } = Vue
+const useVuelidate  = Vuelidate.useVuelidate
+const required      = VuelidateValidators.required
+const minLength     = VuelidateValidators.minLength
+const numeric       = VuelidateValidators.numeric
 
 createApp({
     data() {
         return {
+            v$:                 useVuelidate(),
             products:           [],
             cart:               [],
             total:              0,
-            stockInconsistency: false,
             cardNumber:         "",
-            cardCvv:            ""
+            cardCvv:            "",
+            stockInconsistency: false
         }
     },
     created() {
         this.loadData()
+    },
+    mounted() {
+        (() => {
+            'use strict'
+
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            const forms = document.querySelectorAll('.needs-validation')
+
+            // Loop over them and prevent submission
+            Array.from(forms).forEach(form => {
+                form.addEventListener('submit', event => {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+
+                    form.classList.add('was-validated')
+                }, false)
+            })
+        })()
+    },
+    validations() {
+        return {
+            cardNumber: {
+                required,
+                numeric,
+                minValue: minLength(16)
+            },
+            cardCvv: {
+                required,
+                numeric,
+                minValue: minLength(3)
+            }
+        }
     },
     methods: {
         loadData() {
@@ -98,6 +137,14 @@ createApp({
         },
         getTotal(product) {
             this.total = this.cart.reduce((acc, product) => acc + Number(product.price * product.quantity), 0)
+        },
+        validateForm(e) {
+            e.preventDefault()
+            this.v$.cardNumber.$touch();
+            this.v$.cardCvv.$touch();
+            if (!this.v$.cardNumber.$invalid && !this.v$.cardCvv.$invalid) {
+                this.pay()
+            }
         },
         pay() {
             const orders = this.cart.reduce((acc, curr) => {
