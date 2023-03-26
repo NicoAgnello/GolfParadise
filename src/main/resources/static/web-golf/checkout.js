@@ -6,7 +6,9 @@ createApp({
             products:           [],
             cart:               [],
             total:              0,
-            stockInconsistency: false
+            stockInconsistency: false,
+            cardNumber:         "",
+            cardCvv:            ""
         }
     },
     created() {

@@ -19,49 +19,22 @@
 
         <div class="row g-2">
             <div class="col-lg-9">
-                <div class="border border-dark-subtle rounded-2">
+                <div class="border border-dark-subtle rounded-2 bg-white">
                     <div v-if="cart.length > 0">
-<!--                        <div v-for="product in cart" class="items-carrito container">-->
-<!--                            <div class="row d-flex cart-product-container py-3 align-items-center">-->
-<!--                                <img :src="product.img" class="col-3 m-0 text-center"></img>-->
-<!--                                <div class="col-7">-->
-<!--                                    <p class="m-0">{{ product.name }}</p>-->
-<!--                                    <p class="mb-3 offcanvas-category text-success">{{ product.category }}</p>-->
-<!--                                    <p class="m-0"> ${{ product.price }}</p>-->
-<!--                                    <p v-if="product.stock == 0" class="text-danger">No stock</p>-->
-<!--                                </div>-->
-<!--                                <div class="col-1 m-0 d-flex p-0 flex-column gap-1 align-items-center">-->
-<!--                                    <button class="cart-btn w-100"-->
-<!--                                            @click="addProduct(product)"-->
-<!--                                            :disabled="product.stock == 0 ? true : false"-->
-<!--                                    >-->
-<!--                                        <i class="fa-solid fa-plus cart-icon" :class="product.stock == 0 ? 'text-danger' : ''"></i>-->
-<!--                                    </button>-->
-<!--                                    <p class="m-0"> {{ product.quantity }} </p>-->
-<!--                                    <button class="cart-btn w-100"-->
-<!--                                            @click="removeProductQuantity(product)"-->
-<!--                                    >-->
-<!--                                        <i class="fa-solid fa-minus cart-icon"></i>-->
-<!--                                    </button>-->
-<!--                                </div>-->
-<!--                                <div class="col-1">-->
-<!--                                    <i class="fa-solid fa-trash trash-icon" @click="removeProduct(product)"></i>-->
-<!--                                </div>-->
-<!--                            </div>-->
                         <div class="py-2 bg-warning container">
                             <div class="row">
-                                <div class="col-3 text-center"></div>
-                                <div class="col-2 text-center">Product</div>
-                                <div class="col-1 text-center">Price</div>
-                                <div class="col-3 text-center">Quantity</div>
-                                <div class="col-2 text-center">Total Price</div>
+                                <div class="col-2 text-center"></div>
+                                <div class="col-3 text-center fw-bold">Product</div>
+                                <div class="col-1 text-center fw-bold">Price</div>
+                                <div class="col-3 text-center fw-bold">Quantity</div>
+                                <div class="col-2 text-center fw-bold">Total Price</div>
                             </div>
                         </div>
                         <div v-for="product in cart" class="container">
                             <div class="row d-flex cart-product-container py-3 align-items-center">
-                                <img :src="product.img" class="col-3 m-0 text-center"></img>
-                                <div class="col-2 text-center">
-                                    <p class="m-0">{{ product.name }}</p>
+                                <img :src="product.img" class="col-2 m-0 text-center"></img>
+                                <div class="col-3 text-center">
+                                    <p class="m-0 offcanvas-category text-success">{{ product.name }}</p>
                                 </div>
                                 <div class="col-1 text-center">
                                     <p class="m-0">${{ product.price }}</p>
@@ -93,9 +66,31 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-12 mt-4">
+                    <div class="container">
+                        <form class="row py-4 border border-dark-subtle rounded-2 bg-white needs-validation" @submit.prevent >
+                            <h4>Payment Method</h4>
+                            <div class="col-12">
+                                <label for="cardHolder" class="form-label">Card Holder</label>
+                                <input type="text" class="form-control" id="cardHolder">
+                                <!--                        <small class="text-warning d-block" v-if="v$.cardNumber.$error">{{ v$.cardNumber.$errors[0].$message }}</small>-->
+                            </div>
+                            <div class="col-md-8 mt-2">
+                                <label for="cardNumber" class="form-label">Card Number</label>
+                                <input type="text" class="form-control" id="cardNumber" v-model="cardNumber" maxlength="16">
+                                <!--                        <small class="text-warning d-block" v-if="v$.cardNumber.$error">{{ v$.cardNumber.$errors[0].$message }}</small>-->
+                            </div>
+                            <div class="col-md-4 mt-2">
+                                <label for="cardCvv" class="form-label" maxlength="3">Card CVV</label>
+                                <input type="text" class="form-control" id="cardCvv" v-model="cardCvv" maxlength="3">
+                                <!--                        <small class="text-warning d-block" v-if="v$.cardCvv.$error">{{ v$.cardCvv.$errors[0].$message }}</small>-->
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
             <div class="col-lg-3">
-                <div class="border border-dark-subtle rounded-2 p-4">
+                <div class="border border-dark-subtle rounded-2 p-4 bg-white">
                     <h2>Checkout</h2>
                     <p>Amount: ${{ total }}</p>
                     <p>Delivery cost: $19.90</p>
