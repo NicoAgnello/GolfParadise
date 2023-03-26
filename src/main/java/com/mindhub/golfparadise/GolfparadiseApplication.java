@@ -42,7 +42,7 @@ public class GolfparadiseApplication {
 									 OrderProductRepository orderProductRepository) {
 		return (args) -> {
 
-			Client client1 = new Client ("Rory","Mcylroy","rm@gmail.com", passwordEncoder.encode("password1"));
+			Client client1 = new Client ("Rory","McIlroy","rm@gmail.com", passwordEncoder.encode("password1"));
 			Client client2 = new Client("Tiger","Woods","tw@gmail.com", passwordEncoder.encode("password2"));
 			Client client3 = new Client("Admin","Admin","admin@admin.com", passwordEncoder.encode("admin"));
 
