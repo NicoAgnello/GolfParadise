@@ -119,10 +119,11 @@ public class OrderPurchaseController {
 
         Pdf pdf = new Pdf();
         pdf.createDocument(response);
-        pdf.addTitle("Order");
+        pdf.addTitle("Order #" + orderPurchaseDTO.getId());
         pdf.addLineJumps();
         pdf.addLineJumps();
         pdf.addOrderProductsTable(orderProducts);
+        pdf.addLineJumps();
         pdf.addTotalAmountTable(orderPurchaseDTO);
         pdf.closeDocument();
     }
