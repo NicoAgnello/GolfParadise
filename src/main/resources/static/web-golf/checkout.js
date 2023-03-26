@@ -11,45 +11,36 @@ createApp({
             products:           [],
             cart:               [],
             total:              0,
+            deliveryCost:       0,
             cardNumber:         "",
             cardCvv:            "",
+            deliveryAddress:    "",
+            zipCode:            "",
             stockInconsistency: false
         }
     },
     created() {
         this.loadData()
     },
-    mounted() {
-        (() => {
-            'use strict'
-
-            // Fetch all the forms we want to apply custom Bootstrap validation styles to
-            const forms = document.querySelectorAll('.needs-validation')
-
-            // Loop over them and prevent submission
-            Array.from(forms).forEach(form => {
-                form.addEventListener('submit', event => {
-                    if (!form.checkValidity()) {
-                        event.preventDefault()
-                        event.stopPropagation()
-                    }
-
-                    form.classList.add('was-validated')
-                }, false)
-            })
-        })()
-    },
     validations() {
         return {
             cardNumber: {
                 required,
                 numeric,
-                minValue: minLength(16)
+                minLength: minLength(16)
             },
             cardCvv: {
                 required,
                 numeric,
-                minValue: minLength(3)
+                minLength: minLength(3)
+            },
+            deliveryAddress: {
+                required,
+            },
+            zipCode: {
+                required,
+                numeric,
+                minLength: minLength(3)
             }
         }
     },
@@ -142,9 +133,26 @@ createApp({
             e.preventDefault()
             this.v$.cardNumber.$touch();
             this.v$.cardCvv.$touch();
-            if (!this.v$.cardNumber.$invalid && !this.v$.cardCvv.$invalid) {
-                this.pay()
+            this.v$.deliveryAddress.$touch();
+            this.v$.zipCode.$touch();
+            if (!this.v$.cardNumber.$invalid
+                && !this.v$.cardCvv.$invalid
+                && !this.v$.deliveryAddress.$invalid
+                && !this.v$.zipCode.$invalid) {
+                console.log(this.cardNumber)
+                console.log(this.cardCvv)
+                console.log(this.deliveryAddress)
+                console.log(this.zipCode)
+                // this.pay()
             }
+        },
+        getDeliveryCost() {
+            console.log(this.zipCode)
+            axios.post('/api/deliveryCost', `zipCode=${this.zipCode}`)
+                .then(response => {
+                    this.deliveryCost = response.data.deliveryCost
+                })
+                .catch(error => console.log(error))
         },
         pay() {
             const orders = this.cart.reduce((acc, curr) => {

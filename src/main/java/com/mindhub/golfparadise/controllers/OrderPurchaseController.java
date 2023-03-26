@@ -1,6 +1,7 @@
 package com.mindhub.golfparadise.controllers;
 
 import com.itextpdf.text.DocumentException;
+import com.mindhub.golfparadise.dtos.DeliveryCostDTO;
 import com.mindhub.golfparadise.dtos.OrderProductDTO;
 import com.mindhub.golfparadise.dtos.OrderPurchaseDTO;
 import com.mindhub.golfparadise.dtos.PurchaseDTO;
@@ -9,6 +10,7 @@ import com.mindhub.golfparadise.services.ClientService;
 import com.mindhub.golfparadise.services.OrderProductService;
 import com.mindhub.golfparadise.services.OrderPurchaseService;
 import com.mindhub.golfparadise.services.ProductService;
+import com.mindhub.golfparadise.utils.OrderPurchaseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -126,6 +128,11 @@ public class OrderPurchaseController {
         pdf.addLineJumps();
         pdf.addTotalAmountTable(orderPurchaseDTO);
         pdf.closeDocument();
+    }
+
+    @PostMapping("/deliveryCost")
+    public DeliveryCostDTO getDeliveryCost(Authentication authentication, @RequestParam String zipCode) {
+        return new DeliveryCostDTO(OrderPurchaseUtil.getDeliveryCost(Short.parseShort(zipCode)));
     }
 
 }
