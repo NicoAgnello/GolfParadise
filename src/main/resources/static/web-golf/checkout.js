@@ -139,11 +139,7 @@ createApp({
                 && !this.v$.cardCvv.$invalid
                 && !this.v$.deliveryAddress.$invalid
                 && !this.v$.zipCode.$invalid) {
-                console.log(this.cardNumber)
-                console.log(this.cardCvv)
-                console.log(this.deliveryAddress)
-                console.log(this.zipCode)
-                // this.pay()
+                this.pay()
             }
         },
         getDeliveryCost() {
@@ -163,10 +159,33 @@ createApp({
                 acc.push(order)
                 return acc
             }, [])
-            axios.post('/api/orderProducts/generate', {orderProducts: orders})
+            axios.post('https://mindhub-brothers.up.railway.app/api/cards/pay', {
+                "cardNumber": this.cardNumber,
+                "cardCvv": this.cardCvv,
+                "amount":  this.total + this.deliveryCost,
+                "description": "Golf Paradise purchase."
+            })
                 .then(response => {
                     console.log(response)
-                    window.location.href = '/api/pdf/generate'
+                    axios.post('/api/orderProducts/generate', {orderProducts: orders})
+                        .then(response => {
+                            console.log(response)
+                            window.location.href = '/api/pdf/generate'
+                            localStorage.clear()
+                            Swal.fire({
+                                showConfirmButton: false,
+                                timer:            2000,
+                                timerProgressBar: true,
+                                icon:             'success',
+                                title:            `Purchase successful`,
+                                image:            "./assets/swal-image.jpg",
+                                imageWidth:       "100%",
+                                imageHeight:      200,
+                                imageAlt:         'Golfer',
+                            })
+                            setTimeout(() => location.replace("/web-golf/mockup.html"),2000)
+                        })
+                        .catch(error => console.log(error))
                 })
                 .catch(error => console.log(error))
         }

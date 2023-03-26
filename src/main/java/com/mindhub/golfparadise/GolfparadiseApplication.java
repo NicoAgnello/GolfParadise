@@ -39,12 +39,13 @@ public class GolfparadiseApplication {
 	public CommandLineRunner initData(ClientRepository clientRepository,
 									  OrderRepository orderRepository,
 									  ProductRepository productRepository,
-									 OrderProductRepository orderProductRepository) {
+									  OrderProductRepository orderProductRepository) {
 		return (args) -> {
 
 			Client client1 = new Client ("Rory","McIlroy","rm@gmail.com", passwordEncoder.encode("password1"));
 			Client client2 = new Client("Tiger","Woods","tw@gmail.com", passwordEncoder.encode("password2"));
-			Client client3 = new Client("Admin","Admin","admin@admin.com", passwordEncoder.encode("admin"));
+			Client client3 = new Client("Melba", "Morel", "melba@mindhub.com", passwordEncoder.encode("pass1234"));
+			Client client4 = new Client("Admin","Admin","admin@admin.com", passwordEncoder.encode("admin"));
 
 			OrderPurchase order1 = new OrderPurchase(659.00,"Cll Central 234", LocalDateTime.now());
 			client1.addOrders(order1);
@@ -74,6 +75,7 @@ public class GolfparadiseApplication {
 			clientRepository.save(client1);
 			clientRepository.save(client2);
 			clientRepository.save(client3);
+			clientRepository.save(client4);
 
 			productRepository.save(product1);
 			productRepository.save(product2);
