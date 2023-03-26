@@ -52,29 +52,36 @@ public class GolfparadiseApplication {
 //			OrderPurchase order2 = new OrderPurchase(78000.00,"cll cruzada 743", LocalDateTime.now());
 //			client2.addOrders(order2);
 
-			Product proV1 = new Product("ball", "ball pro V1", "https/img.com",30.00,5, Category.BALLS);
+			Product product1 = new Product("Beres Black Driver", "Dividing the sole slot into three portions helps the clubhead retain its shape instantly at impact -- yielding high repulsion for a much higher initial ball speed.", "https://honmagolf.com/storage/product/8792_B_BK_1W.jpg",549.00,5, Category.CLUBS);
+			Product product2 = new Product("Beres Aizu Driver", "The premium BERES brand provides world-class quality and performance, and now collaborates with the traditional Japanese AIZU lacquer, originating in the northern part of Japan close to the Honma Sakata factory", "https://honmagolf.com/storage/product/8784_1_B_AIZU_L1W3S.jpg",449.00,10, Category.CLUBS);
+			Product product3 = new Product("Beres Aizu Driver Gold", "The premium BERES brand combines world-class quality and performance with the traditional and colorful Japanese artwork on each clubhead.", "https://honmagolf.com/storage/product/8776_1_B_AIZU_1W3S.jpg",399.00,3, Category.CLUBS);
+			Product product4 = new Product("Beres Honma Black Driver", "Larger sweet spot increases ball speed off all parts of the club face.A slot positioned near the leading edge of the sole of the driver flexes at impact to create high initial ball speed and prevent power loss on shots struck away from face center.", "https://honmagolf.com/storage/product/8412_BERES_BK_1W.jpg",349.00,5, Category.CLUBS);
+			Product product5 = new Product("Beres Ladies Driver", "Beautifully and elegantly designed for high performance, to inspire a feeling of pride for golfers. Optimized slots create clubface flexion, for more ball speed on mishits. Uneven thickness clubface design.", "https://honmagolf.com/storage/product/5850_HONMA_GOLF_BERES_LADIES_DRIVER_a%CC%81@.jpg",299.00,8, Category.CLUBS);
+			Product product6 = new Product("T//World GS Driver", "We enhanced both distance abd forgiveness -- elevating the driver's overall performance.", "https://honmagolf.com/storage/product/8368_1w.jpg",299.00,10, Category.CLUBS);
+			Product product7 = new Product("T//World GS Driver Mens", "Pursuing the Best Balance of Speed and Forgiveness sole slots radial face keel design P-SAT Precision Spine Control", "https://honmagolf.com/storage/product/7894_1w.jpg",455.00,7, Category.CLUBS);
 
-			Product tsr2  = new Product("driver", "TSR2 Driver", "https/img.com",599.00,60, Category.CLUBS);
-
-			Product midSizeBag = new Product("bag", "Mid Size Bag", "https/img.com",380.00,3, Category.BAGS);
 
 			OrderProduct orderProduct1 = new OrderProduct(2, 60.0);
 			order1.addOrderProduct(orderProduct1);
-			proV1.addOrderProduct(orderProduct1);
+			product1.addOrderProduct(orderProduct1);
 
 
 			OrderProduct orderProduct2 = new OrderProduct(1, 599.0);
 			order1.addOrderProduct(orderProduct2);
-			tsr2.addOrderProduct(orderProduct2);
+			product2.addOrderProduct(orderProduct2);
 
 
 			clientRepository.save(client1);
 			clientRepository.save(client2);
 			clientRepository.save(client3);
 
-			productRepository.save(proV1);
-			productRepository.save(tsr2);
-			productRepository.save(midSizeBag);
+			productRepository.save(product1);
+			productRepository.save(product2);
+			productRepository.save(product3);
+			productRepository.save(product4);
+			productRepository.save(product5);
+			productRepository.save(product6);
+			productRepository.save(product7);
 
 			orderRepository.save(order1);
 //			orderRepository.save(order2);
