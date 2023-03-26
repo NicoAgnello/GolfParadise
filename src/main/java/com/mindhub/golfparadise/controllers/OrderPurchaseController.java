@@ -123,6 +123,7 @@ public class OrderPurchaseController {
         pdf.addLineJumps();
         pdf.addLineJumps();
         pdf.addOrderProductsTable(orderProducts);
+        pdf.addLineJumps();
         pdf.addTotalAmountTable(orderPurchaseDTO);
         pdf.closeDocument();
     }

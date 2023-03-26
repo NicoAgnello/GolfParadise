@@ -97,6 +97,7 @@ public class Pdf {
             if (counter == 0) {
                 cell.setColspan(2);
             }
+            cell.setBorderColor(BaseColor.WHITE);
             cell.setHorizontalAlignment(Element.ALIGN_CENTER);
             cell.setVerticalAlignment(Element.ALIGN_CENTER);
             cell.setPadding(5);
