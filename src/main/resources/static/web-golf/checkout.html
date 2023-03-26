@@ -17,34 +17,76 @@
 
     <main class="my-4 container">
 
-        <div class="row">
-            <div class="col-9">
-                <div class="offcanvas-body">
+        <div class="row g-2">
+            <div class="col-lg-9">
+                <div class="border border-dark-subtle rounded-2">
                     <div v-if="cart.length > 0">
-                        <div v-for="product in cart" class="items-carrito container">
+<!--                        <div v-for="product in cart" class="items-carrito container">-->
+<!--                            <div class="row d-flex cart-product-container py-3 align-items-center">-->
+<!--                                <img :src="product.img" class="col-3 m-0 text-center"></img>-->
+<!--                                <div class="col-7">-->
+<!--                                    <p class="m-0">{{ product.name }}</p>-->
+<!--                                    <p class="mb-3 offcanvas-category text-success">{{ product.category }}</p>-->
+<!--                                    <p class="m-0"> ${{ product.price }}</p>-->
+<!--                                    <p v-if="product.stock == 0" class="text-danger">No stock</p>-->
+<!--                                </div>-->
+<!--                                <div class="col-1 m-0 d-flex p-0 flex-column gap-1 align-items-center">-->
+<!--                                    <button class="cart-btn w-100"-->
+<!--                                            @click="addProduct(product)"-->
+<!--                                            :disabled="product.stock == 0 ? true : false"-->
+<!--                                    >-->
+<!--                                        <i class="fa-solid fa-plus cart-icon" :class="product.stock == 0 ? 'text-danger' : ''"></i>-->
+<!--                                    </button>-->
+<!--                                    <p class="m-0"> {{ product.quantity }} </p>-->
+<!--                                    <button class="cart-btn w-100"-->
+<!--                                            @click="removeProductQuantity(product)"-->
+<!--                                    >-->
+<!--                                        <i class="fa-solid fa-minus cart-icon"></i>-->
+<!--                                    </button>-->
+<!--                                </div>-->
+<!--                                <div class="col-1">-->
+<!--                                    <i class="fa-solid fa-trash trash-icon" @click="removeProduct(product)"></i>-->
+<!--                                </div>-->
+<!--                            </div>-->
+                        <div class="py-2 bg-warning container">
+                            <div class="row">
+                                <div class="col-3 text-center"></div>
+                                <div class="col-2 text-center">Product</div>
+                                <div class="col-1 text-center">Price</div>
+                                <div class="col-3 text-center">Quantity</div>
+                                <div class="col-2 text-center">Total Price</div>
+                            </div>
+                        </div>
+                        <div v-for="product in cart" class="container">
                             <div class="row d-flex cart-product-container py-3 align-items-center">
                                 <img :src="product.img" class="col-3 m-0 text-center"></img>
-                                <div class="col-7">
+                                <div class="col-2 text-center">
                                     <p class="m-0">{{ product.name }}</p>
-                                    <p class="mb-3 offcanvas-category text-success">{{ product.category }}</p>
-                                    <p class="m-0"> ${{ product.price }}</p>
-                                    <p v-if="product.stock == 0" class="text-danger">No stock</p>
                                 </div>
-                                <div class="col-1 m-0 d-flex p-0 flex-column gap-1 align-items-center">
-                                    <button class="cart-btn w-100"
-                                            @click="addProduct(product)"
-                                            :disabled="product.stock == 0 ? true : false"
-                                    >
-                                        <i class="fa-solid fa-plus cart-icon" :class="product.stock == 0 ? 'text-danger' : ''"></i>
-                                    </button>
-                                    <p class="m-0"> {{ product.quantity }} </p>
-                                    <button class="cart-btn w-100"
-                                            @click="removeProductQuantity(product)"
-                                    >
-                                        <i class="fa-solid fa-minus cart-icon"></i>
-                                    </button>
+                                <div class="col-1 text-center">
+                                    <p class="m-0">${{ product.price }}</p>
                                 </div>
-                                <div class="col-1">
+                                <div class="col-3 m-0 p-0">
+                                    <div class="d-flex justify-content-center">
+                                        <button class="cart-btn w-100"
+                                                @click="removeProductQuantity(product)"
+                                        >
+                                            <i class="fa-solid fa-minus cart-icon"></i>
+                                        </button>
+                                        <p class="m-0 text-center"> {{ product.quantity }} </p>
+                                        <button class="cart-btn w-100"
+                                                @click="addProduct(product)"
+                                                :disabled="product.stock == 0 ? true : false"
+                                        >
+                                            <i class="fa-solid fa-plus cart-icon" :class="product.stock == 0 ? 'text-danger' : ''"></i>
+                                        </button>
+                                    </div>
+                                    <p v-if="product.stock == 0" class="text-center text-danger">No stock</p>
+                                </div>
+                                <div class="col-2 text-center">
+                                    <p class="m-0 fw-bold">${{ product.quantity * product.price }}</p>
+                                </div>
+                                <div class="col-1 text-center">
                                     <i class="fa-solid fa-trash trash-icon" @click="removeProduct(product)"></i>
                                 </div>
                             </div>
@@ -52,12 +94,14 @@
                     </div>
                 </div>
             </div>
-            <div class="col-3 rounded-2">
-                <h2>Checkout</h2>
-                <p>Amount: ${{ total }}</p>
-                <p>Delivery cost: $19.90</p>
-                <p>Total amount: $ {{ total + 19.90 }}</p>
-                <button class="btn btn-success w-100" @click="pay">Make Payment</button>
+            <div class="col-lg-3">
+                <div class="border border-dark-subtle rounded-2 p-4">
+                    <h2>Checkout</h2>
+                    <p>Amount: ${{ total }}</p>
+                    <p>Delivery cost: $19.90</p>
+                    <p>Total amount: $ {{ total + 19.90 }}</p>
+                    <button class="btn btn-success w-100" @click="pay">Make Payment</button>
+                </div>
             </div>
         </div>
     </main>
