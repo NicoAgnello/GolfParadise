@@ -9,10 +9,34 @@ createApp({
       newProductUrl: "",
       newProductStock: "",
       newProductPrice: "",
+      elementsPerPage: 10,
+      products: [],
+      paginatedData: [],
+      actualPage: 1,
     };
   },
-  created() {},
+  created() {
+    this.getProduts();
+  },
+  mounted() {},
   methods: {
+    getProduts() {
+      axios
+        .get("/api/products")
+        .then((res) => {
+          this.products = res.data;
+          this.getDataPages(1);
+        })
+        .catch((err) => console.log(err));
+    },
+    getUrl(url) {
+      Swal.fire({
+        title: "URL address",
+        input: "url",
+        inputValue: url,
+        showConfirmButton: false,
+      });
+    },
     newProduct() {
       Swal.fire({
         title: "New Product",
@@ -64,6 +88,34 @@ createApp({
           console.log(this.newProductStock);
           console.log(this.newProductPrice);
         });
+    },
+    totalPages() {
+      return Math.ceil(this.products.length / this.elementsPerPage);
+    },
+    getDataPages(numberPage) {
+      this.actualPage = numberPage;
+      this.paginatedData = [];
+
+      let ini = numberPage * this.elementsPerPage - this.elementsPerPage;
+      let end = numberPage * this.elementsPerPage;
+
+      this.paginatedData = this.products.slice(ini, end);
+      console.log(this.paginatedData);
+    },
+    getPreviousPage() {
+      if (this.actualPage > 1) {
+        this.actualPage--;
+      }
+      this.getDataPages(actualPage);
+    },
+    getNextPage() {
+      if (this.actualPage < this.totalPages()) {
+        this.actualPage++;
+      }
+      this.getDataPages(actualPage);
+    },
+    isActivePage(numberPage) {
+      return numberPage == this.actualPage ? "active-pagination" : "";
     },
   },
 }).mount("#app");

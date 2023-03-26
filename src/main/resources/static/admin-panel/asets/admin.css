@@ -18,10 +18,10 @@ body {
 }
 
 /* Nav */
-nav {
-  background-color: var(--secondaryColor);
-  border-bottom-left-radius: 2rem;
-  border-bottom-right-radius: 2rem;
+.nav-golf {
+  background-color: #d1a85c;
+  /* border-bottom-left-radius: 2rem; */
+  /* border-bottom-right-radius: 2rem; */
 }
 
 .title-nav-golf {
@@ -151,6 +151,25 @@ table {
 .rwd-table th,
 .rwd-table td:before {
   color: black;
+}
+
+.pagination-style {
+  background-color: var(--secondaryColor);
+  color: black;
+  border: 2px solid var(--secondaryColor);
+  font-weight: bold;
+}
+
+.pagination-style:hover {
+  background-color: var(--tertiaryColor);
+  border: 2px solid var(--secondaryColor);
+  color: black;
+}
+
+.active-pagination {
+  z-index: 3;
+  background-color: #d3941e;
+  color: var(--quaternaryColor);
 }
 
 /* Button Add New Product */
