@@ -60,6 +60,7 @@ public class GolfparadiseApplication {
 			Product product5 = new Product("Beres Ladies Driver", "Beautifully and elegantly designed for high performance, to inspire a feeling of pride for golfers. Optimized slots create clubface flexion, for more ball speed on mishits. Uneven thickness clubface design.", "https://honmagolf.com/storage/product/5850_HONMA_GOLF_BERES_LADIES_DRIVER_a%CC%81@.jpg",299.00,8, Category.CLUBS);
 			Product product6 = new Product("T//World GS Driver", "We enhanced both distance abd forgiveness -- elevating the driver's overall performance.", "https://honmagolf.com/storage/product/8368_1w.jpg",299.00,10, Category.CLUBS);
 			Product product7 = new Product("T//World GS Driver Mens", "Pursuing the Best Balance of Speed and Forgiveness sole slots radial face keel design P-SAT Precision Spine Control", "https://honmagolf.com/storage/product/7894_1w.jpg",455.00,7, Category.CLUBS);
+			Product product8 = new Product("Balls", "The best balls to play golf", "https://honmagolf.com/storage/product/7894_1w.jpg",30.00,20, Category.BALLS);
 
 
 			OrderProduct orderProduct1 = new OrderProduct(2, 60.0);
@@ -84,6 +85,7 @@ public class GolfparadiseApplication {
 			productRepository.save(product5);
 			productRepository.save(product6);
 			productRepository.save(product7);
+			productRepository.save(product8);
 
 			orderRepository.save(order1);
 //			orderRepository.save(order2);
