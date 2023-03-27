@@ -78,42 +78,52 @@ createApp({
             document.getElementById("swal-input6").value,
           ];
         },
-      })
-        .then((result) => {
-          if (result && result.value) {
-            this.newProductName = result.value[0];
-            this.newProductDescription = result.value[1];
-            this.newProductCategory = result.value[2];
-            this.newProductUrl = result.value[3];
-            this.newProductStock = result.value[4];
-            this.newProductPrice = result.value[5];
-          }
-        })
-        .then(() => {
-          axios
-            .post(
-              `/api/products`,
-              `name=${this.newProductName}&description=${this.newProductDescription}&img=${this.newProductUrl}&price=${this.newProductPrice}&stock=${this.newProductStock}&category=${this.newProductCategory}`
-            )
-            .then(() => {
-              Swal.fire({
-                icon: "success",
-                title: "New product has been added",
-                background: "#FCE6BE",
-                confirmButtonColor: "#198754",
+      }).then((result) => {
+        if (result && result.value) {
+          this.newProductName = result.value[0];
+          this.newProductDescription = result.value[1];
+          this.newProductCategory = result.value[2];
+          this.newProductUrl = result.value[3];
+          this.newProductStock = result.value[4];
+          this.newProductPrice = result.value[5];
+
+          if (this.newProductCategory !== "" && this.newProductStock !== "" && this.newProductPrice !== "") {
+            axios
+              .post(
+                `/api/products`,
+                `name=${this.newProductName}&description=${this.newProductDescription}&img=${this.newProductUrl}&price=${this.newProductPrice}&stock=${this.newProductStock}&category=${this.newProductCategory}`
+              )
+              .then(() => {
+                Swal.fire({
+                  icon: "success",
+                  title: "New product has been added",
+                  background: "#FCE6BE",
+                  confirmButtonColor: "#198754",
+                });
+                this.getProduts();
+              })
+              .catch((err) => {
+                Swal.fire({
+                  position: "center",
+                  icon: "error",
+                  background: "#FCE6BE",
+                  confirmButtonColor: "#198754",
+                  title: err.response.data,
+                  showConfirmButton: true,
+                });
               });
-            })
-            .catch((err) => {
-              Swal.fire({
-                position: "center",
-                icon: "error",
-                background: "#FCE6BE",
-                confirmButtonColor: "#198754",
-                title: err.response.data,
-                showConfirmButton: true,
-              });
+          } else {
+            Swal.fire({
+              position: "center",
+              icon: "error",
+              background: "#FCE6BE",
+              confirmButtonColor: "#198754",
+              title: "Missing Data",
+              showConfirmButton: true,
             });
-        });
+          }
+        }
+      });
     },
     setStock(productId, stock) {
       Swal.fire({
@@ -248,6 +258,34 @@ createApp({
         background: "#FCE6BE",
         confirmButtonColor: "#598526",
       });
+    },
+    logOut() {
+      axios
+        .post("/api/logout")
+        .then(() => {
+          const Toast = Swal.mixin({
+            toast: true,
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 2000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener("mouseenter", Swal.stopTimer);
+              toast.addEventListener("mouseleave", Swal.resumeTimer);
+            },
+          });
+
+          Toast.fire({
+            icon: "warning",
+            title: "Log out successfully",
+          });
+        })
+        .then(() => {
+          // location.href =
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     },
   },
 }).mount("#app");

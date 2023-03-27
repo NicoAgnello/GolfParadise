@@ -213,21 +213,7 @@ table {
   color: var(--quaternaryColor);
 }
 
-.minHeight.collapse {
-  clear: both;
-  height: 0;
-  display: block;
-  /* Alto minimo */
-  min-height: 43px;
-  overflow: hidden;
-}
-.minHeight.collapsing {
-  clear: both;
-  min-height: 43px;
-}
-.minHeight.collapse.in {
-  height: auto;
-}
+
 
 /* Filters */
 
