@@ -61,10 +61,10 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link active link-nav" aria-current="page" href="#">Products</a>
+                <a class="nav-link link-nav" href="./index-admin.html">Products</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link link-nav" href="#"> Clients </a>
+                <a class="nav-link link-nav active" aria-current="page" href="#"> Clients </a>
               </li>
             </ul>
           </div>
@@ -73,8 +73,23 @@
       <main>
         <div class="container d-flex flex-column align-items-center">
           <h1 class="title-admin-panel">Admin Control Panel</h1>
-          <h2 class="title-admin-panel">Admin Clients</h2>
-          
+          <h2 class="title-admin-panel">Clients</h2>
+          <div class="d-flex flex-column align-items-center">
+            <table class="rwd-table">
+              <tr>
+                <th class="text-center">ID</th>
+                <th class="text-center">First Name</th>
+                <th class="text-center">Last Name</th>
+                <th class="text-center">Email</th>
+              </tr>
+              <tr v-for="client of clients">
+                <td data-th="ID"><span class="id"></span>{{client.id}}</td>
+                <td data-th="First Name">{{client.firstName}}</td>
+                <td data-th="Last Name">{{client.lastName}}</td>
+                <td data-th="Email">{{client.email}}</td>
+              </tr>
+            </table>
+          </div>
         </div>
       </main>
     </div>
