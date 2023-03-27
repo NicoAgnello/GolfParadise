@@ -15,7 +15,7 @@ public class OrderProductController {
     @Autowired
     OrderProductService orderProductService;
 
-    @GetMapping("/orderProducts")
+    @GetMapping("/order-products")
     public List<OrderProductDTO> getOrderProducts() {
         return orderProductService.getOrderProducts();
     }

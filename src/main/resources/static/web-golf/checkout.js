@@ -144,7 +144,7 @@ createApp({
         },
         getDeliveryCost() {
             console.log(this.zipCode)
-            axios.post('/api/deliveryCost', `zipCode=${this.zipCode}`)
+            axios.post('/api/clients/current/delivery-cost', `zipCode=${this.zipCode}`)
                 .then(response => {
                     this.deliveryCost = response.data.deliveryCost
                 })
@@ -167,10 +167,10 @@ createApp({
             })
                 .then(response => {
                     console.log(response)
-                    axios.post('/api/orderProducts/generate', {orderProducts: orders})
+                    axios.post('/api/clients/current/order-purchases/generate', {orderProducts: orders})
                         .then(response => {
                             console.log(response)
-                            window.location.href = '/api/pdf/generate'
+                            window.location.href = '/api/clients/current/pdf/generate'
                             localStorage.clear()
                             Swal.fire({
                                 showConfirmButton: false,

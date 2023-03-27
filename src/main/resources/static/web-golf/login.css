@@ -108,6 +108,10 @@ form.sign-in-form {
     font-weight: 500;
 }
 
+.text-error {
+    color: #DC3545;
+}
+
 .social-text {
     padding: 0.7rem 0;
     font-size: 1rem;
