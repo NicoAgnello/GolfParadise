@@ -45,7 +45,7 @@ public class OrderPurchaseController {
     }
 
     @Transactional
-    @PostMapping("/current/order-purchases/generate")
+    @PostMapping("/clients/current/order-purchases/generate")
     public ResponseEntity<Object> generateOrderPurchase(Authentication authentication,
                                                        @RequestBody PurchaseDTO purchaseDTO) {
 
@@ -100,7 +100,7 @@ public class OrderPurchaseController {
 
     }
 
-    @GetMapping("/current/pdf/generate")
+    @GetMapping("/clients/current/pdf/generate")
     public void generateOrderPurchasePdf(Authentication authentication,
                                         HttpServletResponse response)
                                         throws IOException, DocumentException {
@@ -126,7 +126,7 @@ public class OrderPurchaseController {
         pdf.closeDocument();
     }
 
-    @PostMapping("/current/delivery-cost")
+    @PostMapping("/clients/current/delivery-cost")
     public DeliveryCostDTO getDeliveryCost(Authentication authentication, @RequestParam String zipCode) {
         return new DeliveryCostDTO(OrderPurchaseUtil.getDeliveryCost(Short.parseShort(zipCode)));
     }

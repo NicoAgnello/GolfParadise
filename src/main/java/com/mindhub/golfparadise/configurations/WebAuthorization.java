@@ -19,15 +19,14 @@ public class WebAuthorization {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-//        http.authorizeRequests()
-//                .antMatchers("/api/clients/current/**", "/api/loans").hasAnyAuthority("ADMIN", "CLIENT")
-//                .antMatchers(HttpMethod.POST, "/api/clients/**").permitAll()
-//                .antMatchers(HttpMethod.POST, "/api/transactions").hasAnyAuthority("ADMIN", "CLIENT")
-//                .antMatchers("/rest/**", "/h2-console/**", "/manager/**", "/api/clients/**", "/api/accounts/**", "/api/transactions/**").hasAuthority("ADMIN")
-//                .antMatchers(HttpMethod.POST, "/api/loan").hasAuthority("ADMIN")
-//                .antMatchers("/web/assets/**", "/web/css/**").permitAll()
-//                .antMatchers("/web/**").hasAnyAuthority("ADMIN", "CLIENT")
-//                .antMatchers("/**").permitAll();
+        http.authorizeRequests()
+                .antMatchers("/api/clients/current/**", "/web-golf/checkout.html", "/web-golf/checkout.js").hasAnyAuthority("ADMIN", "CLIENT")
+                .antMatchers(HttpMethod.POST, "/api/clients/**").permitAll()
+                .antMatchers("/rest/**", "/h2-console/**", "/admin-panel/**", "/api/clients/**", "/api/order-purchases").hasAuthority("ADMIN")
+                .antMatchers(HttpMethod.PATCH, "/api/products/**").hasAuthority("ADMIN")
+                .antMatchers(HttpMethod.POST, "/api/products/**").hasAuthority("ADMIN")
+                .antMatchers("/web-golf/**").permitAll()
+                .antMatchers("/**").permitAll();
 
         http.formLogin()
                 .usernameParameter("email")
