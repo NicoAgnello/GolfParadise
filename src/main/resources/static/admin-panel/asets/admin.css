@@ -4,6 +4,7 @@
 :root {
   --primaryColor: #598526;
   --secondaryColor: #f7b63f;
+  --secondaryColor2: #ffcc6e;
   --tertiaryColor: #f4f8df;
   --quaternaryColor: #034d03;
   --mainFont: "Libre Baskerville", serif;
@@ -170,6 +171,15 @@ table {
   z-index: 3;
   background-color: #d3941e;
   color: var(--quaternaryColor);
+}
+
+/* Filter */
+.label-category {
+  background-color: var(--secondaryColor);
+  font-weight: bold;
+}
+.input-select-category {
+  background-color: var(--secondaryColor2);
 }
 
 /* Button Add New Product */

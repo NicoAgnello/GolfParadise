@@ -13,6 +13,11 @@ createApp({
       products: [],
       paginatedData: [],
       actualPage: 1,
+      categories: [],
+      categoryToFilter: "",
+      filteredProducts: [],
+      searchValue: "",
+      description: "",
     };
   },
   created() {
@@ -25,7 +30,9 @@ createApp({
         .get("/api/products")
         .then((res) => {
           this.products = res.data;
+          this.filteredProducts = this.products;
           this.getDataPages(1);
+          this.getCategories();
         })
         .catch((err) => console.log(err));
     },
@@ -89,6 +96,9 @@ createApp({
           console.log(this.newProductPrice);
         });
     },
+    getCategories() {
+      this.categories = new Set(this.products.map((prod) => prod.category));
+    },
     totalPages() {
       return Math.ceil(this.products.length / this.elementsPerPage);
     },
@@ -99,8 +109,7 @@ createApp({
       let ini = numberPage * this.elementsPerPage - this.elementsPerPage;
       let end = numberPage * this.elementsPerPage;
 
-      this.paginatedData = this.products.slice(ini, end);
-      console.log(this.paginatedData);
+      this.paginatedData = this.filteredProducts.slice(ini, end);
     },
     getPreviousPage() {
       if (this.actualPage > 1) {
@@ -116,6 +125,40 @@ createApp({
     },
     isActivePage(numberPage) {
       return numberPage == this.actualPage ? "active-pagination" : "";
+    },
+    filterByCategory(products) {
+      let filteredProducts = products.filter((product) => product.category == this.categoryToFilter);
+      console.log(filteredProducts);
+      return filteredProducts;
+    },
+    searchByText() {
+      let filteredProducts = this.filteredProducts.filter((product) =>
+        product.name.toLowerCase().includes(this.searchValue.toLowerCase())
+      );
+      return filteredProducts;
+    },
+    crossFilter() {
+      const filterProductsBySearch = this.searchByText();
+      const filterProductsByCategory = this.filterByCategory(filterProductsBySearch);
+      console.log(filterProductsBySearch);
+      console.log(filterProductsByCategory);
+      if (filterProductsByCategory.length === 0) {
+        this.filteredProducts = filterProductsBySearch;
+      } else {
+        this.filteredProducts = filterProductsByCategory;
+      }
+      console.log(this.filteredProducts);
+      this.getDataPages(1);
+    },
+    parseDescription(description) {
+      return description.slice(0, 20);
+    },
+    showDescription(description) {
+      Swal.fire({
+        text: description,
+        background: "#FCE6BE",
+        confirmButtonColor: "#598526",
+      });
     },
   },
 }).mount("#app");
