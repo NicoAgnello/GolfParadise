@@ -20,15 +20,11 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletResponse;
 import javax.transaction.Transactional;
 import java.io.IOException;
-import java.time.Instant;
 import java.time.LocalDateTime;
-import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api")
@@ -43,14 +39,14 @@ public class OrderPurchaseController {
     @Autowired
     ProductService productService;
 
-    @GetMapping("/orderPurchases")
+    @GetMapping("/order-purchases")
     public List<OrderPurchaseDTO> getOrderPurchases() {
         return orderPurchaseService.getOrderPurchases();
     }
 
     @Transactional
-    @PostMapping("/orderProducts/generate")
-    public ResponseEntity<Object> generateOrderProduct(Authentication authentication,
+    @PostMapping("/current/order-purchases/generate")
+    public ResponseEntity<Object> generateOrderPurchase(Authentication authentication,
                                                        @RequestBody PurchaseDTO purchaseDTO) {
 
         Client client = clientService.findByEmail(authentication.getName());
@@ -104,7 +100,7 @@ public class OrderPurchaseController {
 
     }
 
-    @GetMapping("/pdf/generate")
+    @GetMapping("/current/pdf/generate")
     public void generateOrderPurchasePdf(Authentication authentication,
                                         HttpServletResponse response)
                                         throws IOException, DocumentException {
@@ -130,7 +126,7 @@ public class OrderPurchaseController {
         pdf.closeDocument();
     }
 
-    @PostMapping("/deliveryCost")
+    @PostMapping("/current/delivery-cost")
     public DeliveryCostDTO getDeliveryCost(Authentication authentication, @RequestParam String zipCode) {
         return new DeliveryCostDTO(OrderPurchaseUtil.getDeliveryCost(Short.parseShort(zipCode)));
     }
