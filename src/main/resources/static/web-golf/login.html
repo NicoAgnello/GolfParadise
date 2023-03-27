@@ -6,7 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="./login.css">
-    <title>Document</title>
+    <title>Golf Paradise | Log in</title>
 </head>
 <head>
     <meta charset="UTF-8" />
@@ -23,31 +23,39 @@
                     <i class="fas fa-envelope"></i>
                     <input type="email" placeholder="Email" v-model="email"/>
                 </div>
+                <small class="text-error" v-if="v$.email.$error">{{ v$.email.$errors[0].$message }}</small>
                 <div class="input-field">
                     <i class="fas fa-lock"></i>
                     <input type="password" placeholder="Password" v-model="password"/>
                 </div>
-                <button type="button" class="btn solid" @click="logUser">Log in</button>
+                <small class="text-error" v-if="v$.password.$error">{{ v$.password.$errors[0].$message }}</small>
+                <small class="text-error" v-if="invalidCredentials">Invalid email or password.</small>
+                <button type="button" class="btn solid" @click="submitLoginForm">Log in</button>
             </form>
             <form action="#" class="sign-up-form">
                 <h2 class="title">Register</h2>
                 <div class="input-field">
                     <i class="fas fa-user"></i>
-                    <input type="text" placeholder="First Name" />
+                    <input type="text" placeholder="First Name" v-model="newClientFirstName"/>
                 </div>
+                <small class="text-error" v-if="v$.newClientFirstName.$error">{{ v$.newClientFirstName.$errors[0].$message }}</small>
                 <div class="input-field">
                     <i class="fas fa-user"></i>
-                    <input type="text" placeholder="Last Name" />
+                    <input type="text" placeholder="Last Name" v-model="newClientLastName"/>
                 </div>
+                <small class="text-error" v-if="v$.newClientLastName.$error">{{ v$.newClientLastName.$errors[0].$message }}</small>
                 <div class="input-field">
                     <i class="fas fa-envelope"></i>
-                    <input type="email" placeholder="Email" />
+                    <input type="email" placeholder="Email" v-model="newClientEmail"/>
                 </div>
+                <small class="text-error" v-if="v$.newClientEmail.$error">{{ v$.newClientEmail.$errors[0].$message }}</small>
                 <div class="input-field">
                     <i class="fas fa-lock"></i>
-                    <input type="password" placeholder="Password" />
+                    <input type="password" placeholder="Password" v-model="newClientPassword"/>
                 </div>
-                <input type="submit" class="btn" value="Register" />
+                <small class="text-error" v-if="v$.newClientPassword.$error">{{ v$.newClientPassword.$errors[0].$message }}</small>
+                <small class="text-error" v-if="emailInUse">Email already in use.</small>
+                <input type="submit" class="btn" value="Register" @click="submitSignUpForm"/>
             </form>
         </div>
     </div>

@@ -81,11 +81,11 @@ createApp({
                 })
                 .then(response => {
                     console.log(response)
-                    // if (this.email === "admin@admin.com") {
-                    //     location.replace("/manager/manager.html")
-                    // } else {
-                    //     location.replace("/web/accounts.html")
-                    // }
+                    if (this.email === "admin@admin.com") {
+                        location.replace("/admin-panel/index-admin.html")
+                    } else {
+                        location.replace("/web-golf/checkout.html")
+                    }
                 })
                 .catch(error => {
                     console.log(error.message)

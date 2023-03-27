@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,6 +17,8 @@ import java.util.List;
 public class ClientController {
     @Autowired
     ClientService clientService;
+    @Autowired
+    PasswordEncoder passwordEncoder;
 
     @GetMapping("/clients")
     public List<ClientDTO> getClients() {
@@ -45,7 +48,7 @@ public class ClientController {
             return new ResponseEntity<>("Email already in use", HttpStatus.FORBIDDEN);
         }
 
-        Client client = new Client(firstName, lastName, email, password);
+        Client client = new Client(firstName, lastName, email, passwordEncoder.encode(password));
         clientService.save(client);
         return new ResponseEntity<>("Client created.", HttpStatus.CREATED);
     }
