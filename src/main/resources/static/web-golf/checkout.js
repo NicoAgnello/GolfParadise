@@ -11,45 +11,36 @@ createApp({
             products:           [],
             cart:               [],
             total:              0,
+            deliveryCost:       0,
             cardNumber:         "",
             cardCvv:            "",
+            deliveryAddress:    "",
+            zipCode:            "",
             stockInconsistency: false
         }
     },
     created() {
         this.loadData()
     },
-    mounted() {
-        (() => {
-            'use strict'
-
-            // Fetch all the forms we want to apply custom Bootstrap validation styles to
-            const forms = document.querySelectorAll('.needs-validation')
-
-            // Loop over them and prevent submission
-            Array.from(forms).forEach(form => {
-                form.addEventListener('submit', event => {
-                    if (!form.checkValidity()) {
-                        event.preventDefault()
-                        event.stopPropagation()
-                    }
-
-                    form.classList.add('was-validated')
-                }, false)
-            })
-        })()
-    },
     validations() {
         return {
             cardNumber: {
                 required,
                 numeric,
-                minValue: minLength(16)
+                minLength: minLength(16)
             },
             cardCvv: {
                 required,
                 numeric,
-                minValue: minLength(3)
+                minLength: minLength(3)
+            },
+            deliveryAddress: {
+                required,
+            },
+            zipCode: {
+                required,
+                numeric,
+                minLength: minLength(3)
             }
         }
     },
@@ -142,9 +133,22 @@ createApp({
             e.preventDefault()
             this.v$.cardNumber.$touch();
             this.v$.cardCvv.$touch();
-            if (!this.v$.cardNumber.$invalid && !this.v$.cardCvv.$invalid) {
+            this.v$.deliveryAddress.$touch();
+            this.v$.zipCode.$touch();
+            if (!this.v$.cardNumber.$invalid
+                && !this.v$.cardCvv.$invalid
+                && !this.v$.deliveryAddress.$invalid
+                && !this.v$.zipCode.$invalid) {
                 this.pay()
             }
+        },
+        getDeliveryCost() {
+            console.log(this.zipCode)
+            axios.post('/api/deliveryCost', `zipCode=${this.zipCode}`)
+                .then(response => {
+                    this.deliveryCost = response.data.deliveryCost
+                })
+                .catch(error => console.log(error))
         },
         pay() {
             const orders = this.cart.reduce((acc, curr) => {
@@ -155,10 +159,33 @@ createApp({
                 acc.push(order)
                 return acc
             }, [])
-            axios.post('/api/orderProducts/generate', {orderProducts: orders})
+            axios.post('https://mindhub-brothers.up.railway.app/api/cards/pay', {
+                "cardNumber": this.cardNumber,
+                "cardCvv": this.cardCvv,
+                "amount":  this.total + this.deliveryCost,
+                "description": "Golf Paradise purchase."
+            })
                 .then(response => {
                     console.log(response)
-                    window.location.href = '/api/pdf/generate'
+                    axios.post('/api/orderProducts/generate', {orderProducts: orders})
+                        .then(response => {
+                            console.log(response)
+                            window.location.href = '/api/pdf/generate'
+                            localStorage.clear()
+                            Swal.fire({
+                                showConfirmButton: false,
+                                timer:            2000,
+                                timerProgressBar: true,
+                                icon:             'success',
+                                title:            `Purchase successful`,
+                                image:            "./assets/swal-image.jpg",
+                                imageWidth:       "100%",
+                                imageHeight:      200,
+                                imageAlt:         'Golfer',
+                            })
+                            setTimeout(() => location.replace("/web-golf/mockup.html"),2000)
+                        })
+                        .catch(error => console.log(error))
                 })
                 .catch(error => console.log(error))
         }

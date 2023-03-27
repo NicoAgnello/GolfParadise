@@ -87,6 +87,16 @@
                                 <input type="text" class="form-control" id="cardCvv" v-model="cardCvv" maxlength="3" required>
                                 <small class="text-danger d-block" v-if="v$.cardCvv.$error">{{ v$.cardCvv.$errors[0].$message }}</small>
                             </div>
+                            <div class="col-md-8 mt-2">
+                                <label for="deliveryAddress" class="form-label">Delivery Address</label>
+                                <input type="text" class="form-control" id="deliveryAddress" v-model="deliveryAddress" maxlength="16" required>
+                                <small class="text-danger d-block" v-if="v$.deliveryAddress.$error">{{ v$.deliveryAddress.$errors[0].$message }}</small>
+                            </div>
+                            <div class="col-md-4 mt-2">
+                                <label for="zipCode" class="form-label">Zip Code</label>
+                                <input type="text" class="form-control" id="zipCode" v-model="zipCode" maxlength="4" required @change="getDeliveryCost()">
+                                <small class="text-danger d-block" v-if="v$.zipCode.$error">{{ v$.zipCode.$errors[0].$message }}</small>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -95,8 +105,8 @@
                 <div class="border border-dark-subtle rounded-2 p-4 bg-white">
                     <h2>Checkout</h2>
                     <p>Amount: ${{ total }}</p>
-                    <p>Delivery cost: $19.90</p>
-                    <p>Total amount: $ {{ total + 19.90 }}</p>
+                    <p>Delivery cost: $ {{ deliveryCost }}</p>
+                    <p>Total amount: $ {{ total + deliveryCost }}</p>
                     <button type="submit" class="btn btn-success w-100" form="my-form" @click="validateForm">Make Payment</button>
                 </div>
             </div>
