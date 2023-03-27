@@ -86,7 +86,6 @@ createApp({
           this.newProductUrl = result.value[3];
           this.newProductStock = result.value[4];
           this.newProductPrice = result.value[5];
-
           if (this.newProductCategory !== "" && this.newProductStock !== "" && this.newProductPrice !== "") {
             axios
               .post(

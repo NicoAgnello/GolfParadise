@@ -213,8 +213,6 @@ table {
   color: var(--quaternaryColor);
 }
 
-
-
 /* Filters */
 
 .label-category {
@@ -243,6 +241,17 @@ table {
 .show-all:hover {
   background-color: var(--quaternaryColor);
   color: var(--secondaryColor2);
+}
+
+.no-match-filter {
+  background-color: var(--secondaryColor2);
+  color: var(--quaternaryColor);
+  font-weight: bold;
+  font-size: 4rem;
+  margin-block: 2rem;
+  padding: 1rem 5rem;
+  border-radius: 1rem;
+  text-align: center;
 }
 
 /* Button Add New Product */
