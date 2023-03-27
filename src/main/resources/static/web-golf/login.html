@@ -17,17 +17,17 @@
 <div class="container" id="app">
     <div class="forms-container">
         <div class="signin-signup">
-            <form action="#" class="sign-in-form">
+            <form class="sign-in-form" @submit.prevent>
                 <h2 class="title">Log in</h2>
                 <div class="input-field">
                     <i class="fas fa-envelope"></i>
-                    <input type="email" placeholder="Email" />
+                    <input type="email" placeholder="Email" v-model="email"/>
                 </div>
                 <div class="input-field">
                     <i class="fas fa-lock"></i>
-                    <input type="password" placeholder="Password" />
+                    <input type="password" placeholder="Password" v-model="password"/>
                 </div>
-                <input type="button" value="Log in" class="btn solid" />
+                <button type="button" class="btn solid" @click="logUser">Log in</button>
             </form>
             <form action="#" class="sign-up-form">
                 <h2 class="title">Register</h2>
@@ -81,6 +81,10 @@
 </div>
 <script src="https://kit.fontawesome.com/2cd05a3c76.js" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue-demi"></script>
+<script src="https://cdn.jsdelivr.net/npm/@vuelidate/core"></script>
+<script src="https://cdn.jsdelivr.net/npm/@vuelidate/validators"></script>
 <script src="./login.js"></script>
 </body>
 </html>
