@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="../assets/landing.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container d-flex w-100" style="max-width: 100%;">
+          <a class="navbar-brand text-bold modifier" href="#"><img src="../images/gif-only-logo.gif" alt="golf-icon" class="icon-nav"> Golf Paradise</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-between" id="navbarTogglerDemo02">
+            <ul class="navbar-nav mb-2 mb-lg-0 ul-extra gap-4 ml-1">
+              <li class="nav-item">
+                <a class="nav-link active text-center" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-center" href="./products.html">Products</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-center" href="#">Contacts</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-center" href="#">Ranking</a>
+              </li>
+            </ul>
+            <ul class="navbar-nav mb-2 mb-lg-0 ul-extra">
+              <li class="nav-item text-center padding-own d-flex justify-content-center">
+                <a href="" class="button-own-login">Log in <i class="bi bi-person-circle"></i></a>
+              </li>
+            </ul>
+            
+          </div>
+      </div>
+    </nav>
+  </header>
+  <main id="app">
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasRightLabel">Log in / Register</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      
+    </div>
+    <section>
+      <video muted autoplay loop class="video">
+        <source src="../videos/video-landing.mp4" type="video/mp4">
+      </video>
+      <div class="texto">
+        <h6>GOLF-PARADISE</h6>
+        <p>Welcome to the golf shop</p>
+        <a href="#info" class="button-false">More information</a> 
+      </div>
+      </section>
+      <div class="d-flex flex-column align-items-center p-4 gap-4" data-aos="fade-down">
+        <h1 class="text-center text-decoration-own">Check this products</h1>
+        <div class="d-flex gap-2">
+          <button class="button-own fs-5 fw-bold">New Products</button>
+          <div class="fs-3 fw-bold">/</div>
+          <button class="button-own fs-5 fw-bold">Top selling products</button>
+        </div>
+      </div>
+      <section class="cards">
+        <article class="card card--1" data-aos="fade-down">
+            <div class="card__img"></div>
+            <a href="#" class="card_link"><img src="../images/palo-de-golf1_.jpg" alt="" class="card__img--hover"></a>
+            <div class="card__info">
+                <span class="card__category">Product</span>
+                <h3 class="card__title">Pelotas de golf</h3>
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <span class="card__time fs-6"><i class="bi bi-info-circle"></i> Stock: 15</span>
+                    </div>
+                    <h6 class="m-0">$100.00</h6>
+                    <div>
+                        <a href="#" class="cart"><i class="bi bi-cart card__cart"></i></a> 
+                    </div>
+                </div>
+            </div>
+        </article>
+
+    </section>
+    
+    <section class="p-4 m-4">
+      <div id="carouselExampleIndicators" class="carousel slide">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="../images/portada-aag-fecha1_Mesa-de-trabajo-1.png" class="d-block w-100" alt="..." style="height: 300px;">
+          </div>
+          <div class="carousel-item">
+            <img src="../images/portada-aag-fecha1_Mesa-de-trabajo-1.png" class="d-block w-100" alt="..." style="height: 300px;">
+          </div>
+          <div class="carousel-item">
+            <img src="../images/portada-aag-fecha1_Mesa-de-trabajo-1.png" class="d-block w-100" alt="..." style="height: 300px;">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </section>
+    
+    <section class="d-flex justify-content-evenly flex-wrap p-3 image-information gap-2" id="info">
+      <div class="d-flex flex-column text-center align-items-center col mb-2" data-aos="fade-down">
+        <img src="../images/wood.jpg" alt="Wooden golf club" class="image-info">
+        <h3 class="mt-4 ">Wooden golf club</h3>
+        <p class="p-4 ">Traditional wood clubs are typically used to hit the ball long distances off the tee. They are the largest clubs in the golf bag and have a rounded head that resembles the shape of a barrel. They are available in different numberings.</p>
+        <button class="btn-custom">Read more</button>
+      </div>
+      <div class="d-flex flex-column text-center align-items-center col mb-2" data-aos="fade-down">
+        <img src="../images/hierro.jpg" alt="Iron golf clubs" class="image-info">
+        <h3 class="mt-4 ">Iron golf clubs</h3>
+        <p class="p-4 ">Iron clubs are used for a variety of shots, such as from the fairway, for approaches to the green, bunker shots and for longer putts. They have smaller, narrower heads than wood clubs and their numbering is assigned according to the angle of the clubface.</p>
+        <button class="btn-custom">Read more</button>
+      </div>
+      <div class="d-flex flex-column text-center align-items-center col mb-2" data-aos="fade-down">
+        <img src="../images/hibrido.jpg" alt="hybrid golf clubs" class="image-info">
+        <h3 class="mt-4 ">Hybrid golf clubs</h3>
+        <p class="p-4 ">Hybrid clubs resemble a combination of wood and iron clubs. They have a rounded head like a wood club and a shorter shaft length, but also have a tighter clubface angle like iron clubs.They are designed to help golfers get more distance and accuracy.</p>
+        <button class="btn-custom">Read more</button>
+      </div>
+    </section>
+
+    <h1 class="text-center p-3 text-decoration-own">Learn a little about the field</h1>
+
+    <section class="d-flex flex-column gap-5 mb-4 mt-4">
+      <article class="cards-2 justify-content-start" data-aos="zoom-in">
+        <div class="card-2 rounded-2">
+            <div><img src="../images/tee-de-partida.jpg" alt="" class="card-col-img"></div>
+            <div class="card-col-body">
+                <div class="card-body">
+                    <h1 class="card-title text-decoration-own">Tee Box</h1>
+                    <p class="card-text">This is the area where the golfer places the ball at the beginning of the hole, and from where he makes his first shot.</p>
+                </div>
+            </div>
+        </div>
+      </article>
+      <article class="cards-2 justify-content-end" data-aos="zoom-in">
+        <div class="card-2 rounded-2">
+            <div><img src="../images/Fairway.jpg" alt="" class="card-col-img"></div>
+            <div class="card-col-body2">
+              <div class="card-body">
+                  <h1 class="card-title text-decoration-own">Fairway</h1>
+                  <p class="card-text">The widest and cleanest area of the hole extending from the tee to the green. This area is covered by short, uniform grass and is where the ball is intended to arrive with as few strokes as possible.</p>
+              </div>
+            </div>
+        </div>
+      </article>
+      <article class="cards-2 justify-content-start" data-aos="zoom-in">
+        <div class="card-2 rounded-2">
+            <div><img src="../images/Rough.png" alt="" class="card-col-img"></div>
+            <div class="card-col-body">
+                <div class="card-body">
+                    <h1 class="card-title text-decoration-own">Rough</h1>
+                    <p class="card-text">The area around the fairway with longer and rougher grass. The ball can sink into the rough, making it more difficult to hit and control.</p>
+                </div>
+            </div>
+        </div>
+    </article>
+    <article class="cards-2 justify-content-end" data-aos="zoom-in">
+      <div class="card-2 rounded-2">
+          <div><img src="../images/bunker.jpg" alt="" class="card-col-img"></div>
+          <div class="card-col-body2">
+              <div class="card-body">
+                  <h1 class="card-title text-decoration-own">Bunker (Sand Trap)</h1>
+                  <p class="card-text">An area of sand with an irregular surface surrounding the green. It is designed to be an obstacle and a challenge for golfers.</p>
+              </div>
+          </div>
+      </div>
+    </article>
+    <article class="cards-2 justify-content-start" data-aos="zoom-in">
+      <div class="card-2 rounded-2">
+          <div><img src="../images/green.jpg" alt="" class="card-col-img"></div>
+          <div class="card-col-body">
+              <div class="card-body">
+                  <h1 class="card-title text-decoration-own">Green</h1>
+                  <p class="card-text">It is the area where the flag is located, and where the golfer must try to get the ball in as few strokes as possible. It is a flat and well-kept surface, usually circular or rectangular in shape.</p>
+              </div>
+          </div>
+      </div>
+    </article>
+    <article class="cards-2 justify-content-end" data-aos="zoom-in">
+    <div class="card-2 rounded-2">
+        <div><img src="../images/Approach.jpg" alt="" class="card-col-img"></div>
+        <div class="card-col-body2">
+            <div class="card-body">
+                <h1 class="card-title text-decoration-own">Approach (Approach Zone)</h1>
+                <p class="card-text">This is the area between the green and the fairway. It is an area in which the golfer must make a precise shot in order to leave the ball in a good position to make a putt.</p>
+            </div>
+        </div>
+    </div>
+    </article>
+    <article class="cards-2 justify-content-start" data-aos="zoom-in">
+      <div class="card-2 rounded-2">
+          <div><img src="../images/water-hazards.jpg" alt="" class="card-col-img"></div>
+          <div class="card-col-body">
+              <div class="card-body">
+                  <h1 class="card-title text-decoration-own">Hazards</h1>
+                  <p class="card-text">These can be water, streams, lakes, rivers, etc., which are located in different areas of the course and are considered obstacles for the player. If the ball lands on any of these hazards, a penalty is lost.</p>
+              </div>
+          </div>
+      </div>
+    </article>
+    <article class="cards-2 justify-content-end" data-aos="zoom-in">
+    <div class="card-2 rounded-2">
+        <div><img src="../images/putting-green.jpg" alt="" class="card-col-img"></div>
+        <div class="card-col-body2">
+            <div class="card-body">
+                <h1 class="card-title text-decoration-own">Putting Green</h1>
+                <p class="card-text">It is the flat and well-kept area surrounding the flag on the green. It is where putts are made and where the hole ends.</p>
+            </div>
+        </div>
+    </div>
+    </article>
+    </section>
+    </main>
+
+    <div class="go-top-container">
+      <div class="go-top-button">
+        <i class="bi bi-arrow-up"></i>
+    </div>
+    </div>
+
+    <footer class="site-footer p-2" >
+      <div class="container w-100 m-0" style="max-width: 100%;">
+        <div class="row">
+          <div class="col-sm-12 col-md-6">
+            <h6 class="mt-4">About us:</h6>
+            <p class="text-justify">Golfparadise.com  We pride ourselves on having a large community of passionate players who enjoy our content and benefit from our advice and recommendations. We also strive to provide an interactive platform where players can connect, share their experiences and learn from others.</p>
+          </div>
+  
+          <div class="col-xs-6 col-md-3">
+            <h6>Services:</h6>
+            <ul class="footer-links">
+              <li><a href="#">Easy and free returns.</a></li>
+              <li><a href="#">Quality guarantee on all our products.</a></li>
+              <li><a href="#">Friendly and efficient customer support.</a></li>
+              <li><a href="#">Free shipping on purchases over $100.</a></li>
+            
+            </ul>
+          </div>
+  
+          <div class="col-xs-6 col-md-3">
+            <h6>LATEST NEWS</h6>
+            <ul class="footer-links">
+           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis quis augue ac orci rutrum fringilla non ac massa. Doneca quis ullamcorper leo donec sit amet tortor at risus volutpat.</p>
+        
+              <li><a href="#">Read more..</a></li>
+            </ul>
+          </div>
+        </div>
+        <hr>
+      </div>
+      <div class="container mt-3 w-100"  style="max-width: 100%;">
+        <div class="d-flex justify-content-between w-100 flex-wrap column-575">
+          <div class="col-md-8 col-sm-6 col-xs-12">
+            <p class="copyright-text">Copyright &copy; 2023 All Rights Reserved by 
+         <a href="#">Golf Paradise</a>
+            </p>
+          </div>
+  
+          <div class="col-md-4 col-sm-6 col-xs-12 m-0">
+            <ul class="social-icons">
+              <li><a class="facebook" href="#"><i class="bi bi-facebook"></i></a></li>
+              <li><a class="twitter" href="#"><i class="bi bi-instagram"></i></a></li>
+              <li><a class="dribbble" href="#"><i class="bi bi-whatsapp"></i></a></li>
+              <li><a class="linkedin" href="#"><i class="bi bi-twitter"></i></a></li>   
+            </ul>
+          </div>
+        </div>
+      </div>
+  </footer>
+  
+ 
+
+
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script src="../javaScript/landing.js"></script>
+    <script>
+      AOS.init();
+    </script>
+</body>
+</html>
