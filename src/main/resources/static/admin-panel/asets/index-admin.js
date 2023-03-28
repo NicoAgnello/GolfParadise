@@ -235,7 +235,11 @@ createApp({
       const filterProductsBySearch = this.searchByText();
       const filterProductsByCategory = this.filterByCategory(filterProductsBySearch);
       if (this.categoryToFilter == "") {
-        this.filteredProducts = filterProductsBySearch;
+        if (filterProductsBySearch.length !== 0) {
+          this.filteredProducts = filterProductsBySearch;
+        } else {
+          this.filteredProducts = null;
+        }
       } else if (filterProductsByCategory.length === 0) {
         this.filteredProducts = null;
       } else {
