@@ -80,17 +80,31 @@ public class GolfparadiseApplication {
 			Product product22 = new Product("Honma Golf Balls X4", "Structure: 4-piece Color: White/Yellow Cover: Urethane Cover Core: Ultra Soft Core Dimple: 326 Dimples", "https://honmagolf.com/storage/product/5842_X4_1.jpg", 79.99, 10, Category.BALLS);
 			Product product23 = new Product("Honma Golf Balls TW-S", "Structure: 3-piece Color: White/Yellow Cover: Urethane Cover Core: S-Fast Core Dimple: 326 Dimples", "https://honmagolf.com/storage/product/5840_1106131452_5dc248bcac482.jpg", 84.99, 5, Category.BALLS);
 			Product product24 = new Product("Honma Golf Balls TW-X", "Structure: 3-piece Color: White/Yellow Cover: Urethane Cover Core: Super Fast NC Core Dimple: 326 Dimples", "https://honmagolf.com/storage/product/5838_1106130114_5dc2458abc01e.jpg", 79.99, 8, Category.BALLS);
-			Product product25 = new Product("HONMA GOLF BALLS HONMA A1", "Structure: 2-piece  Color: White/Yellow/Orange/Muti-color (White, Yellow, Orange, Pink)  Cover: Ionomer Cover Core: Newly Developed Super Soft Core Dimple: 368 Dimples", "https://honmagolf.com/storage/product/5836_A1.jpg", 79.99, 10, Category.BALLS);
+			Product product25 = new Product("Honma Golf Balls Honma A1", "Structure: 2-piece  Color: White/Yellow/Orange/Muti-color (White, Yellow, Orange, Pink)  Cover: Ionomer Cover Core: Newly Developed Super Soft Core Dimple: 368 Dimples", "https://honmagolf.com/storage/product/5836_A1.jpg", 79.99, 10, Category.BALLS);
+			Product product26 = new Product("Honma Golf Balls D1 Plus", "Structure: 3-piece ball Color: White/Multi-color (White/Yellow/Orange/Pink) Cover: Ionomer cover Core: High-resilience spring rubber core Dimple: 368 dimples", "https://honmagolf.com/storage/product/5192_Honmagolf_ball_D1plus.jpg", 81.99, 10, Category.BALLS);
+			Product product27 = new Product("Honma Golf Balls Future XX", "Structure: 6-piece  Cover :  Soft polyurethane Layer 2: Highly resilient ionic polymer layer Layer 3: High-rebound layer Layer 4 : Intermediate soft layer Layer 5 : Soft layer Core: Soft rubber core Dimple : 326", "https://honmagolf.com/storage/product/5186_honmagolf_ball_futurexx1.jpg",69.99, 8, Category.BALLS);
+			Product product28 = new Product("Pro V1X","Loyalty Rewarded: Buy 3 Dozen Pro V1, Pro V1x, Pro V1x Left Dash, or AVX and get the 4th dozen free. All 4 dozen must be identical. No logos or double personalization. Limit of 1 free dozen per customer. 4th dozen must be added to your Cart to qualify.", "https://www.titleist.com/dw/image/v2/AAZW_PRD/on/demandware.static/-/Sites-titleist-master/default/dwe5458002/T2048S_01.png?sw=650&sh=650&sm=fit&sfrm=png", 55.00, 12, Category.BALLS);
+			Product product29 = new Product("RB 566 Golf Ball", "Mizuno’s softest compression ball matched with 566 micro-dimple design – engineered to delay the rate of descent past the apex of flight. Stable, mid trajectory with the driver and nimble around the greens.", "https://mizunogolf.com/usa/wp-content/uploads/sites/5/2020/01/RB566_12Pack_USA.jpg", 22.00, 10, Category.BALLS);
+			Product product30 = new Product("TP5 Pix Collegiate Golf Balls", "Whether you’re an alum or a fan, the TP5 pix Alabama Crimson Tide lets you put your team spirit on full display. With 12 officially licensed logos, you can rep your team while getting improved alignment and instant visual feedback.", "https://www.taylormadegolf.com/on/demandware.static/-/Sites-TMaG-Library/en_US/v1679803764495/TaylorMade/plp/2021/ncaa/images/NCAA-Golf-Balls.jpg", 54.99, 10, Category.BALLS);
+
+			Product product31 = new Product("Tour Elite", "Preferred by worldwide Tour Professionals, the new Tour Elite Hat is a fitted design with a standard curve bill that features a 3D embroidered Titleist script and lightweight honeycomb mesh material for a comfortable fit and distinctive look.", "https://www.titleist.com/dw/image/v2/AAZW_PRD/on/demandware.static/-/Sites-titleist-master/default/dweff9de22/TH23FTEL-10_01.png?sw=650&sh=650&sm=fit&sfrm=png", 37.00, 8,Category.CLOTHES);
+			Product product32 = new Product("Montauk Visor", "The Montauk Visor features a classic low-profile design and lightweight cotton materials, making it the perfect visor for golfers seeking a stylish, relaxed fit.", "https://www.titleist.com/dw/image/v2/AAZW_PRD/on/demandware.static/-/Sites-titleist-master/default/dw3d52f58d/TH22VMT-10_01.png?sw=650&sh=650&sm=fit&sfrm=png", 30.00, 15, Category.CLOTHES);
+			Product product33 = new Product("Honma F1 Gloves GV12004", "This glove features a universal fit design for sizes 22 cm to 25 cm. Made of stretch material for a perfect fit for all, the glove is designed with embossed synthetic leather for an improved grip.", "https://honmagolf.com/storage/product/6026_GV12004_NY_BK_img.jpg", 32.00, 8, Category.CLOTHES);
+			Product product34 = new Product("A1 NANO Gloves GV12003", "This all-weather glove, perfect in rain or sunny conditions, is constructed of unique Nanofront® material for increased action in wet conditions.", "https://honmagolf.com/storage/product/6024_GV12003_img.jpg",19.99,6,Category.CLOTHES);
+			Product product35 = new Product("P1 Gloves GV12002", "The P1 glove is the choice of touring professionals. Constructed from Japanese man-made leather (Clarino),  features two different materials on the palm and back of the hand.", "https://honmagolf.com/storage/product/6022_GV12002_img.jpg",21.99, 12, Category.CLOTHES);
+			Product product36 = new Product("Honma Gloves GA-1902", "Material Artificial Leather Color White Weight\t15g Size 21~26cm Origin Indonesia", "https://honmagolf.com/storage/product/5416_HONMA%20GLOVES%20GA1902_WH_2.jpg", 22.99, 8,Category.CLOTHES);
+			Product product37 = new Product("Players Men's", "The choice of leading professionals, the Players™ Men's Golf Glove features a strong base of tanned cabretta leather complemented with well-thought-out and precisely placed seams.", "https://www.titleist.com/dw/image/v2/AAZW_PRD/on/demandware.static/-/Sites-titleist-master/default/dwafee3bbb/6629E_02.png?sw=650&sh=650&sm=fit&sfrm=png", 26.00, 13, Category.CLOTHES);
+			Product product38 = new Product("PING Tour Glove", "Solite® Premium Cabretta leather with Micro-Pur™ technology is engineered for the ultimate in feel, softness and performance. Finger vents and perforations optimize breathability, and the wristband features moisture-wicking SensorCool Technology.", "https://pingmediastage.azureedge.net/mediastorage/mediastorage/ping-na/medialibrary/ecommerce/2020/gloves/ping_tour-back_h__0673_708x708.jpg?sku=34723-16", 30.00, 9,Category.CLOTHES);
+			Product product39 = new Product("Tour Visor", "Designed with 100% organic cotton material, the Tour Visor features a classic, high crown style and easy-adjust velcro closure.", "https://www.titleist.com/dw/image/v2/AAZW_PRD/on/demandware.static/-/Sites-titleist-master/default/dw74ae5fe4/TH9VHPTS-1_01.png?sw=650&sh=650&sm=fit&sfrm=png", 35.00, 13, Category.CLOTHES);
+			Product product40 = new Product("Tour Preferred Glove", "The glove of choice for Team TaylorMade Tour athletes, the Tour Preferred Glove is constructed from premium leather to provide optimal comfort, fit and feel.", "https://www.taylormadegolf.com/dw/image/v2/AAIS_PRD/on/demandware.static/-/Sites-tmag-master-catalog/en_US/v1679890037971/zoom/TA858_zoom_D.jpg?sw=900&sh=900&sm=fit", 24.99, 14, Category.CLOTHES);
 
 			OrderProduct orderProduct1 = new OrderProduct(1, 1399.99);
 			order1.addOrderProduct(orderProduct1);
 			product1.addOrderProduct(orderProduct1);
 
-
 			OrderProduct orderProduct2 = new OrderProduct(1, 599.99);
 			order1.addOrderProduct(orderProduct2);
 			product2.addOrderProduct(orderProduct2);
-
 
 			clientRepository.save(client1);
 			clientRepository.save(client2);
@@ -122,7 +136,21 @@ public class GolfparadiseApplication {
 			productRepository.save(product23);
 			productRepository.save(product24);
 			productRepository.save(product25);
-
+			productRepository.save(product26);
+			productRepository.save(product27);
+			productRepository.save(product28);
+			productRepository.save(product29);
+			productRepository.save(product30);
+			productRepository.save(product31);
+			productRepository.save(product32);
+			productRepository.save(product33);
+			productRepository.save(product34);
+			productRepository.save(product35);
+			productRepository.save(product36);
+			productRepository.save(product37);
+			productRepository.save(product38);
+			productRepository.save(product39);
+			productRepository.save(product40);
 
 			orderRepository.save(order1);
 //			orderRepository.save(order2);
