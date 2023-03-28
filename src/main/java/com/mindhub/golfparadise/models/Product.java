@@ -19,7 +19,9 @@ public class Product {
     private String img;
     private Double price;
     private int stock;
+    @Enumerated(EnumType.STRING)
     private Category category;
+    private boolean active;
     @OneToMany(mappedBy = "product", fetch= FetchType.EAGER)
     Set<OrderProduct> orderProducts= new HashSet<>();
 
@@ -33,6 +35,7 @@ public class Product {
         this.price = price;
         this.stock = stock;
         this.category = category;
+        this.active = true;
     }
 
     public void addOrderProduct(OrderProduct orderProduct){
@@ -90,6 +93,14 @@ public class Product {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
     }
 
     public Set<OrderProduct> getOrderProducts() {
