@@ -97,8 +97,8 @@ main::after {
   content: " ";
   display: block;
   background: url(./img/unsplash/grassGolf.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-repeat: repeat;
+  background-size: contain;
   position: absolute;
   left: 0;
   top: 0;
