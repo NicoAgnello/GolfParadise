@@ -11,8 +11,6 @@
       integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
       crossorigin="anonymous"
     />
-    <!-- Sweet alert -->
-    <!-- <link rel="stylesheet" href="sweetalert2.min.css" /> -->
     <!-- Fuente Letras -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -20,6 +18,8 @@
       href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"
       rel="stylesheet"
     />
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/1ae9a81fc2.js" crossorigin="anonymous"></script>
     <!-- Fuente Numeros -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -35,7 +35,7 @@
   </head>
   <body>
     <div id="app">
-      <nav class="navbar navbar-expand-lg">
+      <nav class="navbar navbar-expand-lg nav-golf">
         <div class="container-fluid d-flex justify-content-evenly">
           <a class="navbar-brand title-nav-golf hide-movile" href="#"
             ><img class="navbar-brand" src="./asets/img/icons/icon-Golf.svg" alt="logo" style="width: 5rem" /> Golf
@@ -58,69 +58,155 @@
           >
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
+          <div class="collapse navbar-collapse nav-collapse" id="navbarNav">
             <ul class="navbar-nav">
               <li class="nav-item">
                 <a class="nav-link active link-nav" aria-current="page" href="#">Products</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link link-nav" href="#"> Clients </a>
+                <a class="nav-link link-nav" href="./clients-admin.html"> Clients </a>
               </li>
             </ul>
+            <!-- Log Out -->
+            <div @click="logOut" class="log-out-button">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="icon icon-tabler icon-tabler-logout"
+                width="36"
+                height="30"
+                viewBox="-1 0 24 24"
+                stroke-width="2"
+                stroke="currentColor"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2"></path>
+                <path d="M7 12h14l-3 -3m0 6l3 -3"></path>
+              </svg>
+            </div>
           </div>
         </div>
       </nav>
       <main>
-        <div class="container d-flex flex-column align-items-center">
+        <div class="container d-flex flex-column">
           <h1 class="title-admin-panel">Admin Control Panel</h1>
-          <table class="rwd-table">
-            <tr>
-              <th class="text-center">ID</th>
-              <th class="text-center">Name</th>
-              <th class="text-center">Description</th>
-              <th class="text-center">Category</th>
-              <th class="text-center">Image</th>
-              <th class="text-center">Price</th>
-              <th class="text-center">Stock</th>
-              <th class="text-center">Update Stock</th>
-              <th class="text-center">Delete</th>
-            </tr>
-            <tr>
-              <td data-th="ID"><span class="id"></span> 0</td>
-              <td data-th="Name">Ball</td>
-              <td data-th="Description">Ball Pro V1</td>
-              <td data-th="Category">Balls</td>
-              <td data-th="Image">"url/url"</td>
-              <td data-th="Price"><span class="price">$30</span></td>
-              <td data-th="Stock"><span class="stock">5</span></td>
-              <td data-th="Modify"><button class="btn btn-success">Modify</button></td>
-              <td data-th="Delete"><img class="trash-product" src="./asets/img/icons/trash-x.svg" alt="trash" /></td>
-            </tr>
-            <tr>
-              <td data-th="ID"><span class="id"></span> 0</td>
-              <td data-th="Name">Ball</td>
-              <td data-th="Description">Ball Pro V1</td>
-              <td data-th="Category">Balls</td>
-              <td data-th="Image">"url/url"</td>
-              <td data-th="Price"><span class="price">$30</span></td>
-              <td data-th="Stock"><span class="stock">5</span></td>
-              <td data-th="Modify"><button class="btn btn-success">Modify</button></td>
-              <td data-th="Delete"><img class="trash-product" src="./asets/img/icons/trash-x.svg" alt="trash" /></td>
-            </tr>
-            <tr>
-              <td data-th="ID"><span class="id"></span> 0</td>
-              <td data-th="Name">Ball</td>
-              <td data-th="Description">Ball Pro V1</td>
-              <td data-th="Category">Balls</td>
-              <td data-th="Image">"url/url/url/url.image.png"</td>
-              <td data-th="Price"><span class="price">$30</span></td>
-              <td data-th="Stock"><span class="stock">5</span></td>
-              <td data-th="Modify"><button class="btn btn-success">Modify</button></td>
-              <td data-th="Delete"><img class="trash-product" src="./asets/img/icons/trash-x.svg" alt="trash" /></td>
-            </tr>
-          </table>
-          <div class="mt-3">
-            <button @click="newProduct" class="btn-new-product">Add new product!</button>
+
+          <div class="d-flex flex-column align-items-center gap-2 my-3">
+            <div class="input-group mb-3 w-75">
+              <label class="input-group-text label-category" for="inputGroupSelect01">Category</label>
+              <select
+                class="form-select input-select-category"
+                id="inputGroupSelect01"
+                v-model="categoryToFilter"
+                @change="crossFilter"
+              >
+                <option value="" selected disabled>Choose...</option>
+                <option v-for="category of categories" :value="category">{{category}}</option>
+              </select>
+            </div>
+            <div class="input-group mb-3 w-75">
+              <span class="input-group-text label-category" id="inputGroup-sizing-default"
+                ><i class="fa-solid fa-magnifying-glass"></i
+              ></span>
+              <input
+                v-model="searchValue"
+                type="text"
+                class="form-control input-select-category"
+                aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-default"
+              />
+              <button @click="crossFilter" class="input-group-text label-category">
+                Filter<svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="icon icon-tabler icon-tabler-hand-click"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  stroke-width="2"
+                  stroke="currentColor"
+                  fill="none"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                  <path d="M8 13v-8.5a1.5 1.5 0 0 1 3 0v7.5"></path>
+                  <path d="M11 11.5v-2a1.5 1.5 0 0 1 3 0v2.5"></path>
+                  <path d="M14 10.5a1.5 1.5 0 0 1 3 0v1.5"></path>
+                  <path
+                    d="M17 11.5a1.5 1.5 0 0 1 3 0v4.5a6 6 0 0 1 -6 6h-2h.208a6 6 0 0 1 -5.012 -2.7l-.196 -.3c-.312 -.479 -1.407 -2.388 -3.286 -5.728a1.5 1.5 0 0 1 .536 -2.022a1.867 1.867 0 0 1 2.28 .28l1.47 1.47"
+                  ></path>
+                  <path d="M5 3l-1 -1"></path>
+                  <path d="M4 7h-1"></path>
+                  <path d="M14 3l1 -1"></path>
+                  <path d="M15 6h1"></path>
+                </svg>
+              </button>
+            </div>
+            <button @click="clearFilter" class="show-all">Show All</button>
+          </div>
+          <template v-if="filteredProducts == null ">
+            <div class="no-match-filter">
+              <h3>No match with search filters</h3>
+            </div>
+          </template>
+          
+          <div class="d-flex flex-column align-items-center">
+            <div class="mt-3">
+              <button @click="newProduct" class="btn-new-product">Add new product!</button>
+            </div>
+            <table v-if="filteredProducts !== null" class="rwd-table">
+              <tr>
+                <th class="text-center">ID</th>
+                <th class="text-center">Name</th>
+                <th class="text-center">Description</th>
+                <th class="text-center">Category</th>
+                <th class="text-center">Image</th>
+                <th class="text-center">Price</th>
+                <th class="text-center">Stock</th>
+                <th class="text-center">Update Stock</th>
+                <th class="text-center">Delete</th>
+              </tr>
+              <tr v-for="product of filteredProducts">
+                <td data-th="ID"><span class="id"></span>{{product.id}}</td>
+                <td data-th="Name">{{product.name}}</td>
+                <td data-th="Description">
+                  <span id="description-product">{{product.description}} </span>
+                </td>
+                <td data-th="Category">{{product.category}}</td>
+                <td class="img-url" data-th="Image">
+                  <button type="button" class="btn btn-success" @click="getUrl(product.img)">See URL</button>
+                </td>
+                <td data-th="Price"><span class="price">${{product.price}}</span></td>
+                <td data-th="Stock"><span class="stock">{{product.stock}}</span></td>
+                <td data-th="Modify">
+                  <button class="btn btn-success" @click="setStock(product.id, product.stock)">Modify</button>
+                </td>
+                <td data-th="Delete">
+                  <img
+                    class="trash-product"
+                    @click="deleteProduct(product.id)"
+                    src="./asets/img/icons/trash-x.svg"
+                    alt="trash"
+                  />
+                </td>
+              </tr>
+            </table>
+
+            <!-- <nav aria-label="Page navigation example">
+              <ul class="pagination justify-content-center">
+                <li class="page-item" @click="getPreviousPage()">
+                  <a class="page-link pagination-style" href="#">Previous</a>
+                </li>
+                <li v-for="pages of totalPages()" @click="getDataPages(pages)" class="page-item">
+                  <a :class="isActivePage(pages)" class="page-link pagination-style" href="#">{{pages}}</a>
+                </li>
+                <li class="page-item" @click="getNextPage()">
+                  <a class="page-link pagination-style" href="#">Next</a>
+                </li>
+              </ul>
+            </nav> -->
           </div>
         </div>
       </main>

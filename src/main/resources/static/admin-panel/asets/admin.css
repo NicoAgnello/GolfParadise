@@ -4,6 +4,7 @@
 :root {
   --primaryColor: #598526;
   --secondaryColor: #f7b63f;
+  --secondaryColor2: #ffcc6e;
   --tertiaryColor: #f4f8df;
   --quaternaryColor: #034d03;
   --mainFont: "Libre Baskerville", serif;
@@ -12,16 +13,16 @@
 
 body {
   font-family: var(--numberFont);
-  background: url(./img/unsplash/grassGolf.jpg) center/cover;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  min-height: 100vh;
 }
 
 /* Nav */
-nav {
-  background-color: var(--secondaryColor);
-  border-bottom-left-radius: 2rem;
-  border-bottom-right-radius: 2rem;
+.nav-golf {
+  background-color: #d1a85c;
+  /* border-bottom-left-radius: 2rem; */
+  /* border-bottom-right-radius: 2rem; */
 }
 
 .title-nav-golf {
@@ -57,6 +58,30 @@ nav {
   color: var(--quaternaryColor);
 }
 
+.nav-collapse {
+  justify-content: space-between;
+  margin-right: 2rem;
+}
+
+.log-out-button {
+  display: flex;
+  border: 2px solid black;
+
+  background-color: var(--secondaryColor2);
+  border-radius: 1rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  font-weight: bold;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.7s;
+}
+
+.log-out-button:hover {
+  background-color: #b23b3b;
+  scale: 1.1;
+}
+
 .btn-hamburger {
   background-color: var(--secondaryColor);
 }
@@ -68,12 +93,28 @@ main {
   filter: grayscale(40%);
 }
 
+main::after {
+  content: " ";
+  display: block;
+  background: url(./img/unsplash/grassGolf.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: 0.9;
+}
+
 .title-admin-panel {
   padding-top: 2rem;
   color: white;
   text-shadow: 1px 1px 2px var(--primaryColor);
   text-align: center;
   font-weight: bold;
+  filter: drop-shadow(0px 5px 10px #000);
 }
 
 /* Table */
@@ -153,6 +194,66 @@ table {
   color: black;
 }
 
+.pagination-style {
+  background-color: var(--secondaryColor);
+  color: black;
+  border: 2px solid var(--secondaryColor);
+  font-weight: bold;
+}
+
+.pagination-style:hover {
+  background-color: var(--tertiaryColor);
+  border: 2px solid var(--secondaryColor);
+  color: black;
+}
+
+.active-pagination {
+  z-index: 3;
+  background-color: #d3941e;
+  color: var(--quaternaryColor);
+}
+
+/* Filters */
+
+.label-category {
+  background-color: var(--secondaryColor);
+  font-weight: bold;
+  border: 2px solid var(--secondaryColor2);
+}
+.input-select-category {
+  background-color: var(--secondaryColor2);
+  border: 2px solid var(--secondaryColor);
+}
+
+.show-all {
+  width: 10rem;
+  align-self: center;
+  background-color: var(--secondaryColor2);
+  color: black;
+  border-radius: 1rem;
+  border: 1px solid var(--secondaryColor);
+  font-weight: bold;
+  font-size: 1.1rem;
+  transition: all 0.7s;
+  filter: drop-shadow(0px 5px 10px #000);
+}
+
+.show-all:hover {
+  background-color: var(--quaternaryColor);
+  color: var(--secondaryColor2);
+}
+
+.no-match-filter {
+  background-color: var(--secondaryColor2);
+  color: var(--quaternaryColor);
+  font-weight: bold;
+  font-size: 4rem;
+  margin-block: 2rem;
+  padding: 1rem 5rem;
+  border-radius: 1rem;
+  text-align: center;
+}
+
 /* Button Add New Product */
 
 .btn-new-product {
@@ -160,7 +261,7 @@ table {
   font-size: 17px;
   text-transform: uppercase;
   text-decoration: none;
-  padding: 1em 2.5em;
+  padding: 1em 6em;
   display: inline-block;
   border-radius: 6em;
   transition: all 0.2s;
@@ -169,11 +270,13 @@ table {
   font-weight: bold;
   color: var(--quaternaryColor);
   background-color: var(--secondaryColor);
+  -webkit-box-shadow: 0px 0px 13px 4px rgba(0, 0, 0, 0.59);
+  -moz-box-shadow: 0px 0px 13px 4px rgba(0, 0, 0, 0.59);
+  box-shadow: 0px 0px 13px 4px rgba(0, 0, 0, 0.59);
 }
 
 .btn-new-product:hover {
   transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 .btn-new-product:active {
@@ -192,6 +295,7 @@ table {
   left: 0;
   z-index: -1;
   transition: all 0.6s;
+  filter: drop-shadow(0px 5px 10px #000);
 }
 
 .btn-new-product::after {
@@ -204,6 +308,10 @@ table {
 }
 
 /* Modal new product */
+#swal-input2 {
+  width: 18rem;
+  height: 4rem;
+}
 
 .swal2-input {
   background-color: white !important;
@@ -214,6 +322,12 @@ table {
   color: black !important;
   font-weight: bold;
   opacity: 50%;
+}
+
+/* Modal modify stock */
+
+.swal2-range {
+  background-color: #fce6be !important;
 }
 
 /* Media  Table*/
@@ -251,6 +365,12 @@ table {
   .rwd-table th,
   .rwd-table td {
     padding: 0.5em !important;
+  }
+}
+@media (max-width: 991px) {
+  .nav-collapse {
+    justify-content: space-between;
+    margin: 0;
   }
 }
 
