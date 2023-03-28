@@ -86,7 +86,6 @@ createApp({
           this.newProductUrl = result.value[3];
           this.newProductStock = result.value[4];
           this.newProductPrice = result.value[5];
-
           if (this.newProductCategory !== "" && this.newProductStock !== "" && this.newProductPrice !== "") {
             axios
               .post(
@@ -236,7 +235,11 @@ createApp({
       const filterProductsBySearch = this.searchByText();
       const filterProductsByCategory = this.filterByCategory(filterProductsBySearch);
       if (this.categoryToFilter == "") {
-        this.filteredProducts = filterProductsBySearch;
+        if (filterProductsBySearch.length !== 0) {
+          this.filteredProducts = filterProductsBySearch;
+        } else {
+          this.filteredProducts = null;
+        }
       } else if (filterProductsByCategory.length === 0) {
         this.filteredProducts = null;
       } else {
