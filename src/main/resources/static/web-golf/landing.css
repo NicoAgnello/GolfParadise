@@ -173,9 +173,9 @@ video{
 }
 
 .btn-custom-hero {
-  border: 5px solid #ffffff !important;
-  background-color: rgba(255, 255, 255, 0.9) ;
-  color: #3b5998;
+  border: 5px solid #000000 !important;
+  background-color: rgba(255, 255, 255, 0.2) !important;
+  color: #000000 !important;
 }
 
 .offcanvas-body{
