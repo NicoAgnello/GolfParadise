@@ -29,51 +29,85 @@
   </head>
   <body>
     <header>
-      <div class="d-flex align-items-center justify-content-end p-2 pe-5">
-        <!-- <a href="" type="" class="button-own-login">tel:40214214214</a> -->
-        <a href="./login.html" class="button-own-login">Log in <i class="bi bi-person-circle"></i></a>
-      </div>
+      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container d-flex w-100">
+          <a class="navbar-brand modifier" href="#"
+            ><img src="./images/gif-only-logo.gif" alt="golf-icon" class="icon-nav" /> Golf Paradise</a
+          >
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarTogglerDemo02"
+            aria-controls="navbarTogglerDemo02"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-between" id="navbarTogglerDemo02">
+            <ul class="navbar-nav mb-2 mb-lg-0 ul-extra gap-4 ml-1">
+              <li class="nav-item">
+                <a class="nav-link text-center fw-bold" aria-current="page" href="./landing.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-center fw-bold" href="./products.html">Products</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-center fw-bold" href="#">Contacts</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-center fw-bold" href="#">Ranking</a>
+              </li>
+            </ul>
+            <ul class="navbar-nav mb-2 mb-lg-0 ul-extra">
+              <li class="nav-item text-center padding-own d-flex justify-content-center">
+                <a href="./login.html" class="button-own-login">Log in <i class="bi bi-person-circle"></i></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
     </header>
-
-    <section>
-      <article class="article-nav flex-wrap">
-        <a class="nav-ancor d-flex flex-wrap justify-content-center align-items-center gap-4" href="#">
-          <img src="./images/gif-only-logo.gif" alt="golf-icon" class="icon-nav" />
-          <p class="text-center fs-1 fw-bold">Golf Paradise</p></a
-        >
-      </article>
-      <article class="article-nav-2">
-        <a class="nav-link" href="../web-golf/landing.html">Home</a>
-        <a class="nav-link" href="#">Products</a>
-        <a class="nav-link" href="#">Contact</a>
-        <a class="nav-link" href="#">Ranking</a>
-      </article>
-    </section>
-
     <main class="section-form pt-4">
-      <div class="container">
-        <form id="contact" action="" method="post" class="rounded-3">
-          <h3 class="text-center">Golf Paradise | Contact Form</h3>
-          <h4 class="text-center">Contact us for custom advisory or contract</h4>
-          <fieldset>
-            <input class="rounded-3" placeholder="Your name" type="text" tabindex="1" required autofocus />
-          </fieldset>
-          <fieldset>
-            <input class="rounded-3" placeholder="Your Email Address" type="email" tabindex="2" required />
-          </fieldset>
-          <fieldset>
-            <input class="rounded-3" placeholder="Your Phone Number (optional)" type="tel" tabindex="3" required />
-          </fieldset>
-          <fieldset>
-            <textarea class="rounded-3" placeholder="Type your message here...." tabindex="5" required></textarea>
-          </fieldset>
-          <fieldset>
-            <button class="rounded-3" name="submit" type="submit" id="contact-submit" data-submit="...Sending">
-              Submit
-            </button>
-          </fieldset>
-          <p class="copyright">Designed by <span class="span-copyright">Golf-paradise</span></p>
-        </form>
+      <h1 class="text-center fw-bold text-green title-paragraph">Welcome to our website!</h1>
+      <div class="row row-custom">
+        <div class="col-10 col-lg-5 col-xl-6">
+          <div class="paragraph-container">
+            <h2 class="text-center fw-bold py-3">
+              We're thrilled to know that you've been browsing our page and we would love to hear more about your
+              experience.
+            </h2>
+            <p class="text-center">
+              Thank you for your time and for visiting our website. We hope to see you again soon!"
+            </p>
+          </div>
+          <form id="contact" action="" method="post" class="rounded-3">
+            <h3 class="text-center">Golf Paradise | Contact Form</h3>
+            <h4 class="text-center">Please contact us for advice or to tell us about your experience on the site.</h4>
+            <fieldset>
+              <input class="rounded-3" placeholder="Your name" type="text" tabindex="1" required autofocus />
+            </fieldset>
+            <fieldset>
+              <input class="rounded-3" placeholder="Your Email Address" type="email" tabindex="2" required />
+            </fieldset>
+            <fieldset>
+              <input class="rounded-3" placeholder="Your Phone Number (optional)" type="tel" tabindex="3" required />
+            </fieldset>
+            <fieldset>
+              <textarea class="rounded-3" placeholder="Type your message here...." tabindex="5" required></textarea>
+            </fieldset>
+            <fieldset>
+              <button class="rounded-3" name="submit" type="submit" id="contact-submit" data-submit="...Sending">
+                Submit
+              </button>
+            </fieldset>
+            <p class="copyright">Designed by <span class="span-copyright">Golf-paradise</span></p>
+          </form>
+        </div>
+        <div class="col-lg-6 col-xl-4">
+          <img src="./assets/golfer.png" class="img-fluid hide-mobile-contact" alt="" />
+        </div>
       </div>
     </main>
 
