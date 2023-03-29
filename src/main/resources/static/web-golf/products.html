@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <link rel="stylesheet" href="./products.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+  <title>Golf Paradise - products</title>
+</head>
+<body>
+<div id="app">
+  <header>
+    <div class="">
+      <div class="container d-flex align-items-center justify-content-between p-3">
+        <a href="" type="" class="button-own-login">tel:40214214214</a>
+        <a href="./login.html" class="button-own-login">Log in <i class="bi bi-person-circle"></i></a>
+      </div>
+    </div>
+    <div class="container article-nav bg-white">
+      <a class="nav-ancor" href="#"><img src="./images/gif-only-logo.gif" alt="golf-icon" class="nav-logo"> Golf Paradise</a>
+    </div>
+    <div class="article-nav-2">
+        <a href="../web-golf/landing.html">Home</a>
+        <a href="#">Ranking</a>
+        <a href="#">Information</a>
+        <a href="./contact.html">Contact</a>
+        <button class="btn cart" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+            <!--          <p v-if="cart.length > 0" class="contador-carrito rounded-pill ">{{ contadorCarrito }}</p>-->
+            <i class="fa-solid fa-cart-shopping"></i>
+        </button>
+    </div>
+  </header>
+
+<div class="container my-4">
+  <div class="offcanvas offcanvas-start " data-bs-scroll="true" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasExampleLabel">My Cart</h5>
+      <button type="button" class="btn-close btn-close-white fs-5" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <div v-if="cart.length > 0">
+        <div v-for="product in cart" class="container">
+          <div class="row d-flex cart-product-container py-3 align-items-center">
+            <img :src="product.img" class="col-3 m-0 text-center"></img>
+            <div class="col-7">
+              <p class="m-0">{{ product.name }}</p>
+              <p class="mb-3 offcanvas-category text-success">{{ product.category }}</p>
+              <p class="m-0"> ${{ product.price }}</p>
+              <p v-if="product.stock == 0" class="text-danger">No stock</p>
+            </div>
+            <div class="col-1 m-0 d-flex p-0 flex-column gap-1 align-items-center">
+              <button class="cart-btn w-100"
+                      :class="product.stock == 0 ? 'bg-white ' : ''"
+                      @click="addProduct(product)"
+                      :disabled="product.stock == 0 ? true : false"
+              >
+                <i class="fa-solid fa-plus cart-icon" :class="product.stock == 0 ? 'text-danger' : ''"></i>
+              </button>
+              <p class="m-0"> {{ product.quantity }} </p>
+              <button class="cart-btn w-100"
+                      @click="removeProductQuantity(product)"
+              >
+                <i class="fa-solid fa-minus cart-icon"></i>
+              </button>
+            </div>
+            <div class="col-1">
+              <i class="fa-solid fa-trash trash-icon" @click="removeProduct(product)"></i>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="d-flex justify-content-between purchase-total">
+            <p class="p-2 m-0 fw-bold">Total</p>
+            <p class="p-2 m-0 fw-bold">${{ total.toFixed() }}</p>
+          </div>
+          <a href="./checkout.html" class="btn btn-continue-cart w-100 py-3 text-uppercase">Continue</a>
+          <button class="btn btn-empty-cart w-100 py-3 text-uppercase" @click="emptyCart">Empty Cart</button>
+        </div>
+      </div>
+      <div v-else>
+        <p>No products added!</p>
+      </div>
+    </div>
+
+  </div>
+  <div class="row g-0">
+    <aside class="col-5 col-md-12 col-lg-3 py-2 px-4 p-lg-0 m-lg-0">
+      <div class="p-lg-0 filters-container">
+        <div class="d-flex flex-column gap-2 flex-md-row flex-lg-column border-2 border-dark p-4 rounded-2 bg-white b-shadow filters-container">
+          <div class="d-md-flex align-items-center gap-2 mt-lg-3 mb-2">
+            <form class="d-flex w-md-50" role="search" @submit.prevent>
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" v-model="searchValue">
+              <button class="btn btn-outline-success" type="submit" @click="crossFilter"><i class="bi bi-search"></i></button>
+            </form>
+          </div>
+          <div class="w-md-50 d-md-flex align-items-center gap-2 mb-3">
+            <select class="form-select" id="loanType" aria-label="Choose category" v-model="categoryToFilter" @change="crossFilter">
+              <option value="" selected disabled>Choose category</option>
+              <template v-for="category of categories">
+                <option :value="category">{{ capitalize(category) }}</option>
+              </template>
+            </select>
+          </div>
+          <div class="d-md-flex align-items-center gap-2 mb-3">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="price">
+              <label class="form-check-label" for="price">
+                Price
+              </label>
+            </div>
+          </div>
+          <div class="d-md-flex align-items-center gap-2 mb-3">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="a-to-z">
+              <label class="form-check-label" for="a-to-z">
+                A to Z
+              </label>
+            </div>
+          </div>
+          <div class="d-md-flex align-items-center gap-2 mb-lg-3">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="z-to-a">
+              <label class="form-check-label" for="z-to-a">
+                Z to A
+              </label>
+            </div>
+          </div>
+          <div>
+            <button class="btn btn-success" @click="clearFilter">Show all</button>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <main class="col-12 col-md-12 col-lg-9" v-cloak>
+      <section class="container mt-md-4 mt-lg-0" id="cards-section">
+        <div class="cards d-flex justify-content-center">
+          <template v-for="product of filteredProducts">
+            <article class="card card--1 d-flex flex-column" data-aos="fade-down">
+              <div class="card__img"></div>
+              <a href="#" class="card_link"><img :src="product.img" alt="" class="card__img--hover img-fluid p-0"></a>
+              <div class="card__info">
+                <span class="card__category">{{ product.category }}</span>
+                <h3 class="card__title">{{ product.name }}</h3>
+                <div class="d-flex justify-content-between align-items-center mt-auto">
+                  <div>
+                    <span class="card__time fs-6"><i class="bi bi-info-circle"></i> Stock: {{ product.stock }}</span>
+                  </div>
+                  <h6 class="m-0">$ {{ product.price }}</h6>
+                  <div>
+                    <button class="cart btn btn-success" @click="addProduct(product)"><i class="bi bi-cart card__cart"></i></button>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </template>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
+
+  <footer class="site-footer pt-4 pb-0 position-relative" >
+    <h2 class="text-white golf-paradise-footer fw-bold text-uppercase">Golf Paradise</h2>
+    <div class="container">
+      <div class="container w-100 m-0" style="max-width: 100%;">
+        <div class="row">
+          <div class="col-sm-12 col-md-6">
+            <h6 class="semi-bold">About us</h6>
+            <p class="text-justify">Golfparadise.com  We pride ourselves on having a large community of passionate players who enjoy our content and benefit from our advice and recommendations. We also strive to provide an interactive platform where players can connect, share their experiences and learn from others.</p>
+          </div>
+
+          <div class="col-xs-6 col-md-3">
+            <h6 class="semi-bold">Services</h6>
+            <ul class="footer-links">
+              <li><a href="#" class="text-white">Easy and free returns.</a></li>
+              <li><a href="#" class="text-white">Quality guarantee on all our products.</a></li>
+              <li><a href="#" class="text-white">Friendly and efficient customer support.</a></li>
+              <li><a href="#" class="text-white">Free shipping on purchases over $100.</a></li>
+            </ul>
+          </div>
+
+          <div class="col-xs-6 col-md-3">
+            <h6 class="semi-bold">Latest news</h6>
+            <ul class="footer-links">
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis quis augue ac orci rutrum fringilla non ac massa. Doneca quis ullamcorper leo donec sit amet tortor at risus volutpat.</p>
+              <li><a href="#" class="text-white">Read more...</a></li>
+            </ul>
+          </div>
+        </div>
+        <hr>
+      </div>
+      <div class="container mt-3 w-100"  style="max-width: 100%;">
+        <div class="d-flex justify-content-between w-100 flex-wrap column-575">
+          <div class="col-md-8 col-sm-6 col-xs-12">
+            <p class="copyright-text d-inline">Copyright &copy; 2023 All Rights Reserved by </p>
+            <a class="text-white" href="#">Golf Paradise</a>
+          </div>
+
+          <div class="col-md-4 col-sm-6 col-xs-12 m-0">
+            <ul class="social-icons">
+              <li><a class="facebook bg-white" href="#"><i class="bi bi-facebook"></i></a></li>
+              <li><a class="twitter bg-white" href="#"><i class="bi bi-instagram"></i></a></li>
+              <li><a class="dribbble bg-white" href="#"><i class="bi bi-whatsapp"></i></a></li>
+              <li><a class="linkedin bg-white" href="#"><i class="bi bi-twitter"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <img src="./images/footer2.png" alt="" style="width: 100%; object-fit: cover; object-position: center bottom;">
+  </footer>
+</div>
+<script src="https://kit.fontawesome.com/2cd05a3c76.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+<script src="./products.js"></script>
+<script>
+  AOS.init();
+</script>
+</body>
+</html>
