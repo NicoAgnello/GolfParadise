@@ -63,12 +63,10 @@ body {
 
 .log-out-button {
   display: flex;
-  border: 2px solid black;
-
   background-color: var(--secondaryColor2);
   border-radius: 1rem;
   cursor: pointer;
-  padding: 0.5rem;
+  padding: 0.5rem 1rem;
   font-weight: bold;
   align-items: center;
   justify-content: center;
@@ -102,11 +100,6 @@ main {
   text-align: center;
   font-weight: bold;
   filter: drop-shadow(0px 5px 10px #000);
-}
-
-.sticky-filters {
-  position: sticky;
-  top: 0;
 }
 
 /* Table */
@@ -203,6 +196,10 @@ table {
   z-index: 3;
   background-color: #d3941e;
   color: var(--quaternaryColor);
+}
+
+.pagination-control {
+  align-self: flex-end;
 }
 
 /* Filters */
