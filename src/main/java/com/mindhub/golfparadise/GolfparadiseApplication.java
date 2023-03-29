@@ -98,6 +98,30 @@ public class GolfparadiseApplication {
 			Product product39 = new Product("Tour Visor", "Designed with 100% organic cotton material, the Tour Visor features a classic, high crown style and easy-adjust velcro closure.", "https://www.titleist.com/dw/image/v2/AAZW_PRD/on/demandware.static/-/Sites-titleist-master/default/dw74ae5fe4/TH9VHPTS-1_01.png?sw=650&sh=650&sm=fit&sfrm=png", 35.00, 13, Category.CLOTHES);
 			Product product40 = new Product("Tour Preferred Glove", "The glove of choice for Team TaylorMade Tour athletes, the Tour Preferred Glove is constructed from premium leather to provide optimal comfort, fit and feel.", "https://www.taylormadegolf.com/dw/image/v2/AAIS_PRD/on/demandware.static/-/Sites-tmag-master-catalog/en_US/v1679890037971/zoom/TA858_zoom_D.jpg?sw=900&sh=900&sm=fit", 24.99, 14, Category.CLOTHES);
 
+			Product product41 = new Product("Honma Accessories PA12020", "77cm Umbrella for rain and UV protection, with automatic opening function.", "https://honmagolf.com/storage/product/9022_PA12020_1.jpg", 30.00, 20, Category.ACCESORIES);
+			Product product42 = new Product("Honma Accessories OG12202", "Marker with divot fork.", "https://honmagolf.com/storage/product/9020_OG12202_BK.jpg", 5.00, 25, Category.ACCESORIES);
+			Product product43 = new Product("Honma Accessories OG12101", "Ball marker and clip set designed in HONMA D1 ball fluorescent colors with DANCING HONMA logo.", "https://honmagolf.com/storage/product/8182_OG12101_BLK.jpg", 8.00, 16, Category.ACCESORIES);
+			Product product44 = new Product("Umbrella PRO Size PA12001", "Professional size (85 cm in diameter) umbrella for rain and UV protection.  Blocks 99.9% of the sun's rays.Automatic open.With a lightweight carbon frame.", "https://honmagolf.com/storage/product/6122_PA12001_2.jpg", 45.00, 20, Category.ACCESORIES);
+			Product product45 = new Product("20PRO Bottle Case PB12001", "This Bottle Cover designed is patterned off of Honma's popular 2020 Tournament Spec professional golf bag. An insulating liner keeps hot drinks hot and cold drinks cold.Holds bottles of sizes up to 600 ml.", "https://honmagolf.com/storage/product/6056_PB12001_RED_NY.jpg", 7.99, 15, Category.ACCESORIES);
+			Product product46 = new Product("Jet Black Tour Alignment Stick Cover", "Featuring a sleek, jet black quilted design, this Jet Black Tour Alignment Stick Cover is a stylish complement to your setup, designed to keep your sticks secure.", "https://www.titleist.com/dw/image/v2/AAZW_PRD/on/demandware.static/-/Sites-titleist-master/default/dw04b228c9/TA9LASC_01.png?sw=650&sh=650&sm=fit&sfrm=png", 55.00, 18, Category.ACCESORIES);
+			Product product47 = new Product("Alignment Sticks", "These Titleist Golf Alignment Sticks come in two color options and are branded with the Titleist logo. Both sticks include a protective travel tube.", "https://www.titleist.com/dw/image/v2/AAZW_PRD/on/demandware.static/-/Sites-titleist-master/default/dw427eddc8/TA9TAS-0_02.png?sw=650&sh=650&sm=fit&sfrm=png",30.00, 20, Category.ACCESORIES);
+			Product product48 = new Product("Players Double Canopy", "The Players Double Canopy Umbrella features a sleek, black/white design and a durable double canopy.", "https://www.titleist.com/dw/image/v2/AAZW_PRD/on/demandware.static/-/Sites-titleist-master/default/dwe9ceb79d/TA20PLDCU-01_01.png?sw=650&sh=650&sm=fit&sfrm=png", 65.00, 13, Category.ACCESORIES);
+			Product product49 = new Product("Range Bag", "The Range Bag is the perfect size for easy carry and use at the driving range to help you get the most out of your practice sessions. ", "https://www.titleist.com/dw/image/v2/AAZW_PRD/on/demandware.static/-/Sites-titleist-master/default/dwa49fef6e/TA21ACRBE-006_01.png?sw=650&sh=650&sm=fit&sfrm=png", 30.00, 17, Category.ACCESORIES);
+			Product product50 = new Product("Pen Caddy", "A desk size replica of our Tour Staff bag - perfect for holding pens, a drink, or just as an ornament to show where your loyalty lies - both on and off the golf course.", "https://i1.adis.ws/i/mizunousa/260384_5959?w=530&h=530&fmt=jpg&bg=rgb(255,255,255)&img404=404&v=1", 25.00, 20, Category.ACCESORIES);
+//			Product product51 = new Product("100 Pack of tees", "Stock up for the season with a pack of 100 wooden TaylorMade golf tees (2 Â¾ inches).", "https://www.taylormadegolf.com/dw/image/v2/AAIS_PRD/on/demandware.static/-/Sites-tmag-master-catalog/en_US/v1679948558736/vault/2017_Components/SQ921_zoom_D.jpg?sw=900&sh=900&sm=fit", 9.99, 25, Category.ACCESORIES);
+//			Product product52 = new Product("Looper Hybrid Headcover", "Cover up your hybrids in quality and they'll keep producing quality shots for you. Protection comes from durable polyurethane, a soft green velour lining safeguards the club, and the 'X' and PING letters are sewn-on.", "https://pingmediastage.azureedge.net/mediastorage/mediastorage/ping-na/medialibrary/ecommerce/2023/looper%20collection%20(masters)/looper_hybridheadcover_708x708.jpg?sku=36659-01", 40.00, 15, Category.ACCESORIES);
+
+			Product product51 = new Product("Men's Coronado V3 ", "A next level fusion of athletic golf design on a performance platform. The Coronado v3 will comfort your feet with a microfiber leather upper, and inject a new level of comfort & performance into your game with the ForgedFoam™ midsole.", "https://cdn.shopify.com/s/files/1/0018/9988/8687/products/CoronadoV3-03.png?v=1676568045", 139.95, 19, Category.SHOES);
+			Product product52 = new Product("Women's Coronado V2 ", "Whether youre walking or riding, you want comfortable shoes for a full 18. Our Womens Callaway Coronado v2 is a lightweight, waterproof golf shoe that brings all-day comfort so you can maximize your on-course performance.", "https://cdn.shopify.com/s/files/1/0018/9988/8687/products/CGW403GRS_edited.jpg?v=1672943274", 109.95, 20, Category.SHOES );
+			Product product53 = new Product("Men's Coronado V3 SL", "The Coronado v3 SL will comfort your feet with a Performance waterproof mesh & microfiber leather upper, and inject a new level of comfort & performance into your game with the ForgedFoam™ midsole.", "https://cdn.shopify.com/s/files/1/0018/9988/8687/products/CoronadoV3SL-01.png?v=1676570455&width=1100", 129.95, 15, Category.SHOES);
+			Product product54 = new Product("Women's Coronado V2 SL ", "If you're going to walk a mile in a pair of shoes, you'll want to do so in our lightweight, waterproof Women's Coronado v2 SL golf shoes, especially when it's on a golf course. We coupled comfort with technology to produce our sporty, spikeless golf shoes", "https://cdn.shopify.com/s/files/1/0018/9988/8687/products/CGW404WPK_HERO.jpg?v=1643822808&width=1100", 99.95, 12, Category.SHOES);
+			Product product55 = new Product("Men's Monterey SL", "Thanks to a microfiber leather upper and Opti-Dri waterproof treatment, these shoes provide you with style and protection from the elements while the dura-rubber spikeless outsole gives you unmatched stability and grip on the course.", "https://cdn.shopify.com/s/files/1/0018/9988/8687/products/CG223BM_edited.jpg?v=1672937891", 99.95, 10,Category.SHOES);
+			Product product56 = new Product("Men's Solana TRX V2 ", "Callaway Solana TRX v2, lightweight and waterproof. Adding Fast Twist 3.0 removable cleats.", "https://cdn.shopify.com/s/files/1/0018/9988/8687/products/CG220BK_HERO.jpg?v=1643817514&width=1100", 99.95, 10, Category.SHOES);
+			Product product57 = new Product("Men's Solana SL V2", "Callaway Solana SL v2, lightweight and waterproof, especially when it's on a golf course. We've married comfort with technology to produce our stylish spikeless golf shoes.", "https://cdn.shopify.com/s/files/1/0018/9988/8687/products/CG222NV_edited.jpg?v=1672936500", 89.95, 13, Category.SHOES);
+			Product product58 = new Product("MG4+", "The collaboration between TaylorMade Golf and G/FORE is all about performance and attention to detail. Both brands embrace their obsession with meticulous design, creating golf footwear that makes walking the fairway even more rewarding.", "https://www.taylormadegolf.com/dw/image/v2/AAIS_PRD/on/demandware.static/-/Sites-tmag-master-catalog/en_US/v1679948558736/zoom/N83003_zoom_D.jpg?sw=900&sh=900&sm=fit", 179.99, 20, Category.SHOES);
+			Product product59 = new Product("Proadapt Alphacat", "The new king of comfort. Pushing the boundaries of performance, style, and comfort, the Proadapt Alphacat combines a new multi-material traction system with premium technologies to give you the Alpha of all spikeless footwear.", "https://cdn.shopify.com/s/files/1/0562/1186/5673/products/3ae3534f9d459cefd234fffce508a6200b12ff5a_1100x.jpg?v=1679337568", 180.00, 10, Category.SHOES);
+			Product product60 = new Product("Ignite Articulate Palmer Camo", "Between the Articulation Geometry on the outsole, midsole, and upper, to the cushioning of the Ignite foam, every detail of these spiked shoes has been meticulously thought through to move with the golfer feet during the swing.", "https://cdn.shopify.com/s/files/1/0562/1186/5673/products/22a27b9e238868e491b15e37b2fd59ee529826b2_550x.jpg?v=1679461635", 200.00, 8, Category.SHOES);
+
 			OrderProduct orderProduct1 = new OrderProduct(1, 1399.99);
 			order1.addOrderProduct(orderProduct1);
 			product1.addOrderProduct(orderProduct1);
@@ -151,6 +175,26 @@ public class GolfparadiseApplication {
 			productRepository.save(product38);
 			productRepository.save(product39);
 			productRepository.save(product40);
+			productRepository.save(product41);
+			productRepository.save(product42);
+			productRepository.save(product43);
+			productRepository.save(product44);
+			productRepository.save(product45);
+			productRepository.save(product46);
+			productRepository.save(product47);
+			productRepository.save(product48);
+			productRepository.save(product49);
+			productRepository.save(product50);
+			productRepository.save(product51);
+			productRepository.save(product52);
+			productRepository.save(product53);
+			productRepository.save(product54);
+			productRepository.save(product55);
+			productRepository.save(product56);
+			productRepository.save(product57);
+			productRepository.save(product58);
+			productRepository.save(product59);
+			productRepository.save(product60);
 
 			orderRepository.save(order1);
 //			orderRepository.save(order2);
