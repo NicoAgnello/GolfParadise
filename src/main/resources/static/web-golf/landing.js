@@ -22,6 +22,8 @@ createApp({
     data() {
         return {
             products: [],
+            lastProducts:[],
+            
         }
     },
     created(){
@@ -33,11 +35,15 @@ createApp({
     },
     methods: {
         loadData() {
-            axios('/api/products')
+            axios('http://localhost:8080/api/products')
                 .then(response => {
-                    console.log(response)
+                    
                     this.products = response.data
-                    console.log(this.products)
+                    this.lastProducts = this.products.sort((a,b)=> b.id - a.id).slice(0,8)
+                    /* console.log(this.lastProducts) */
+                    
+
+
                 })
         }
     },

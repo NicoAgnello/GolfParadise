@@ -24,10 +24,10 @@
       <section>
         <article class="article-nav">
           <a class="nav-ancor" href="#"><img src="../images/gif-only-logo.gif" alt="golf-icon" class="nav-logo"> Golf Paradise</a>
-          <form class="d-flex" role="search">
+          <!-- <form class="d-flex" role="search">
             <input class="form-control me-2" type="search" placeholder="Search product" aria-label="Search">
             <button class="btn btn-outline-success" type="submit"><i class="bi bi-search"></i></button>
-          </form>
+          </form> -->
         </article>
         <article class="article-nav-2">
           <a href="../web-golf/landing.html">Home</a>
@@ -73,169 +73,200 @@
           </ul>
         </li>
       </ul> -->
-      <section class="d-flex justify-content-center gap-4 p-4 align-items-center">
-        <label for="Categoria1">
-          <input type="checkbox" name="" id="Categoria1"> Categoria1
+      <section class="d-flex justify-content-center gap-5 p-4 align-items-center">
+        <!-- <label for="Price">
+          <input type="checkbox"  id="Price"> Price
         </label>
-        <label for="Categoria2">
-          <input type="checkbox" name="" id="Categoria2"> Categoria2
+        <label for="New Products">
+          <input type="checkbox" id="New Products"> New Products
         </label>
-        <label for="Categoria3">
-          <input type="checkbox" name="" id="Categoria3"> Categoria3
+        <label for="A to Z">
+          <input type="checkbox" id="A to Z"> A to Z
         </label>
-        <label for="Categoria4">
-          <input type="checkbox" name="" id="Categoria4"> Categoria4
+        <label for="Z to A">
+          <input type="checkbox" id="Z to A"> Z to A
         </label>
-        <label for="Categoria5">
-          <input type="checkbox" name="" id="Categoria5"> Categoria5
+        <label for="Accesories">
+          <input type="checkbox" id="Accesories"> Accesories
         </label>
-        <label for="Categoria6">
-          <input type="checkbox" name="" id="Categoria6"> Categoria6
-        </label>
+        <label for="Shoes">
+          <input type="checkbox" id="Shoes"> Shoes
+        </label> -->
         <form class="d-flex" role="search">
           <input class="form-control me-2" type="search" placeholder="Filter product" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit"><i class="bi bi-search"></i></button>
         </form>
+        <select >
+          <option value="" disabled selected>Select one filter</option>
+          <option value="" @click="orderForPrice">Price</option>
+          <option value="">New</option>
+          <option value="">A to Z</option>
+          <option value="">Z to A</option>
+        </select>
       </section>
       
 
-      <h3 class="text-start p-2 mt-2">Categoria 1</h3>
+      <h3 class="text-start p-2 mt-2">Clubs</h3>
 
-      <section class="cards">
-        <article class="card card--1">
-            <div class="card__img"></div>
-            <a href="#" class="card_link"><img src="../images/palo-de-golf1_.jpg" alt="" class="card__img--hover"></a>
-            <div class="card__info">
-                <span class="card__category">Product</span>
-                <h6 class="">$100.00</h6>
-                <h3 class="card__title">Pelotas de golf</h3>
-                <div class="d-flex justify-content-between align-items-center">
-                    <div>
-                        <span class="card__time fs-6"><i class="bi bi-info-circle"></i> Stock: 15</span>
+      <section  id="cards-section">
+        </div>
+        <div class="cards container">
+            <template v-for="product of clubsProducts">
+                <article class="card card--1" data-aos="fade-down">
+                    <div class="card__img"></div>
+                    <a href="#" class="card_link"><img :src="product.img" alt="" class="card__img--hover img-fluid p-0"></a>
+                    <div class="card__info">
+                        <span class="card__category">{{ product.category }}</span>
+                        <h3 class="card__title">{{ product.name }}</h3>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <span class="card__time fs-6"><i class="bi bi-info-circle"></i> Stock: {{ product.stock }}</span>
+                            </div>
+                            <h6 class="m-0">$ {{ product.price }}</h6>
+                            <div>
+                                <a href="#" class="cart"><i class="bi bi-cart card__cart"></i></a>
+                            </div>
+                        </div>
                     </div>
-                    
-                    <div>
-                        <a href="#" class="cart"><i class="bi bi-cart card__cart"></i></a> 
+                </article>
+            </template>
+        </div>
+      </section>
+
+    <h3 class="text-start p-2">Bags</h3>
+
+    <section  id="cards-section">
+    </div>
+    <div class="cards container">
+        <template v-for="product of bagsProducts">
+            <article class="card card--1" data-aos="fade-down">
+                <div class="card__img"></div>
+                <a href="#" class="card_link"><img :src="product.img" alt="" class="card__img--hover img-fluid p-0"></a>
+                <div class="card__info">
+                    <span class="card__category">{{ product.category }}</span>
+                    <h3 class="card__title">{{ product.name }}</h3>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <span class="card__time fs-6"><i class="bi bi-info-circle"></i> Stock: {{ product.stock }}</span>
+                        </div>
+                        <h6 class="m-0">$ {{ product.price }}</h6>
+                        <div>
+                            <a href="#" class="cart"><i class="bi bi-cart card__cart"></i></a>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </article>
-    </section>
+            </article>
+        </template>
+    </div>
+  </section>
 
-    <h3 class="text-start p-2">Categoria 2</h3>
+    <h3 class="text-start p-2">Balls</h3>
 
-      <section class="cards">
-        <article class="card card--1">
-            <div class="card__img"></div>
-            <a href="#" class="card_link"><img src="../images/palo-de-golf1_.jpg" alt="" class="card__img--hover"></a>
-            <div class="card__info">
-                <span class="card__category">Product</span>
-                <h6 class="">$100.00</h6>
-                <h3 class="card__title">Pelotas de golf</h3>
-                <div class="d-flex justify-content-between align-items-center">
-                    <div>
-                        <span class="card__time fs-6"><i class="bi bi-info-circle"></i> Stock: 15</span>
-                    </div>
-                    
-                    <div>
-                        <a href="#" class="cart"><i class="bi bi-cart card__cart"></i></a> 
-                    </div>
-                </div>
-            </div>
-        </article>
-    </section>
-
-    <h3 class="text-start p-2">Categoria 3</h3>
-
-      <section class="cards">
-        <article class="card card--1">
-            <div class="card__img"></div>
-            <a href="#" class="card_link"><img src="../images/palo-de-golf1_.jpg" alt="" class="card__img--hover"></a>
-            <div class="card__info">
-                <span class="card__category">Product</span>
-                <h6 class="">$100.00</h6>
-                <h3 class="card__title">Pelotas de golf</h3>
-                <div class="d-flex justify-content-between align-items-center">
-                    <div>
-                        <span class="card__time fs-6"><i class="bi bi-info-circle"></i> Stock: 15</span>
-                    </div>
-                    
-                    <div>
-                        <a href="#" class="cart"><i class="bi bi-cart card__cart"></i></a> 
+    <section  id="cards-section">
+    </div>
+    <div class="cards container">
+        <template v-for="product of ballsProducts">
+            <article class="card card--1" data-aos="fade-down">
+                <div class="card__img"></div>
+                <a href="#" class="card_link"><img :src="product.img" alt="" class="card__img--hover img-fluid p-0"></a>
+                <div class="card__info">
+                    <span class="card__category">{{ product.category }}</span>
+                    <h3 class="card__title">{{ product.name }}</h3>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <span class="card__time fs-6"><i class="bi bi-info-circle"></i> Stock: {{ product.stock }}</span>
+                        </div>
+                        <h6 class="m-0">$ {{ product.price }}</h6>
+                        <div>
+                            <a href="#" class="cart"><i class="bi bi-cart card__cart"></i></a>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </article>
-    </section>
+            </article>
+        </template>
+    </div>
+  </section>
 
-    <h3 class="text-start p-2">Categoria 4</h3>
+    <h3 class="text-start p-2">Clothes</h3>
 
-      <section class="cards">
-        <article class="card card--1">
-            <div class="card__img"></div>
-            <a href="#" class="card_link"><img src="../images/palo-de-golf1_.jpg" alt="" class="card__img--hover"></a>
-            <div class="card__info">
-                <span class="card__category">Product</span>
-                <h6 class="">$100.00</h6>
-                <h3 class="card__title">Pelotas de golf</h3>
-                <div class="d-flex justify-content-between align-items-center">
-                    <div>
-                        <span class="card__time fs-6"><i class="bi bi-info-circle"></i> Stock: 15</span>
-                    </div>
-                    
-                    <div>
-                        <a href="#" class="cart"><i class="bi bi-cart card__cart"></i></a> 
-                    </div>
-                </div>
-            </div>
-        </article>
-    </section>
-
-    <h3 class="text-start p-2">Categoria 5</h3>
-
-      <section class="cards">
-        <article class="card card--1">
-            <div class="card__img"></div>
-            <a href="#" class="card_link"><img src="../images/palo-de-golf1_.jpg" alt="" class="card__img--hover"></a>
-            <div class="card__info">
-                <span class="card__category">Product</span>
-                <h6 class="">$100.00</h6>
-                <h3 class="card__title">Pelotas de golf</h3>
-                <div class="d-flex justify-content-between align-items-center">
-                    <div>
-                        <span class="card__time fs-6"><i class="bi bi-info-circle"></i> Stock: 15</span>
-                    </div>
-                    
-                    <div>
-                        <a href="#" class="cart"><i class="bi bi-cart card__cart"></i></a> 
+    <section  id="cards-section">
+    </div>
+    <div class="cards container">
+        <template v-for="product of clothesProducts">
+            <article class="card card--1" data-aos="fade-down">
+                <div class="card__img"></div>
+                <a href="#" class="card_link"><img :src="product.img" alt="" class="card__img--hover img-fluid p-0"></a>
+                <div class="card__info">
+                    <span class="card__category">{{ product.category }}</span>
+                    <h3 class="card__title">{{ product.name }}</h3>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <span class="card__time fs-6"><i class="bi bi-info-circle"></i> Stock: {{ product.stock }}</span>
+                        </div>
+                        <h6 class="m-0">$ {{ product.price }}</h6>
+                        <div>
+                            <a href="#" class="cart"><i class="bi bi-cart card__cart"></i></a>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </article>
-    </section>
+            </article>
+        </template>
+    </div>
+  </section>
 
-    <h3 class="text-start p-2">Categoria 6</h3>
 
-      <section class="cards">
-        <article class="card card--1">
-            <div class="card__img"></div>
-            <a href="#" class="card_link"><img src="../images/palo-de-golf1_.jpg" alt="" class="card__img--hover"></a>
-            <div class="card__info">
-                <span class="card__category">Product</span>
-                <h6 class="">$100.00</h6>
-                <h3 class="card__title">Pelotas de golf</h3>
-                <div class="d-flex justify-content-between align-items-center">
-                    <div>
-                        <span class="card__time fs-6"><i class="bi bi-info-circle"></i> Stock: 15</span>
-                    </div>
-                    
-                    <div>
-                        <a href="#" class="cart"><i class="bi bi-cart card__cart"></i></a> 
+    <h3 class="text-start p-2">Accesories</h3>
+
+    <section  id="cards-section">
+    </div>
+    <div class="cards container">
+        <template v-for="product of accesoriesProducts">
+            <article class="card card--1" data-aos="fade-down">
+                <div class="card__img"></div>
+                <a href="#" class="card_link"><img :src="product.img" alt="" class="card__img--hover img-fluid p-0"></a>
+                <div class="card__info">
+                    <span class="card__category">{{ product.category }}</span>
+                    <h3 class="card__title">{{ product.name }}</h3>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <span class="card__time fs-6"><i class="bi bi-info-circle"></i> Stock: {{ product.stock }}</span>
+                        </div>
+                        <h6 class="m-0">$ {{ product.price }}</h6>
+                        <div>
+                            <a href="#" class="cart"><i class="bi bi-cart card__cart"></i></a>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </article>
-    </section>
+            </article>
+        </template>
+    </div>
+  </section>
+
+    <h3 class="text-start p-2">Shoes</h3>
+
+    <section  id="cards-section">
+    </div>
+    <div class="cards container">
+        <template v-for="product of shoesProducts">
+            <article class="card card--1" data-aos="fade-down">
+                <div class="card__img"></div>
+                <a href="#" class="card_link"><img :src="product.img" alt="" class="card__img--hover img-fluid p-0"></a>
+                <div class="card__info">
+                    <span class="card__category">{{ product.category }}</span>
+                    <h3 class="card__title">{{ product.name }}</h3>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <span class="card__time fs-6"><i class="bi bi-info-circle"></i> Stock: {{ product.stock }}</span>
+                        </div>
+                        <h6 class="m-0">$ {{ product.price }}</h6>
+                        <div>
+                            <a href="#" class="cart"><i class="bi bi-cart card__cart"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </template>
+    </div>
+  </section>
 
     </main>
 
@@ -295,8 +326,9 @@
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-    <script src="../javaScript/products.js"></script>
+    <script src="./products.js"></script>
     <script>
       AOS.init();
     </script>
