@@ -284,7 +284,7 @@ createApp({
           });
         })
         .then(() => {
-          // location.href =
+          // location.href = "./web-golf/landing.html";
         })
         .catch((err) => {
           console.log(err);
