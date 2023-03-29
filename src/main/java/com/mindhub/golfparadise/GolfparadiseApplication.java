@@ -122,6 +122,8 @@ public class GolfparadiseApplication {
 			Product product59 = new Product("Proadapt Alphacat", "The new king of comfort. Pushing the boundaries of performance, style, and comfort, the Proadapt Alphacat combines a new multi-material traction system with premium technologies to give you the Alpha of all spikeless footwear.", "https://cdn.shopify.com/s/files/1/0562/1186/5673/products/3ae3534f9d459cefd234fffce508a6200b12ff5a_1100x.jpg?v=1679337568", 180.00, 10, Category.SHOES);
 			Product product60 = new Product("Ignite Articulate Palmer Camo", "Between the Articulation Geometry on the outsole, midsole, and upper, to the cushioning of the Ignite foam, every detail of these spiked shoes has been meticulously thought through to move with the golfer feet during the swing.", "https://cdn.shopify.com/s/files/1/0562/1186/5673/products/22a27b9e238868e491b15e37b2fd59ee529826b2_550x.jpg?v=1679461635", 200.00, 8, Category.SHOES);
 
+
+
 			OrderProduct orderProduct1 = new OrderProduct(1, 1399.99);
 			order1.addOrderProduct(orderProduct1);
 			product1.addOrderProduct(orderProduct1);
