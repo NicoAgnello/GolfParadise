@@ -58,15 +58,34 @@
           >
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
+          <div class="collapse navbar-collapse nav-collapse" id="navbarNav">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link link-nav" href="./index-admin.html">Products</a>
+                <a class="nav-link link-nav" aria-current="page" href="./index-admin.html">Products</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link link-nav active" aria-current="page" href="#"> Clients </a>
+                <a class="nav-link link-nav active" href="#"> Clients </a>
               </li>
             </ul>
+            <!-- Log Out -->
+            <div @click="logOut" class="log-out-button">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="icon icon-tabler icon-tabler-logout"
+                width="36"
+                height="30"
+                viewBox="-1 0 24 24"
+                stroke-width="2"
+                stroke="currentColor"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2"></path>
+                <path d="M7 12h14l-3 -3m0 6l3 -3"></path></svg
+              >Exit
+            </div>
           </div>
         </div>
       </nav>
