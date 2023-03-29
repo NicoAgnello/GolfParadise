@@ -43,6 +43,7 @@ createApp({
         input: "url",
         inputValue: url,
         showConfirmButton: false,
+        background: "#FCE6BE",
       });
     },
 
@@ -196,7 +197,7 @@ createApp({
       });
     },
     totalPages() {
-      return Math.ceil(this.products.length / this.elementsPerPage);
+      return Math.ceil(this.filteredProducts.length / this.elementsPerPage);
     },
     getDataPages(numberPage) {
       this.actualPage = numberPage;
@@ -210,13 +211,13 @@ createApp({
       if (this.actualPage > 1) {
         this.actualPage--;
       }
-      this.getDataPages(actualPage);
+      this.getDataPages(this.actualPage);
     },
     getNextPage() {
       if (this.actualPage < this.totalPages()) {
         this.actualPage++;
       }
-      this.getDataPages(actualPage);
+      this.getDataPages(this.actualPage);
     },
     isActivePage(numberPage) {
       return numberPage == this.actualPage ? "active-pagination" : "";
@@ -245,7 +246,7 @@ createApp({
       } else {
         this.filteredProducts = filterProductsByCategory;
       }
-      // this.getDataPages(1);
+      this.getDataPages(1);
     },
     clearFilter() {
       this.categoryToFilter = "";
@@ -284,7 +285,7 @@ createApp({
           });
         })
         .then(() => {
-          // location.href =
+          location.href = "../web-golf/landing.html";
         })
         .catch((err) => {
           console.log(err);
