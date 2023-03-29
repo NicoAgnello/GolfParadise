@@ -37,7 +37,16 @@ body::-webkit-scrollbar-thumb {
 }
 
 .bg-body-tertiary{
-  background-color: #F2A341 !important;
+  /*background-color: #F2A341 !important;*/
+}
+
+
+header {
+  position: absolute !important;
+  top: 0;
+  z-index: 2000;
+  background-color: transparent ;
+  width: 100%;
 }
 
 .padding-own{
@@ -99,16 +108,52 @@ video{
   object-fit: cover;
 }
 
+.hero-section {
+  background-image: url("./images/bg-hero3.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 130vh;
+}
+
 .texto{
+  margin-top: -30vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items:center ;
-  width: 100%;
-  height: 50vh;
-  z-index: 1;
-  color: white;
+  /*z-index: 1;*/
+  color: black;
   text-shadow: 1px 1px 1px black;
+}
+
+.grass-img {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  object-fit: scale-down;
+}
+
+.custom-shape-divider-bottom-1680073748 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.custom-shape-divider-bottom-1680073748 svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 200px;
+}
+
+.custom-shape-divider-bottom-1680073748 .shape-fill {
+  fill: #34322F;
 }
 
 .video{
@@ -120,11 +165,17 @@ video{
 
 .button-false{
   text-decoration: none;
-  color: white;
-  text-shadow: 1px 1px 1px black;
+  color: black;
+  /*text-shadow: 1px 1px 1px black;*/
   padding: 4px;
-  border-radius: 15px;
-  text-decoration: underline;
+  /*border-radius: 15px;*/
+  /*text-decoration: underline;*/
+}
+
+.btn-custom-hero {
+  border: 5px solid #ffffff !important;
+  background-color: rgba(255, 255, 255, 0.9) ;
+  color: #3b5998;
 }
 
 .offcanvas-body{
@@ -279,12 +330,12 @@ video{
 
 
 .heading {
-  font-size: 4rem;
+  font-size: 6rem;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .sub-heading {
-  letter-spacing: 1px;
+  letter-spacing: 5px;
   font-size: 2rem;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
@@ -410,7 +461,7 @@ z-index: 2;
 }
 
 .carousel img {
-  height: 555px;
+  height: 755px;
   display: flex;
   object-fit: cover;
   object-position: center;
