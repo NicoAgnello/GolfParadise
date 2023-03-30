@@ -2,21 +2,28 @@ const { createApp } = Vue;
 
 createApp({
   data() {
-    return {};
+    return {
+      firsName: "",
+      email: "",
+      phone: "",
+      message: "",
+    };
   },
   created() {},
   methods: {
     sendContact() {
-      Swal.fire({
-        title: "Good!",
-        text: "Message sent successfully!.",
-        imageUrl: "./assets/mood-smile-beam.svg",
-        imageWidth: 400,
-        imageHeight: 200,
-        imageAlt: "Custom image",
-        background: "#FCE6BE",
-        confirmButtonColor: "#598526",
-      });
+      if (this.email !== "" && this.email !== "" && this.message !== "") {
+        Swal.fire({
+          title: "Good!",
+          text: "Message sent successfully!.",
+          imageUrl: "./assets/mood-smile-beam.svg",
+          imageWidth: 400,
+          imageHeight: 200,
+          imageAlt: "Custom image",
+          background: "#FCE6BE",
+          confirmButtonColor: "#598526",
+        });
+      }
     },
     logOut() {
       axios
