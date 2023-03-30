@@ -5,6 +5,7 @@ createApp({
     data() {
         return {
             products:           [],
+            productDetail:      {},
             categories:         [],
             filteredProducts:    [],
             cart:               [],
@@ -26,7 +27,7 @@ createApp({
             }
             axios('http://localhost:8080/api/products')
                 .then(response => {
-                    console.log(response)
+                    // console.log(response)
                     this.products = response.data
                     this.filteredProducts = this.products
                     this.categories = [... new Set(this.products.map(product => product.category))]
@@ -53,10 +54,10 @@ createApp({
                 if (filterProductsBySearch.length !== 0) {
                     this.filteredProducts = filterProductsBySearch;
                 } else {
-                    this.filteredProducts = null;
+                    this.filteredProducts = [];
                 }
             } else if (filterProductsByCategory.length === 0) {
-                this.filteredProducts = null;
+                this.filteredProducts = [];
             } else {
                 this.filteredProducts = filterProductsByCategory;
             }
@@ -81,6 +82,10 @@ createApp({
             localStorage.setItem('cart', JSON.stringify(this.cart))
             localStorage.setItem('total', JSON.stringify(this.total))
         },
+        showDetail(product) {
+            this.productDetail = product
+            console.log(this.productDetail)
+        },
         removeProductQuantity(product) {
             product.quantity--
             product.stock++
@@ -94,7 +99,7 @@ createApp({
         removeProduct(product) {
             axios('/api/products')
                 .then(response => {
-                    console.log(response)
+                    // console.log(response)
                     product.stock = response.data.find(prod => prod.id === product.id).stock
                     product.quantity = 0;
                     this.cart.splice(this.cart.indexOf(product), 1)
