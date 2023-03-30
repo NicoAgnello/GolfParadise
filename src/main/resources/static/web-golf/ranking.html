@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rankings</title>
+    <link rel="stylesheet" href="./ranking.css">
+    <style>
+     <!--  .loader {
+        border: 16px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 16px solid #3498db;
+        width: 120px;
+        height: 120px;
+        -webkit-animation: spin 2s linear infinite; /* Safari */
+        animation: spin 2s linear infinite;
+      }
+      
+      /* Safari */
+      @-webkit-keyframes spin {
+        0% { -webkit-transform: rotate(0deg); }
+        100% { -webkit-transform: rotate(360deg); }
+      }
+      
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      } -->
+      .loader {
+        border: 16px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 16px solid blue;
+        border-right: 16px solid green;
+        border-bottom: 16px solid red;
+        border-left: 16px solid pink;
+        width: 120px;
+        height: 120px;
+        -webkit-animation: spin 2s linear infinite;
+        animation: spin 2s linear infinite;
+      }
+      </style>
+</head>
+
+<body>
+  <div id="App">
+  <select name="" id="" v-model="year">
+    <option value="2022">2022</option>
+    <option value="2021">2021</option>
+    <option value="2020">2020</option>
+    <option value="2019">2019</option>
+   
+  </select>
+  <button @click="loadData">Buscar</button>
+  <div class="loader" v-if="loader"></div>
+  <h2 v-if="statusAPI===400">Este año no hubo ranking</h2>
+
+    <table>
+  <thead>
+    <tr>
+      <th>LastName</th>
+      <th>FirstBane</th>
+      <th>rank</th>
+      <th>PreviousRank</th>
+      <th>Events</th>
+      <th>TotalPoints</th>
+      <th>AvgPoints</th>
+      <th>PointsLost</th>
+      <th>PointsGained</th>
+      <th>PlayerId</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr v-for="player of players" :key="player.playerId">
+      <td>{{player.lastName}}</td>
+      <td>{{player.firstName}}</td>
+      <td>{{player.rank}}</td>
+      <td>{{player.previousRank}}</td>
+      <td>{{player.events}}</td>
+      <td>{{player.totalPoints}}</td>
+      <td>{{player.avgPoints}}</td>
+      <td>{{player.pointsLost}}</td>
+      <td>{{player.pointsGained}}</td>
+      <td>{{player.playerId}}</td>
+    </tr>
+   
+  </tbody>
+</table>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script src="ranking.js"></script>
+
+
+
+</body>
+
+</html>
