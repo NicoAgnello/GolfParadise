@@ -7,10 +7,22 @@ createApp({
       email: "",
       phone: "",
       message: "",
+      client: null,
     };
   },
-  created() {},
+  created() {
+    this.loadData();
+  },
   methods: {
+    loadData() {
+      axios
+        .get("/api/clients/current")
+        .then((res) => {
+          this.client = res.data;
+          console.log(this.client);
+        })
+        .catch((err) => console.log(err));
+    },
     sendContact() {
       if (this.email !== "" && this.email !== "" && this.message !== "") {
         Swal.fire({
@@ -45,7 +57,7 @@ createApp({
             icon: "warning",
             title: "Log out successfully",
           }).then(() => {
-            location.href = "./web-golf/landing.html";
+            location.href = "./landing.html";
           });
         })
         .catch((err) => {

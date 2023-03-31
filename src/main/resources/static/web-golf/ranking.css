@@ -16,14 +16,14 @@ body {
 main {
   min-height: 95vh;
 }
-
+/* 
 .title-ranking {
   color: black;
   text-shadow: 1px 1px 2px rgb(219, 219, 219);
   font-weight: bold;
   font-size: 3rem;
   margin-top: 2rem;
-}
+} */
 
 .label-ranking {
   background-color: #e7eedd;
@@ -300,52 +300,8 @@ li i {
 
 /* ------- IMAGE --------- */
 
-.img-ranking{
-  height: 400px;
-  background-image: url(./images/golf-ranking.png);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  object-fit: contain;
+.img-ranking {
+  background: url(./images/header-products.jpg) center/cover;
+  height: 500px;
 }
 
-.img-ranking img{
-  
-}
-
-@media (max-width:991px){
-  .img-ranking img{
-    height: 520px;
-    width: 720px;
-  }
-}
-@media (max-width:800px){
-  .img-ranking img{
-    height: 440px;
-    width: 640px;
-  }
-}
-@media (max-width:700px){
-  .img-ranking img{
-    height: 360px;
-    width: 560px;
-  }
-}
-@media (max-width:600px){
-  .img-ranking img{
-    height: 300px;
-    width: 460px;
-  }
-}
-@media (max-width:500px){
-  .img-ranking img{
-    height: 240px;
-    width: 400px;
-  }
-}
-@media (max-width:400px){
-  .img-ranking img{
-    height: 200px;
-    width: 330px;
-  }
-}
