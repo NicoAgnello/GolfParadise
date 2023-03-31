@@ -8,10 +8,12 @@ createApp({
       elementsPerPage: 15,
       paginatedData: [],
       actualPage: 1,
+      client: null,
     };
   },
   created() {
     this.loadData(this.year);
+    this.getCurrentClient();
   },
   methods: {
     loadData(year) {
@@ -33,6 +35,14 @@ createApp({
         .catch((err) => {
           console.log(err);
         });
+    },
+    getCurrentClient() {
+      axios
+        .get("/api/clients/current")
+        .then((res) => {
+          this.client = res.data;
+        })
+        .catch((err) => console.log(err));
     },
     totalPages() {
       return Math.ceil(this.players.length / this.elementsPerPage);

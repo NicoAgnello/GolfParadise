@@ -54,9 +54,14 @@
                   <a class="nav-link text-center fw-bold" href="#">Ranking</a>
                 </li>
               </ul>
-              <ul class="navbar-nav mb-2 mb-lg-0 ul-extra">
+              <ul v-if="client" class="navbar-nav mb-2 mb-lg-0 ul-extra">
                 <li class="nav-item text-center padding-own d-flex justify-content-center">
                   <button @click="logOut" class="btn-log-out">Exit<i class="bi bi-box-arrow-right"></i></button>
+                </li>
+              </ul>
+              <ul v-else class="navbar-nav mb-2 mb-lg-0 ul-extra">
+                <li class="nav-item text-center padding-own d-flex justify-content-center">
+                  <a href="./login.html" class="button-own-login">Log in <i class="bi bi-person-circle"></i></a>
                 </li>
               </ul>
             </div>
