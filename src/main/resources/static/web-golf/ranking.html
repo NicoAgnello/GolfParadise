@@ -107,19 +107,16 @@
                 </tr>
               </thead>
               <tbody>
-                <tr v-for="player of paginatedData" :key="player.playerId">
+                <tr v-cloak v-for="player of paginatedData" :key="player.playerId">
                   <td>{{player.rank}}</td>
                   <td>{{player.firstName}}</td>
                   <td>{{player.lastName}}</td>
                   <td class="text-center">{{player.previousRank}}</td>
                   <td class="text-center">{{player.events}}</td>
-                  <td class="text-center" v-if="year == 2022">{{player.totalPoints.toFixed(2)}}</td>
-                  <td class="text-center" v-if="year == 2021">{{player.totalPoints}}</td>
                   <td class="text-center">{{player.avgPoints}}</td>
-                  <td class="text-center" v-if="year == 2022">{{player.pointsLost.toFixed(2)}}</td>
-                  <td class="text-center" v-if="year == 2021">{{player.pointsLost}}</td>
-                  <td class="text-center" v-if="year == 2022">{{player.pointsGained.toFixed(2)}}</td>
-                  <td class="text-center" v-if="year == 2021">{{player.pointsGained}}</td>
+                  <td class="text-center">{{parsePoints(player.totalPoints)}}</td>
+                  <td class="text-center">{{parsePoints(player.pointsLost)}}</td>
+                  <td class="text-center">{{parsePoints(player.pointsGained)}}</td>
                   <td class="text-center">{{player.playerId}}</td>
                 </tr>
               </tbody>
