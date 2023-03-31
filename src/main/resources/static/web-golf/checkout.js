@@ -199,5 +199,32 @@ createApp({
           });
         });
     },
+    logOut() {
+      axios
+        .post("/api/logout")
+        .then(() => {
+          const Toast = Swal.mixin({
+            toast: true,
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 2000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener("mouseenter", Swal.stopTimer);
+              toast.addEventListener("mouseleave", Swal.resumeTimer);
+            },
+          });
+
+          Toast.fire({
+            icon: "warning",
+            title: "Log out successfully",
+          }).then(() => {
+            location.href = "./landing.html";
+          });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
   },
 }).mount("#app");
