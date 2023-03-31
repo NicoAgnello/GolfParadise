@@ -20,7 +20,7 @@ createApp({
         url: "https://live-golf-data.p.rapidapi.com/stats",
         params: { year: this.year, statId: "186" },
         headers: {
-          "X-RapidAPI-Key": "14845836c6mshde34cb9c46021b2p1913a2jsn7de82339e6e3",
+          "X-RapidAPI-Key": "465345ef14msh34d80558d96c789p1e003cjsn4083f5b96d40",
           "X-RapidAPI-Host": "live-golf-data.p.rapidapi.com",
         },
       };
@@ -96,4 +96,4 @@ createApp({
     },
   },
   computed: {},
-}).mount("#App");
+}).mount("#app");
