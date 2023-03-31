@@ -75,7 +75,7 @@ public class OrderPurchaseController {
             return new ResponseEntity<>("Not enough stock.", HttpStatus.BAD_REQUEST);
         }
 
-        OrderPurchase orderPurchase = new OrderPurchase(0.0, purchaseDTO.getDeliveryAddress(), LocalDateTime.now());
+        OrderPurchase orderPurchase = new OrderPurchase(0.0, purchaseDTO.getDeliveryAddress(), purchaseDTO.getDeliveryCost(), LocalDateTime.now());
         orderPurchaseService.save(orderPurchase);
 
         orderProducts.forEach(orderProductDTO -> {
@@ -118,12 +118,15 @@ public class OrderPurchaseController {
 
         Pdf pdf = new Pdf();
         pdf.createDocument(response);
-        pdf.addTitle("Order #" + lastOrder.getId());
+        pdf.addTitle("GOLF PARADISE");
         pdf.addLineJumps();
+        pdf.addLineJumps();
+        pdf.addSubTitle("Order #" + lastOrder.getId());
         pdf.addLineJumps();
         pdf.addParagraph("Date: " + currentDateTime.format(formatter));
         pdf.addParagraph("Client: " + client.getFirstName() + " " + client.getLastName());
-        pdf.addParagraph("Delivery Address: " + lastOrder.getDeliveryAddress());
+        pdf.addParagraph("Delivery address: " + lastOrder.getDeliveryAddress());
+        pdf.addParagraph("Delivery cost: " + lastOrder.getDeliveryCost());
         pdf.addLineJumps();
         pdf.addLineJumps();
         pdf.addOrderProductsTable(orderProducts);

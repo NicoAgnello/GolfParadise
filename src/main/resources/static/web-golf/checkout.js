@@ -171,7 +171,7 @@ createApp({
           .then((response) => {
             console.log(response);
             axios
-                .post("/api/clients/current/order-purchases/generate", { orderProducts: orders, deliveryAddress: this.deliveryAddress })
+                .post("/api/clients/current/order-purchases/generate", { orderProducts: orders, deliveryAddress: this.deliveryAddress, deliveryCost: this.deliveryCost })
                 .then((response) => {
                   console.log(response);
                   window.location.href = "/api/clients/current/pdf/generate";

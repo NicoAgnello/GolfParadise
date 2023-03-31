@@ -17,7 +17,8 @@ public class Pdf {
     Document document;
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM-dd-yyyy HH:mm:ss");
 
-    Font titleSource = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 16);
+    Font titleSource = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 20);
+    Font subtitleSource = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 14);
     Font paragraphSource = FontFactory.getFont(FontFactory.HELVETICA, 12);
 
     public void createDocument(HttpServletResponse response) throws IOException, DocumentException {
@@ -34,6 +35,12 @@ public class Pdf {
         cell.setHorizontalAlignment(Element.ALIGN_CENTER);
         table.addCell(cell);
         document.add(table);
+    }
+
+    public void addSubTitle(String text) throws DocumentException, IOException {
+        Paragraph paragraph = new Paragraph();
+        paragraph.add(new Phrase(text, subtitleSource));
+        document.add(paragraph);
     }
 
     public void addParagraph(String text) throws DocumentException {
@@ -89,7 +96,7 @@ public class Pdf {
     }
 
     public void addTotalAmountTable(OrderPurchaseDTO orderPurchaseDTO) throws DocumentException {
-        String[] tableContent = {"", "Total Amount", orderPurchaseDTO.getAmount() + "$"};
+        String[] tableContent = {"", "Total Amount", "$" + orderPurchaseDTO.getAmount()};
         PdfPTable table = new PdfPTable(4);
         int counter = 0;
         for (String content : tableContent) {
