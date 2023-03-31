@@ -29,7 +29,6 @@ createApp({
         .then((response) => {
           this.players = response.data.rankings.slice(0, 100);
           this.getDataPages(1);
-          //   console.log(this.players);
         })
         .catch((err) => {
           console.log(err);
@@ -87,6 +86,13 @@ createApp({
         .catch((err) => {
           console.log(err);
         });
+    },
+    parsePoints(points) {
+      if (this.year == 2022) {
+        return points.toFixed(2);
+      } else {
+        return points;
+      }
     },
   },
   computed: {},

@@ -27,7 +27,6 @@ body::-webkit-scrollbar-track {
 }
 
 body::-webkit-scrollbar-thumb {
-  /* background-color: #f2a242; */
   background-color: var(--primaryColor);
   border-radius: 20px;
 }
