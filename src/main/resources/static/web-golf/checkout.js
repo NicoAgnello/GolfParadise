@@ -214,7 +214,6 @@ createApp({
               toast.addEventListener("mouseleave", Swal.resumeTimer);
             },
           });
-
           Toast.fire({
             icon: "warning",
             title: "Log out successfully",

@@ -11,22 +11,13 @@
       integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
       crossorigin="anonymous"
     />
-    <!-- Fuente Letras -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css" />
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/1ae9a81fc2.js" crossorigin="anonymous"></script>
-    <!-- Fuente Numeros -->
+    <!-- Fuente -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,400;0,700;1,400;1,700&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet" />
     <!-- Favicon -->
     <link rel="shortcut icon" href="./asets/img/icons/faviconGolf1.svg" type="image/x-icon" style="color: white" />
     <!-- Custom CSS -->
@@ -38,9 +29,8 @@
       <header>
         <nav class="navbar navbar-expand-lg nav-golf">
           <div class="container d-flex justify-content-evenly">
-            <a class="navbar-brand title-nav-golf hide-movile" href="#"
-              ><img class="navbar-brand" src="./asets/img/icons/icon-Golf.svg" alt="logo" style="width: 5rem" /> Golf
-              Paradise</a
+            <a class="navbar-brand modifier" href="#"
+              ><img src="./asets/img/icons/icon-Golf.svg" alt="golf-icon" class="icon-nav" /> Golf Paradise</a
             >
             <img
               class="navbar-brand only-logo-movile"
@@ -62,36 +52,23 @@
             <div class="collapse navbar-collapse nav-collapse" id="navbarNav">
               <ul class="navbar-nav">
                 <li class="nav-item">
-                  <a class="nav-link active link-nav" aria-current="page" href="#">Products</a>
+                  <a class="nav-link active link-nav fw-bold" aria-current="page" href="#">Products</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link link-nav" href="./clients-admin.html"> Clients </a>
+                  <a class="nav-link link-nav fw-bold" href="./clients-admin.html"> Clients </a>
                 </li>
               </ul>
               <!-- Log Out -->
-              <div @click="logOut" class="log-out-button">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="icon icon-tabler icon-tabler-logout"
-                  width="36"
-                  height="30"
-                  viewBox="-1 0 24 24"
-                  stroke-width="2"
-                  stroke="currentColor"
-                  fill="none"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                  <path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2"></path>
-                  <path d="M7 12h14l-3 -3m0 6l3 -3"></path></svg
-                >Exit
-              </div>
+              <ul class="navbar-nav mb-2 mb-lg-0 ul-extra">
+                <li class="nav-item text-center padding-own d-flex justify-content-center">
+                  <button @click="logOut" class="btn-log-out">Exit<i class="bi bi-box-arrow-right"></i></button>
+                </li>
+              </ul>
             </div>
           </div>
         </nav>
       </header>
-      <main>
+      <main class="pb-4">
         <div class="container d-flex flex-column">
           <h1 class="title-admin-panel">Admin Control Panel</h1>
           <div class="d-flex flex-column align-items-center gap-2 my-3">
@@ -212,6 +189,10 @@
           </div>
         </div>
       </main>
+      <footer class="d-flex align-items-center justify-content-center">
+        <p class="copyright-text d-inline m-0">Copyright &copy; 2023 All Rights Reserved by</p>
+        <a class="text-white ms-2" target="_blank" href="https://github.com/NicoAgnello/GolfParadise">Golf Paradise.</a>
+      </footer>
     </div>
     <!-- Boostrap -->
     <script
