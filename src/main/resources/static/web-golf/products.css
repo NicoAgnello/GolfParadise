@@ -353,6 +353,11 @@ ul {
   overflow: hidden;
 }
 
+.btn-custom-detail {
+  background-color: #f7b63f !important;
+  border: 1px solid #f7b63f !important;
+}
+
 .btn-custom:hover {
   color: #34322f;
   border: 1px solid #34322f;
