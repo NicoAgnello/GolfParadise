@@ -48,20 +48,26 @@
               <a class="nav-link text-center fw-bold" href="#">Ranking</a>
             </li>
           </ul>
-          <ul class="navbar-nav mb-2 mb-lg-0 ul-extra d-flex align-items-center gap-4">
+          <ul v-if="client" class="navbar-nav mb-2 mb-lg-0 ul-extra d-flex align-items-center gap-4">
             <li class="nav-item text-center padding-own d-flex justify-content-center">
-              <a href="./login.html" class="button-own-login">Log in <i class="bi bi-person-circle"></i></a>
+              <button @click="logOut" class="btn-log-out">Exit<i class="bi bi-box-arrow-right ms-2"></i></button>
             </li>
             {{ countProducts }}
             <li class="nav-item text-center d-flex justify-content-center" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
               <i class="fa-sharp fa-solid fa-cart-shopping p-0 m-0">{{ cartCounter }}</i>
             </li>
           </ul>
-          <!-- <ul class="navbar-nav mb-2 mb-lg-0 ul-extra">
-            <li class="nav-item text-center padding-own d-flex justify-content-center">
-              <button class="btn-log-out">Exit<i class="bi bi-box-arrow-right ms-2"></i></button>
+          <ul v-else class="navbar-nav mb-2 mb-lg-0 ul-extra d-flex align-items-center gap-4 ">
+            <div class="d-flex align-items-center gap-4">
+              <li class="nav-item text-center padding-own d-flex justify-content-center">
+                <a href="./login.html" class="button-own-login">Log in <i class="bi bi-person-circle"></i></a>
+              </li>
+            </div>
+            {{ countProducts }}
+            <li class="nav-item text-center d-flex justify-content-center" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+              <i class="fa-sharp fa-solid fa-cart-shopping p-0 m-0">{{ cartCounter }}</i>
             </li>
-          </ul> -->
+          </ul>
         </div>
       </div>
     </nav>
@@ -341,6 +347,7 @@
   </footer>
 </div>
 <script src="https://kit.fontawesome.com/2cd05a3c76.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
