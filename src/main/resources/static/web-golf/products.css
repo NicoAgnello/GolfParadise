@@ -160,6 +160,10 @@ body {
   min-height: 100vh;
 }
 
+.fa-cart-shopping {
+  cursor: pointer !important;
+}
+
 /* Nav */
 
 .active {
@@ -347,6 +351,11 @@ ul {
   position: relative;
   transition: all 1s;
   overflow: hidden;
+}
+
+.btn-custom-detail {
+  background-color: #f7b63f !important;
+  border: 1px solid #f7b63f !important;
 }
 
 .btn-custom:hover {
