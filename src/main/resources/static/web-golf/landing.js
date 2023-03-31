@@ -7,12 +7,6 @@ window.onscroll = function () {
     document.querySelector(".go-top-container").classList.remove("show-own");
   }
 };
-document.querySelector(".go-top-container").addEventListener("click", () => {
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth",
-  });
-});
 
 createApp({
   data() {
@@ -66,6 +60,12 @@ createApp({
           this.client = res.data;
         })
         .catch((err) => console.log(err));
+    },
+    goToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
     },
     logOut() {
       axios

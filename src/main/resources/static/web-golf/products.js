@@ -187,7 +187,6 @@ createApp({
       this.total = this.cart.reduce((acc, product) => acc + Number(product.price * product.quantity), 0);
     },
     goToTop() {
-      console.log("clicked");
       window.scrollTo({
         top: 0,
         behavior: "smooth",
@@ -196,15 +195,12 @@ createApp({
     onChange(event) {
       switch (event.target.value) {
         case "price":
-          console.log("By price.");
           this.filteredProducts = this.filteredProducts.sort((a, b) => a.price - b.price);
           break;
         case "a-to-z":
-          console.log("A to Z.");
           this.filteredProducts = this.filteredProducts.sort((a, b) => a.name.localeCompare(b.name));
           break;
         case "z-to-a":
-          console.log("Z to A.");
           this.filteredProducts = this.filteredProducts.sort((a, b) => b.name.localeCompare(a.name));
           break;
       }

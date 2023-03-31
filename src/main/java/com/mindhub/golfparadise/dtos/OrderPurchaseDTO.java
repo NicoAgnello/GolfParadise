@@ -11,6 +11,7 @@ public class OrderPurchaseDTO {
     private Long id;
     private Double amount;
     private String deliveryAddress;
+    private double deliveryCost;
     private LocalDateTime date;
     Set<OrderProductDTO> orderProducts= new HashSet<>();
 
@@ -18,6 +19,7 @@ public class OrderPurchaseDTO {
         this.id = orderPurchase.getId();
         this.amount = orderPurchase.getAmount();
         this.deliveryAddress = orderPurchase.getDeliveryAddress();
+        this.deliveryCost = orderPurchase.getDeliveryCost();
         this.date = orderPurchase.getDate();
         this.orderProducts = orderPurchase.getOrderProducts().stream().map(OrderProductDTO::new).collect(Collectors.toSet());
     }
@@ -32,6 +34,10 @@ public class OrderPurchaseDTO {
 
     public String getDeliveryAddress() {
         return deliveryAddress;
+    }
+
+    public double getDeliveryCost() {
+        return deliveryCost;
     }
 
     public LocalDateTime getDate() {

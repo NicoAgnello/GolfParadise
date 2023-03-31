@@ -17,6 +17,7 @@ public class OrderPurchase {
     private Long id;
     private Double amount;
     private String deliveryAddress;
+    private double deliveryCost;
     private LocalDateTime date;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="client_id")
@@ -28,9 +29,10 @@ public class OrderPurchase {
     public OrderPurchase() {
     }
 
-    public OrderPurchase( Double amount, String deliveryAddress, LocalDateTime date) {
+    public OrderPurchase( Double amount, String deliveryAddress, double deliveryCost, LocalDateTime date) {
         this.amount = amount;
         this.deliveryAddress = deliveryAddress;
+        this.deliveryCost = deliveryCost;
         this.date = date;
     }
 
@@ -57,6 +59,14 @@ public class OrderPurchase {
 
     public void setDeliveryAddress(String deliveryAddress) {
         this.deliveryAddress = deliveryAddress;
+    }
+
+    public double getDeliveryCost() {
+        return deliveryCost;
+    }
+
+    public void setDeliveryCost(double deliveryCost) {
+        this.deliveryCost = deliveryCost;
     }
 
     public LocalDateTime getDate() {
