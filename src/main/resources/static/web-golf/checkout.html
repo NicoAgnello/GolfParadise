@@ -46,7 +46,7 @@
               <a class="nav-link text-center fw-bold" href="./products.html">Products</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-center fw-bold" href="./contact.html">Contacts</a>
+              <a class="nav-link text-center fw-bold" href="./contact.html">Contact</a>
             </li>
             <li class="nav-item">
               <a class="nav-link text-center fw-bold" href="./ranking.html">Ranking</a>
@@ -89,7 +89,7 @@
                             </div>
                             <div class="col-md-4 mt-2">
                                 <label for="zipCode" class="form-label">Zip Code</label>
-                                <input type="text" class="form-control" id="zipCode" v-model="zipCode" maxlength="4" required @change="getDeliveryCost()">
+                                <input type="text" class="form-control" id="zipCode" v-model="zipCode" maxlength="4" required @keyup="getDeliveryCost()">
                                 <small class="text-danger d-block" v-if="v$.zipCode.$error">{{ v$.zipCode.$errors[0].$message }}</small>
                             </div>
                         </form>

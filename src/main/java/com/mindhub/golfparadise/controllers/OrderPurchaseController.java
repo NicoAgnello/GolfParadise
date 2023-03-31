@@ -22,9 +22,8 @@ import javax.transaction.Transactional;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api")
@@ -47,7 +46,7 @@ public class OrderPurchaseController {
     @Transactional
     @PostMapping("/clients/current/order-purchases/generate")
     public ResponseEntity<Object> generateOrderPurchase(Authentication authentication,
-                                                       @RequestBody PurchaseDTO purchaseDTO) {
+                                                        @RequestBody PurchaseDTO purchaseDTO) {
 
         Client client = clientService.findByEmail(authentication.getName());
         ArrayList<OrderProductDTO> orderProducts = purchaseDTO.getOrderProducts();
@@ -76,7 +75,7 @@ public class OrderPurchaseController {
             return new ResponseEntity<>("Not enough stock.", HttpStatus.BAD_REQUEST);
         }
 
-        OrderPurchase orderPurchase = new OrderPurchase(0.0, "Delivery Address", LocalDateTime.now());
+        OrderPurchase orderPurchase = new OrderPurchase(0.0, purchaseDTO.getDeliveryAddress(), purchaseDTO.getDeliveryCost(), LocalDateTime.now());
         orderPurchaseService.save(orderPurchase);
 
         orderProducts.forEach(orderProductDTO -> {
@@ -93,8 +92,6 @@ public class OrderPurchaseController {
 
         orderPurchase.setAmount(finalAmount.stream().reduce(Double::sum).orElse(null));
         client.addOrders(orderPurchase);
-        System.out.println(orderPurchase.getAmount());
-        System.out.println(orderPurchase.getDeliveryAddress());
         orderPurchaseService.save(orderPurchase);
         return new ResponseEntity<>("Purchase order created.", HttpStatus.CREATED);
 
@@ -102,8 +99,10 @@ public class OrderPurchaseController {
 
     @GetMapping("/clients/current/pdf/generate")
     public void generateOrderPurchasePdf(Authentication authentication,
-                                        HttpServletResponse response)
-                                        throws IOException, DocumentException {
+                                         HttpServletResponse response)
+            throws IOException, DocumentException {
+
+        Client client = clientService.findByEmail(authentication.getName());
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM-dd-yyyy HH:mm:ss");
         response.setContentType("application/pdf");
@@ -112,17 +111,27 @@ public class OrderPurchaseController {
         String headerValue = "attachment; filename=order_details_" + currentDateTime.format(formatter) + ".pdf";
         response.setHeader(headerKey, headerValue);
 
-        OrderPurchaseDTO orderPurchaseDTO = orderPurchaseService.findLastOne();
-        Set<OrderProductDTO> orderProducts = orderPurchaseDTO.getOrderProducts();
+        Set<OrderPurchaseDTO> clientOrders = client.getOrders().stream().map(OrderPurchaseDTO::new).collect(Collectors.toSet());
+        List<OrderPurchaseDTO> sortedOrders = clientOrders.stream().sorted(Comparator.comparing(OrderPurchaseDTO::getDate)).collect(Collectors.toList());
+        OrderPurchaseDTO lastOrder = sortedOrders.get(sortedOrders.size() - 1);
+        Set<OrderProductDTO> orderProducts = lastOrder.getOrderProducts();
 
         Pdf pdf = new Pdf();
         pdf.createDocument(response);
-        pdf.addTitle("Order #" + orderPurchaseDTO.getId());
+        pdf.addTitle("GOLF PARADISE");
+        pdf.addLineJumps();
+        pdf.addLineJumps();
+        pdf.addSubTitle("Order #GP0000" + lastOrder.getId());
+        pdf.addLineJumps();
+        pdf.addParagraph("Date: " + currentDateTime.format(formatter));
+        pdf.addParagraph("Client: " + client.getFirstName() + " " + client.getLastName());
+        pdf.addParagraph("Delivery address: " + lastOrder.getDeliveryAddress());
+        pdf.addParagraph("Delivery cost: $" + lastOrder.getDeliveryCost());
         pdf.addLineJumps();
         pdf.addLineJumps();
         pdf.addOrderProductsTable(orderProducts);
         pdf.addLineJumps();
-        pdf.addTotalAmountTable(orderPurchaseDTO);
+        pdf.addTotalAmountTable(lastOrder);
         pdf.closeDocument();
     }
 

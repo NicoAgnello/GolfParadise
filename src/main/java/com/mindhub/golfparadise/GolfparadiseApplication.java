@@ -47,7 +47,7 @@ public class GolfparadiseApplication {
 			Client client3 = new Client("Melba", "Morel", "melba@mindhub.com", passwordEncoder.encode("pass1234"));
 			Client client4 = new Client("Admin","Admin","admin@admin.com", passwordEncoder.encode("admin"));
 
-			OrderPurchase order1 = new OrderPurchase(1999.98,"Cll Central 234", LocalDateTime.now());
+			OrderPurchase order1 = new OrderPurchase(1999.98,"Cll Central 234", 19.90, LocalDateTime.now());
 			client1.addOrders(order1);
 
 //			OrderPurchase order2 = new OrderPurchase(78000.00,"cll cruzada 743", LocalDateTime.now());

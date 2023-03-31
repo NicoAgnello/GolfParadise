@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./ranking.css" />
     <link rel="shortcut icon" href="./assets/faviconGolf1.svg" type="image/x-icon" />
     <!-- Boostrap -->
     <link
@@ -18,10 +17,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com/" />
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./ranking.css" />
     <title>Golf Paradise | Ranking</title>
   </head>
   <body>
-    <div id="App">
+    <div id="app">
       <header>
         <nav class="navbar navbar-expand-lg bg-green">
           <div class="container d-flex w-100">
@@ -48,15 +48,20 @@
                   <a class="nav-link text-center fw-bold" href="./products.html">Products</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link text-center fw-bold" href="./contact.html">Contacts</a>
+                  <a class="nav-link text-center fw-bold" href="./contact.html">Contact</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link text-center fw-bold" href="#">Ranking</a>
                 </li>
               </ul>
-              <ul class="navbar-nav mb-2 mb-lg-0 ul-extra">
+              <ul v-if="client" class="navbar-nav mb-2 mb-lg-0 ul-extra">
                 <li class="nav-item text-center padding-own d-flex justify-content-center">
                   <button @click="logOut" class="btn-log-out">Exit<i class="bi bi-box-arrow-right"></i></button>
+                </li>
+              </ul>
+              <ul v-else class="navbar-nav mb-2 mb-lg-0 ul-extra">
+                <li class="nav-item text-center padding-own d-flex justify-content-center">
+                  <a href="./login.html" class="button-own-login">Log in <i class="bi bi-person-circle"></i></a>
                 </li>
               </ul>
             </div>
@@ -107,19 +112,16 @@
                 </tr>
               </thead>
               <tbody>
-                <tr v-for="player of paginatedData" :key="player.playerId">
+                <tr v-cloak v-for="player of paginatedData" :key="player.playerId">
                   <td>{{player.rank}}</td>
                   <td>{{player.firstName}}</td>
                   <td>{{player.lastName}}</td>
                   <td class="text-center">{{player.previousRank}}</td>
                   <td class="text-center">{{player.events}}</td>
-                  <td class="text-center" v-if="year == 2022">{{player.totalPoints.toFixed(2)}}</td>
-                  <td class="text-center" v-if="year == 2021">{{player.totalPoints}}</td>
                   <td class="text-center">{{player.avgPoints}}</td>
-                  <td class="text-center" v-if="year == 2022">{{player.pointsLost.toFixed(2)}}</td>
-                  <td class="text-center" v-if="year == 2021">{{player.pointsLost}}</td>
-                  <td class="text-center" v-if="year == 2022">{{player.pointsGained.toFixed(2)}}</td>
-                  <td class="text-center" v-if="year == 2021">{{player.pointsGained}}</td>
+                  <td class="text-center">{{parsePoints(player.totalPoints)}}</td>
+                  <td class="text-center">{{parsePoints(player.pointsLost)}}</td>
+                  <td class="text-center">{{parsePoints(player.pointsGained)}}</td>
                   <td class="text-center">{{player.playerId}}</td>
                 </tr>
               </tbody>

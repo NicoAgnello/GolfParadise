@@ -22,7 +22,20 @@
 
 body,
 input {
-  font-family: "Montserrat Alternates", sans-serif;
+  font-family: "Montserrat", sans-serif;
+}
+
+body::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+body::-webkit-scrollbar-track {
+  background: #f4f8df;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: var(--primaryColor);
+  border-radius: 20px;
 }
 
 #app {

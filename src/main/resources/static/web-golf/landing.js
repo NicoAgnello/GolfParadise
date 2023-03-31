@@ -7,12 +7,6 @@ window.onscroll = function () {
     document.querySelector(".go-top-container").classList.remove("show-own");
   }
 };
-document.querySelector(".go-top-container").addEventListener("click", () => {
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth",
-  });
-});
 
 createApp({
   data() {
@@ -26,10 +20,12 @@ createApp({
       clothesProducts: [],
       accesoriesProducts: [],
       shoesProducts: [],
+      client: null,
     };
   },
   created() {
     this.loadData();
+    this.getCurrentClient();
   },
 
   mounted() {},
@@ -57,6 +53,47 @@ createApp({
         console.log(this.listOfTwoProducts);
       });
     },
+    getCurrentClient() {
+      axios
+        .get("/api/clients/current")
+        .then((res) => {
+          this.client = res.data;
+        })
+        .catch((err) => console.log(err));
+    },
+    goToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    },
+    logOut() {
+      axios
+        .post("/api/logout")
+        .then(() => {
+          const Toast = Swal.mixin({
+            toast: true,
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 2000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener("mouseenter", Swal.stopTimer);
+              toast.addEventListener("mouseleave", Swal.resumeTimer);
+            },
+          });
+
+          Toast.fire({
+            icon: "warning",
+            title: "Log out successfully",
+          }).then(() => {
+            location.href = "./landing.html";
+          });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
   },
-  computed: {}
+  computed: {},
 }).mount("#app");

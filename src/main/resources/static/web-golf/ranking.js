@@ -8,10 +8,12 @@ createApp({
       elementsPerPage: 15,
       paginatedData: [],
       actualPage: 1,
+      client: null,
     };
   },
   created() {
     this.loadData(this.year);
+    this.getCurrentClient();
   },
   methods: {
     loadData(year) {
@@ -20,7 +22,7 @@ createApp({
         url: "https://live-golf-data.p.rapidapi.com/stats",
         params: { year: this.year, statId: "186" },
         headers: {
-          "X-RapidAPI-Key": "14845836c6mshde34cb9c46021b2p1913a2jsn7de82339e6e3",
+          "X-RapidAPI-Key": "465345ef14msh34d80558d96c789p1e003cjsn4083f5b96d40",
           "X-RapidAPI-Host": "live-golf-data.p.rapidapi.com",
         },
       };
@@ -29,11 +31,18 @@ createApp({
         .then((response) => {
           this.players = response.data.rankings.slice(0, 100);
           this.getDataPages(1);
-          //   console.log(this.players);
         })
         .catch((err) => {
           console.log(err);
         });
+    },
+    getCurrentClient() {
+      axios
+        .get("/api/clients/current")
+        .then((res) => {
+          this.client = res.data;
+        })
+        .catch((err) => console.log(err));
     },
     totalPages() {
       return Math.ceil(this.players.length / this.elementsPerPage);
@@ -88,6 +97,13 @@ createApp({
           console.log(err);
         });
     },
+    parsePoints(points) {
+      if (this.year == 2022) {
+        return points.toFixed(2);
+      } else {
+        return points;
+      }
+    },
   },
   computed: {},
-}).mount("#App");
+}).mount("#app");
