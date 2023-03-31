@@ -26,10 +26,12 @@ createApp({
       clothesProducts: [],
       accesoriesProducts: [],
       shoesProducts: [],
+      client: null,
     };
   },
   created() {
     this.loadData();
+    this.getCurrentClient();
   },
 
   mounted() {},
@@ -57,6 +59,14 @@ createApp({
         console.log(this.listOfTwoProducts);
       });
     },
+    getCurrentClient() {
+      axios
+        .get("/api/clients/current")
+        .then((res) => {
+          this.client = res.data;
+        })
+        .catch((err) => console.log(err));
+    },
   },
-  computed: {}
+  computed: {},
 }).mount("#app");

@@ -1,5 +1,10 @@
 :root {
-  --quaternaryColor: #476b2f;
+  --primaryColor: #598526;
+  --secondaryColor: #f7b63f;
+  --secondaryColor2: #ffcc6e;
+  --tertiaryColor: #f4f8df;
+  --quaternaryColor: #034d03;
+  --mainFont: "Montserrat", sans-serif;
 }
 
 /* ----------- EXTRA --------------- */
