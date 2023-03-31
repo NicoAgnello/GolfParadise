@@ -121,16 +121,15 @@ createApp({
     addProduct(product) {
       let index = this.cart.findIndex((prod) => prod.id === product.id);
       if (index < 0) {
-        console.log("Pushed");
         product.quantity = 1;
         product.stock--;
         this.cart.push(product);
       } else {
-        console.log("Added");
         this.cart[index].quantity++;
         this.cart[index].stock--;
       }
       this.getTotal();
+      this.productAddedAlert()
       localStorage.setItem("cart", JSON.stringify(this.cart));
       localStorage.setItem("total", JSON.stringify(this.total));
       this.filteredProducts = this.updateCartState();
@@ -158,6 +157,7 @@ createApp({
         this.cart.splice(index, 1);
       }
       this.getTotal();
+      this.productDeletedAlert()
       localStorage.setItem("cart", JSON.stringify(this.cart));
       localStorage.setItem("total", JSON.stringify(this.total));
       this.filteredProducts = this.updateCartState();
@@ -171,6 +171,7 @@ createApp({
           this.filteredProducts = this.updateCartState();
           this.cart.splice(index, 1);
           this.getTotal();
+          this.productDeletedAlert()
           localStorage.setItem("cart", JSON.stringify(this.cart));
           localStorage.setItem("total", JSON.stringify(this.total));
           // this.filteredProducts = this.updateCartState();
@@ -185,6 +186,32 @@ createApp({
     },
     getTotal(product) {
       this.total = this.cart.reduce((acc, product) => acc + Number(product.price * product.quantity), 0);
+    },
+    productAddedAlert() {
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+      });
+      Toast.fire({
+        icon: "success",
+        title: "Product added",
+      });
+    },
+    productDeletedAlert() {
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+      });
+      Toast.fire({
+        icon: "warning",
+        title: "Product deleted",
+      });
     },
     goToTop() {
       window.scrollTo({
