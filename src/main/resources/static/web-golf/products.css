@@ -307,6 +307,14 @@ body {
     color: #F7B63F;
 }
 
+.modal-content {
+    border-radius: 12px !important;
+}
+
+.text-justify {
+    text-align: justify;
+}
+
 ul {
     list-style: none;
     padding-left: 0;

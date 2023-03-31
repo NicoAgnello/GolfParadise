@@ -11,7 +11,9 @@ createApp({
             cart:               [],
             categoryToFilter:   "",
             searchValue:        "",
-            total:               0
+            cartCounter:        0,
+            total:              0,
+            localStorage:       true
         }
     },
     created(){
@@ -21,17 +23,48 @@ createApp({
     },
     methods: {
         loadData() {
-            if (localStorage.getItem('cart') != null) {
-                this.cart       = JSON.parse(localStorage.getItem('cart'))
-                this.total      = JSON.parse(localStorage.getItem('total'))
+            if (localStorage.getItem("cart") != null) {
+                this.cart = JSON.parse(localStorage.getItem("cart"));
+                this.total = JSON.parse(localStorage.getItem("total"));
+                this.localStorage = true
             }
-            axios('http://localhost:8080/api/products')
-                .then(response => {
-                    // console.log(response)
+            axios("/api/products")
+                .then((response) => {
+                    console.log(response);
                     this.products = response.data
                     this.filteredProducts = this.products
                     this.categories = [... new Set(this.products.map(product => product.category))]
+                    this.cart.forEach((order) => {
+                        this.filteredProducts.map((prod) => {
+                            if (prod.id == order.id) {
+                                order.price = prod.price;
+                                if (prod.stock - order.quantity >= 0) {
+                                    order.stock = prod.stock - order.quantity;
+                                    prod.stock = order.stock
+                                    prod.quantity = order.quantity
+                                } else {
+                                    this.stockInconsistency = true;
+                                }
+                            }
+                            this.getTotal()
+                            localStorage.setItem('cart', JSON.stringify(this.cart))
+                            localStorage.setItem('total', JSON.stringify(this.total))
+                        });
+                    });
+                    if (this.stockInconsistency) {
+                        console.log("Stock inconsistency.");
+                        localStorage.clear();
+                        Swal.fire({
+                            showConfirmButton: false,
+                            timer: 2000,
+                            timerProgressBar: true,
+                            icon: "error",
+                            title: `Stock inconsistency`,
+                        });
+                        setTimeout(() => location.replace("/web-golf/mockup.html"), 2000);
+                    }
                 })
+                .catch((error) => console.log(error));
         },
         capitalize(string) {
             return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase()
@@ -47,7 +80,6 @@ createApp({
             return filteredProducts;
         },
         crossFilter() {
-            console.log(this.categoryToFilter)
             const filterProductsBySearch = this.searchByText();
             const filterProductsByCategory = this.filterByCategory(filterProductsBySearch);
             if (this.categoryToFilter == "") {
@@ -71,41 +103,61 @@ createApp({
             return this.cart.find(prod => product.id === prod.id)
         },
         addProduct(product) {
-            if (this.checkProductInCart(product)) {
-                product.quantity++
+            let index= this.cart.findIndex(prod => prod.id === product.id);
+            if (index < 0) {
+                console.log('Pushed')
+                product.quantity = 1;
+                product.stock--
+                this.cart.push(product);
             } else {
-                this.cart.push(product)
-                product.quantity = 1
+                console.log("Added")
+                this.cart[index].quantity++
+                this.cart[index].stock--
             }
-            product.stock--
             this.getTotal()
             localStorage.setItem('cart', JSON.stringify(this.cart))
             localStorage.setItem('total', JSON.stringify(this.total))
+            this.filteredProducts = this.updateCartState();
+        },
+        updateCartState() {
+            return this.products.map(product => {
+                let index = this.cart.findIndex(prod => prod.id === product.id);
+                if (index>=0) {
+                    product.quantity = this.cart[index].quantity;
+                    product.stock = this.cart[index].stock
+                }
+                return product;
+            })
         },
         showDetail(product) {
             this.productDetail = product
             console.log(this.productDetail)
         },
         removeProductQuantity(product) {
-            product.quantity--
-            product.stock++
-            if (product.quantity === 0) {
-                this.cart.splice(this.cart.indexOf(product), 1)
+            let index = this.cart.findIndex(prod => prod.id === product.id)
+            this.cart[index].quantity--
+            this.cart[index].stock++
+            this.filteredProducts = this.updateCartState();
+            if (this.cart[index].quantity <= 0) {
+                this.cart.splice(index, 1);
             }
             this.getTotal()
             localStorage.setItem('cart', JSON.stringify(this.cart))
             localStorage.setItem('total', JSON.stringify(this.total))
+            this.filteredProducts = this.updateCartState();
         },
         removeProduct(product) {
             axios('/api/products')
                 .then(response => {
-                    // console.log(response)
-                    product.stock = response.data.find(prod => prod.id === product.id).stock
-                    product.quantity = 0;
-                    this.cart.splice(this.cart.indexOf(product), 1)
+                    let index = this.cart.findIndex(prod => prod.id === product.id)
+                    this.cart[index].stock += this.cart[index].quantity
+                    this.cart[index].quantity = 0
+                    this.filteredProducts = this.updateCartState();
+                    this.cart.splice(index, 1);
                     this.getTotal()
                     localStorage.setItem('cart', JSON.stringify(this.cart))
                     localStorage.setItem('total', JSON.stringify(this.total))
+                    // this.filteredProducts = this.updateCartState();
                 })
                 .catch(error => console.log(error))
         },
@@ -117,6 +169,11 @@ createApp({
         },
         getTotal(product) {
             this.total = this.cart.reduce((acc, product) => acc + Number(product.price * product.quantity), 0)
+        }
+    },
+    computed: {
+        countProducts() {
+            this.cartCounter = this.cart.reduce((acc, product) => acc + product.quantity, 0);
         }
     }
 }).mount('#app')
