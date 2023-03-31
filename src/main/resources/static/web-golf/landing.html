@@ -115,7 +115,7 @@
                   largest clubs in the golf bag and have a rounded head that resembles the shape of a barrel. They are
                   available in different numberings.
                 </p>
-                <button class="btn-custom rounded-2 mt-auto">Read more</button>
+                <a href="#field-cards-section" class="btn-custom rounded-2 mt-auto">Read more</a>
               </div>
 
               <div class="d-flex flex-column text-center align-items-center col mb-2 py-3" data-aos="fade-down">
@@ -126,7 +126,7 @@
                   bunker shots and for longer putts. They have smaller, narrower heads than wood clubs and their
                   numbering is assigned according to the angle of the clubface.
                 </p>
-                <button class="btn-custom rounded-2 mt-auto">Read more</button>
+                <a href="#field-cards-section" class="btn-custom rounded-2 mt-auto">Read more</a>
               </div>
 
               <div class="d-flex flex-column text-center align-items-center col mb-2 py-3" data-aos="fade-down">
@@ -137,7 +137,7 @@
                   and a shorter shaft length, but also have a tighter clubface angle like iron clubs.They are designed
                   to help golfers get more distance and accuracy.
                 </p>
-                <button class="btn-custom rounded-2 mt-auto">Read more</button>
+                <a href="#field-cards-section" class="btn-custom rounded-2 mt-auto">Read more</a>
               </div>
             </div>
           </div>
@@ -151,15 +151,18 @@
             <template v-for="product of listOfTwoProducts">
               <article class="card card--1" data-aos="fade-down">
                 <div class="card__img"></div>
-                <a href="#" class="card_link"
-                  ><img :src="product.img" alt="" class="card__img--hover img-fluid p-0"
-                /></a>
+                <a href="#" onclick="event.preventDefault()" class="card_link" data-bs-toggle="modal" data-bs-target="#exampleModal"><img :src="product.img" :alt="product.name" class="card__img--hover img-fluid p-0" @click="showDetail(product)"/></a>
                 <div class="card__info">
                   <span class="card__category">{{ product.category }}</span>
                   <h3 class="card__title">{{ product.name }}</h3>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <h5 class="m-0">$ {{ product.price }}</h5>
-                    <a href="#" class="cart"><i class="bi bi-cart card__cart"></i></a>
+                  <div class="d-flex justify-content-between align-items-center card__title-hover">
+                    <h4 class="m-0 fw-semibold">$ {{ product.price }}</h4>
+<!--                    <button class="cart btn"-->
+<!--                            @click="addProduct(product)"-->
+<!--                            :disabled="product.stock == 0 ? true : false"-->
+<!--                    >-->
+<!--                      <i class="bi bi-cart card__cart"></i>-->
+<!--                    </button>-->
                   </div>
                 </div>
               </article>
@@ -390,7 +393,7 @@
                   </p>
                   <li>
                     <a href="https://goo.gl/maps/5W7EXJekXBnUfLpMA" target="_blank" class="text-white"
-                      ><i class="bi bi-geo-fill text-white text"></i> 2604 Washington Rd, Augusta, GA 30904, EE. UU.</a
+                      ><i class="bi bi-geo-fill text-white text"></i> 2604 Washington Rd, Augusta, GA 30904, USA</a
                     >
                   </li>
                   <li>
@@ -406,7 +409,7 @@
           <div class="container mt-3 w-100" style="max-width: 100%">
             <div class="d-flex justify-content-between w-100 flex-wrap column-575">
               <div class="col-md-8 col-sm-6 col-xs-12">
-                <p class="copyright-text d-inline">Copyright &copy; 2023 All Rights Reserved by</p>
+                <p class="copyright-text d-inline me-2">Copyright &copy; 2023 All Rights Reserved by</p>
                 <a class="text-white" target="_blank" href="https://github.com/NicoAgnello/GolfParadise"
                   >Golf Paradise.</a
                 >

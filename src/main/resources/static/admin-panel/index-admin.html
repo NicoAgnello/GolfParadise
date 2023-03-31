@@ -138,13 +138,13 @@
               <nav aria-label="Page navigation example">
                 <ul class="pagination justify-content-center">
                   <li class="page-item" @click="getPreviousPage()">
-                    <a class="page-link pagination-style" href="#">Previous</a>
+                    <button class="page-link pagination-style">Previous</button>
                   </li>
                   <li v-for="pages of totalPages()" @click="getDataPages(pages)" class="page-item">
-                    <a :class="isActivePage(pages)" class="page-link pagination-style" href="#">{{pages}}</a>
+                    <button :class="isActivePage(pages)" class="page-link pagination-style">{{pages}}</button>
                   </li>
                   <li class="page-item" @click="getNextPage()">
-                    <a class="page-link pagination-style" href="#">Next</a>
+                    <button class="page-link pagination-style">Next</button>
                   </li>
                 </ul>
               </nav>
