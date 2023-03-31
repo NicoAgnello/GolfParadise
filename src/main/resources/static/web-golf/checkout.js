@@ -184,7 +184,7 @@ createApp({
                 background: "#FCE6BE",
                 title: `Purchase successful`,
               });
-              setTimeout(() => location.replace("/web-golf/mockup.html"), 2000);
+              setTimeout(() => location.replace("/web-golf/contact.html"), 2000);
             })
             .catch((error) => console.log(error));
         })
