@@ -160,6 +160,10 @@ body {
   min-height: 100vh;
 }
 
+.fa-cart-shopping {
+  cursor: pointer !important;
+}
+
 /* Nav */
 
 .active {
