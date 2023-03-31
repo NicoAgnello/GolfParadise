@@ -187,7 +187,6 @@ createApp({
       this.total = this.cart.reduce((acc, product) => acc + Number(product.price * product.quantity), 0);
     },
     goToTop() {
-      console.log("clicked");
       window.scrollTo({
         top: 0,
         behavior: "smooth",
