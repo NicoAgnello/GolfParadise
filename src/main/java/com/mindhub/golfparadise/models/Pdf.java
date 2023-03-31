@@ -64,7 +64,7 @@ public class Pdf {
             if (header.equals("Product")) {
                 cell.setColspan(2);
             }
-            cell.setBackgroundColor(new BaseColor(244, 249, 223));
+            cell.setBackgroundColor(new BaseColor(184, 202, 162));
             cell.setHorizontalAlignment(Element.ALIGN_CENTER);
             cell.setVerticalAlignment(Element.ALIGN_CENTER);
             cell.setPadding(8);
@@ -76,7 +76,7 @@ public class Pdf {
             String[] tableContent = {
                     orderProductDTO.getProductName(),
                     orderProductDTO.getQuantity() + "",
-                    orderProductDTO.getTotalAmount() + "$"
+                    "$" + orderProductDTO.getTotalAmount()
             };
 
             for (String content : tableContent) {
@@ -96,7 +96,7 @@ public class Pdf {
     }
 
     public void addTotalAmountTable(OrderPurchaseDTO orderPurchaseDTO) throws DocumentException {
-        String[] tableContent = {"", "Total Amount", "$" + orderPurchaseDTO.getAmount()};
+        String[] tableContent = {"", "Total Amount", "$" + (orderPurchaseDTO.getAmount() + orderPurchaseDTO.getDeliveryCost())};
         PdfPTable table = new PdfPTable(4);
         int counter = 0;
         for (String content : tableContent) {

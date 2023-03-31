@@ -121,12 +121,12 @@ public class OrderPurchaseController {
         pdf.addTitle("GOLF PARADISE");
         pdf.addLineJumps();
         pdf.addLineJumps();
-        pdf.addSubTitle("Order #" + lastOrder.getId());
+        pdf.addSubTitle("Order #GP0000" + lastOrder.getId());
         pdf.addLineJumps();
         pdf.addParagraph("Date: " + currentDateTime.format(formatter));
         pdf.addParagraph("Client: " + client.getFirstName() + " " + client.getLastName());
         pdf.addParagraph("Delivery address: " + lastOrder.getDeliveryAddress());
-        pdf.addParagraph("Delivery cost: " + lastOrder.getDeliveryCost());
+        pdf.addParagraph("Delivery cost: $" + lastOrder.getDeliveryCost());
         pdf.addLineJumps();
         pdf.addLineJumps();
         pdf.addOrderProductsTable(orderProducts);
