@@ -18,6 +18,7 @@ createApp({
       cart: [],
       categoryToFilter: "",
       searchValue: "",
+      selectFilter: "",
       cartCounter: 0,
       total: 0,
       localStorage: true,
@@ -96,6 +97,7 @@ createApp({
       return filteredProducts;
     },
     crossFilter() {
+      console.log(this.categoryToFilter)
       const filterProductsBySearch = this.searchByText();
       const filterProductsByCategory = this.filterByCategory(filterProductsBySearch);
       if (this.categoryToFilter == "") {
@@ -109,10 +111,12 @@ createApp({
       } else {
         this.filteredProducts = filterProductsByCategory;
       }
+      this.onChange(this.selectFilter)
     },
     clearFilter() {
       this.categoryToFilter = "";
       this.searchValue = "";
+      this.selectFilter = ""
       this.crossFilter();
     },
     checkProductInCart(product) {
@@ -133,6 +137,8 @@ createApp({
       localStorage.setItem("cart", JSON.stringify(this.cart));
       localStorage.setItem("total", JSON.stringify(this.total));
       this.filteredProducts = this.updateCartState();
+      this.crossFilter()
+      // this.onChange(this.selectFilter)
     },
     updateCartState() {
       return this.products.map((product) => {
@@ -161,6 +167,8 @@ createApp({
       localStorage.setItem("cart", JSON.stringify(this.cart));
       localStorage.setItem("total", JSON.stringify(this.total));
       this.filteredProducts = this.updateCartState();
+      this.crossFilter()
+      // this.onChange(this.selectFilter)
     },
     removeProduct(product) {
       axios("/api/products")
@@ -174,6 +182,8 @@ createApp({
           this.productDeletedAlert()
           localStorage.setItem("cart", JSON.stringify(this.cart));
           localStorage.setItem("total", JSON.stringify(this.total));
+          this.crossFilter()
+          this.onChange(this.selectFilter)
           // this.filteredProducts = this.updateCartState();
         })
         .catch((error) => console.log(error));
@@ -183,6 +193,8 @@ createApp({
       this.loadData();
       this.cart = [];
       this.total = 0;
+      this.crossFilter()
+      // this.onChange(this.selectFilter)
     },
     getTotal(product) {
       this.total = this.cart.reduce((acc, product) => acc + Number(product.price * product.quantity), 0);
@@ -219,8 +231,9 @@ createApp({
         behavior: "smooth",
       });
     },
-    onChange(event) {
-      switch (event.target.value) {
+    onChange(target) {
+      this.selectFilter = target
+      switch (target) {
         case "price":
           this.filteredProducts = this.filteredProducts.sort((a, b) => a.price - b.price);
           break;

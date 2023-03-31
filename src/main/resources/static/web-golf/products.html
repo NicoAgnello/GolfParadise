@@ -172,7 +172,7 @@
               <div class="d-flex justify-content-between checkboxes">
                 <div class="d-md-flex align-items-center gap-2 mb-lg-3">
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="orderByRadio" id="price-radio" @change="onChange($event)" value="price">
+                    <input class="form-check-input" type="radio" name="orderByRadio" id="price-radio" @change="onChange($event.target.value)" value="price">
                     <label class="form-check-label" for="price-radio">
                       Price
                     </label>
@@ -180,7 +180,7 @@
                 </div>
                 <div class="d-md-flex align-items-center gap-2 mb-lg-3">
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="orderByRadio" id="a-to-z-radio" @change="onChange($event)" value="a-to-z">
+                    <input class="form-check-input" type="radio" name="orderByRadio" id="a-to-z-radio" @change="onChange($event.target.value)" value="a-to-z">
                     <label class="form-check-label" for="a-to-z-radio">
                       A to Z
                     </label>
@@ -188,7 +188,7 @@
                 </div>
                 <div class="d-md-flex align-items-center gap-2">
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="orderByRadio" id="a-to-a-radio" @change="onChange($event)" value="z-to-a">
+                    <input class="form-check-input" type="radio" name="orderByRadio" id="a-to-a-radio" @change="onChange($event.target.value)" value="z-to-a">
                     <label class="form-check-label" for="a-to-a-radio">
                       Z to A
                     </label>
