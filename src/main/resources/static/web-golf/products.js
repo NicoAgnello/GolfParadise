@@ -40,7 +40,7 @@ createApp({
       axios("/api/products")
         .then((response) => {
           console.log(response);
-          this.products = response.data;
+          this.products = response.data.filter(product => product.active);
           this.filteredProducts = this.products;
           this.categories = [...new Set(this.products.map((product) => product.category))];
           this.cart.forEach((order) => {
@@ -81,7 +81,7 @@ createApp({
         .then((res) => {
           this.client = res.data;
         })
-        .catch((err) => console.log(err));
+        .catch((err) => console.log(err.data));
     },
     capitalize(string) {
       return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
@@ -138,7 +138,6 @@ createApp({
       localStorage.setItem("total", JSON.stringify(this.total));
       this.filteredProducts = this.updateCartState();
       this.crossFilter()
-      // this.onChange(this.selectFilter)
     },
     updateCartState() {
       return this.products.map((product) => {
@@ -168,7 +167,6 @@ createApp({
       localStorage.setItem("total", JSON.stringify(this.total));
       this.filteredProducts = this.updateCartState();
       this.crossFilter()
-      // this.onChange(this.selectFilter)
     },
     removeProduct(product) {
       axios("/api/products")
@@ -184,7 +182,6 @@ createApp({
           localStorage.setItem("total", JSON.stringify(this.total));
           this.crossFilter()
           this.onChange(this.selectFilter)
-          // this.filteredProducts = this.updateCartState();
         })
         .catch((error) => console.log(error));
     },
@@ -194,7 +191,6 @@ createApp({
       this.cart = [];
       this.total = 0;
       this.crossFilter()
-      // this.onChange(this.selectFilter)
     },
     getTotal(product) {
       this.total = this.cart.reduce((acc, product) => acc + Number(product.price * product.quantity), 0);
@@ -243,6 +239,23 @@ createApp({
         case "z-to-a":
           this.filteredProducts = this.filteredProducts.sort((a, b) => b.name.localeCompare(a.name));
           break;
+      }
+    },
+    redirect() {
+      if (this.client == null) {
+        Swal.fire({
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          icon: "warning",
+          background: "#FCE6BE",
+          title: "You need to be logged in to complete your purchase."
+        });
+        setTimeout(() => {
+          location.href = "./login.html";
+        }, 3000)
+      } else {
+        location.href = "./checkout.html";
       }
     },
     logOut() {

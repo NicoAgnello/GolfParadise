@@ -27,7 +27,7 @@ createApp({
       if (this.email !== "" && this.email !== "" && this.message !== "") {
         Swal.fire({
           title: "Good!",
-          text: "Message sent successfully!.",
+          text: "Message sent successfully!",
           imageUrl: "./assets/mood-smile-beam.svg",
           imageWidth: 400,
           imageHeight: 200,

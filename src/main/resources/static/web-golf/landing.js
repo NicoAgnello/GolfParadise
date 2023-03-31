@@ -32,7 +32,7 @@ createApp({
   methods: {
     loadData() {
       axios("/api/products").then((response) => {
-        this.products = response.data;
+        this.products = response.data.filter(product => product.active);
         this.lastProducts = this.products.sort((a, b) => b.id - a.id).slice(0, 8);
 
         this.clubsProducts = this.products.filter((product) => product.category == "CLUBS").slice(0, 2);
