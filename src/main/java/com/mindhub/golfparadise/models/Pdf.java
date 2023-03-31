@@ -16,10 +16,10 @@ import java.util.Set;
 public class Pdf {
     Document document;
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM-dd-yyyy HH:mm:ss");
-
     Font titleSource = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 20);
     Font subtitleSource = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 14);
     Font paragraphSource = FontFactory.getFont(FontFactory.HELVETICA, 12);
+    Font paragraphSourceBold = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 12);
 
     public void createDocument(HttpServletResponse response) throws IOException, DocumentException {
         document = new Document(PageSize.A4, 45, 45, 50, 50);
@@ -60,7 +60,7 @@ public class Pdf {
         PdfPTable table = new PdfPTable(4);
 
         for (String header : tableHeader) {
-            PdfPCell cell = new PdfPCell(new Phrase(header));
+            PdfPCell cell = new PdfPCell(new Phrase(header, paragraphSourceBold));
             if (header.equals("Product")) {
                 cell.setColspan(2);
             }
@@ -100,7 +100,7 @@ public class Pdf {
         PdfPTable table = new PdfPTable(4);
         int counter = 0;
         for (String content : tableContent) {
-            PdfPCell cell = new PdfPCell(new Phrase(content));
+            PdfPCell cell = new PdfPCell(new Phrase(content, paragraphSourceBold));
             if (counter == 0) {
                 cell.setColspan(2);
             }
