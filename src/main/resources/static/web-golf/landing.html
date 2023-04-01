@@ -86,7 +86,7 @@
               Golf Paradise
             </h1>
 
-            <a href="#info" class="btn-custom btn-custom-hero text-center rounded-2 p-4 fs-4 mt-4">More information</a>
+<!--            <a href="#info" class="btn-custom btn-custom-hero text-center rounded-2 p-4 fs-4 mt-4">More information</a>-->
           </div>
           <img src="./images/grass.png" class="grass-img" alt="" />
           <div class="custom-shape-divider-bottom-1680073748">
@@ -150,8 +150,9 @@
           <div class="cards container">
             <template v-for="product of listOfTwoProducts">
               <article class="card card--1" data-aos="fade-down">
+                <a href="./products.html">
                 <div class="card__img"></div>
-                <a href="#" onclick="event.preventDefault()" class="card_link" data-bs-toggle="modal" data-bs-target="#exampleModal"><img :src="product.img" :alt="product.name" class="card__img--hover img-fluid p-0" @click="showDetail(product)"/></a>
+                <img :src="product.img" :alt="product.name" class="card__img--hover img-fluid p-0"/>
                 <div class="card__info">
                   <span class="card__category">{{ product.category }}</span>
                   <h3 class="card__title">{{ product.name }}</h3>
@@ -165,6 +166,7 @@
 <!--                    </button>-->
                   </div>
                 </div>
+                </a>
               </article>
             </template>
           </div>

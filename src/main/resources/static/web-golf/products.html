@@ -77,8 +77,8 @@
   <div class="mt-0 mt-lg-4 mb-4">
     <div class="offcanvas offcanvas-start " data-bs-scroll="true" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
       <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasExampleLabel">My Cart</h5>
-        <button type="button" class="btn-close btn-close-white fs-5" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        <h5 class="offcanvas-title fw-bold" id="offcanvasExampleLabel">My Cart</h5>
+        <button type="button" class="btn-close btn-close fs-5" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
       <div class="offcanvas-body">
         <div v-if="cart.length > 0">
@@ -86,9 +86,9 @@
             <div class="row d-flex cart-product-container py-3 align-items-center">
               <img :src="product.img" class="col-3 m-0 text-center"></img>
               <div class="col-7">
-                <p class="m-0">{{ product.name }}</p>
+                <p class="m-0 fw-bold">{{ product.name }}</p>
                 <p class="mb-3 offcanvas-category text-success">{{ product.category }}</p>
-                <p class="m-0"> ${{ product.price }}</p>
+                <p class="m-0 fw-bold"> ${{ product.price }}</p>
                 <p v-if="product.stock == 0" class="text-danger">No stock</p>
               </div>
               <div class="col-1 m-0 d-flex p-0 flex-column gap-1 align-items-center">
@@ -121,7 +121,7 @@
           </div>
         </div>
         <div v-else>
-          <p>No products added!</p>
+          <p class="fw-bold text-uppercase no-prod-cart">No products added!</p>
         </div>
       </div>
 
