@@ -50,12 +50,16 @@ body::-webkit-scrollbar-thumb,
 */
 
 .offcanvas-header {
-  background-image: url("./assets/golf-field-cart-bg.jpg");
+  background-image: url("./images/matt-aylward-Nmh-pEBRt2Y-unsplash.jpg");
   background-size: cover;
   min-height: 12.5rem;
-  background-position: center bottom;
+  background-position: center -100px;
   align-items: flex-start;
-  color: whitesmoke;
+  color: #34322F;
+}
+
+.offcanvas-body {
+  background-color: #F6FAE6;
 }
 
 .cart-btn {
@@ -91,37 +95,42 @@ body::-webkit-scrollbar-thumb,
 }
 
 .btn-continue-cart {
-  background-color: #f6c26e;
-  border: 2px solid #f6c26e;
-  border-radius: 0;
+  background-color: #B9CBA2;
+  border: 2px solid #B9CBA2;
+  border-radius: 8px 8px 0 0;
   font-size: 0.9rem;
   font-weight: 700;
 }
 
 .btn-continue-cart:hover {
-  background-color: #ffffff;
-  border: 2px solid #f6c26e;
+  color: var(--primaryColor);
+  background-color: #F3F6E9;
+  border: 2px solid #B9CBA2;
 }
 
 .btn-empty-cart {
-  background-color: #ffffff;
-  border-left: 2px solid #fddc96;
-  border-right: 2px solid #fddc96;
-  border-bottom: 2px solid #fddc96;
-  border-radius: 0;
+  background-color: #FBFCF1;
+  border-left: 2px solid #B9CBA2;
+  border-right: 2px solid #B9CBA2;
+  border-bottom: 2px solid #B9CBA2;
+  border-radius: 0 0 12px 12px;
   font-size: 0.9rem;
   font-weight: 700;
 }
 
 .btn-empty-cart:hover {
-  background-color: #fddc96;
-  border: 2px solid #fddc96;
-  color: #000;
+  background-color: #D1DCBF;
+  border: 2px solid #B9CBA2;
+  /*color: #();*/
 }
 
 .purchase-total {
   border-left: 1px solid #f4f8df;
   border-right: 1px solid #f4f8df;
+}
+
+.no-prod-cart {
+  color: var(--primaryColor);
 }
 
 /* -----------DROPDOWN-------------------------- */

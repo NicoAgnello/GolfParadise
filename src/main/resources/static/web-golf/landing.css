@@ -232,6 +232,11 @@ li i {
 
 /* -------------- PRODUCTS -------------------------- */
 
+article a {
+  text-decoration: none;
+  color: inherit;
+}
+
 #cards-section {
   background-image: url(./images/will-porada-uy5ZEqUOscs-unsplash.jpeg);
   background-repeat: no-repeat;
