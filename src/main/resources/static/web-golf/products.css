@@ -335,7 +335,7 @@ body {
   cursor: pointer !important;
   position: fixed;
   width: max-content;
-  top: 6rem;
+  bottom: 6rem;
   right: 1.25rem;
   padding: 1rem;
   background-color: #B8CAA2;
