@@ -64,10 +64,6 @@
                 <a href="./login.html" class="button-own-login">Log in <i class="bi bi-person-circle"></i></a>
               </li>
             </div>
-            {{ countProducts }}
-            <li class="nav-item text-center d-flex justify-content-center" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
-              <i class="fa-sharp fa-solid fa-cart-shopping p-0 m-0">{{ cartCounter }}</i>
-            </li>
           </ul>
         </div>
       </div>
@@ -93,7 +89,7 @@
               </div>
               <div class="col-1 m-0 d-flex p-0 flex-column gap-1 align-items-center">
                 <button class="cart-btn w-100"
-                        :class="product.stock == 0 ? 'bg-white ' : ''"
+                        :class="product.stock == 0 ? 'bg-light-green' : ''"
                         @click="addProduct(product)"
                         :disabled="product.stock == 0 ? true : false"
                 >
@@ -127,6 +123,12 @@
 
     </div>
 
+    {{ countProducts }}
+    <div class="text-center d-flex align-items-center gap-2 cart-open rounded-circle" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+      <i class="fa-sharp fa-solid fa-cart-shopping p-0 m-0"></i>
+      <p class="mb-0 fw-bold cart-counter">{{ cartCounter }}</p>
+    </div>
+
     <div id="carouselExample" class="carousel slide mb-4" data-bs-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item active">
@@ -150,6 +152,7 @@
     </div>
 
     <div class="container">
+
       <div class="row g-0">
         <aside class="col-md-12 col-lg-3 py-2 px-4 p-lg-0 m-lg-0 mb-4">
           <div class="p-lg-0 filters-container">
@@ -242,7 +245,7 @@
             </div>
           </div>
 
-          <section class="" id="cards-section">
+          <section class="position-relative" id="cards-section">
             <div class="cards d-flex justify-content-center pt-0">
               <template v-for="product of filteredProducts">
                 <article class="card card--1" data-aos="fade-down">
