@@ -75,6 +75,10 @@ body::-webkit-scrollbar-thumb,
   color: #f4f8df;
 }
 
+.bg-light-green {
+  background-color: #F6FAE6;
+}
+
 .cart-icon {
   font-size: 0.75rem;
 }
@@ -167,10 +171,6 @@ body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   min-height: 100vh;
-}
-
-.fa-cart-shopping {
-  cursor: pointer !important;
 }
 
 /* Nav */
@@ -330,6 +330,29 @@ body {
 }
 
 /* --------------- CARDS ----------------------- */
+
+.cart-open {
+  cursor: pointer !important;
+  position: fixed;
+  width: max-content;
+  bottom: 6rem;
+  right: 1.25rem;
+  padding: 1rem;
+  background-color: #B8CAA2;
+  border: 2px solid #34322F;
+  z-index: 1000;
+}
+
+.cart-open:hover {
+  background-color: #A0B982;
+}
+
+.cart-counter {
+  position: absolute;
+  font-size: 12px;
+  top: 0;
+  left: 21px;
+}
 
 .text-yellow {
   color: #f7b63f;
