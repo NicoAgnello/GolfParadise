@@ -57,7 +57,7 @@ createApp({
             icon: "warning",
             title: "Log out successfully",
           }).then(() => {
-            location.href = "./landing.html";
+            location.href = "index.html";
           });
         })
         .catch((err) => {

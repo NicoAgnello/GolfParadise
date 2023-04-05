@@ -40,7 +40,7 @@ createApp({
           });
         })
         .then(() => {
-          location.href = "../web-golf/landing.html";
+          location.href = "../../web-golf/index.html";
         })
         .catch((err) => {
           console.log(err);

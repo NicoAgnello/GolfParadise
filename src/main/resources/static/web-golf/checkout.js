@@ -144,13 +144,13 @@ createApp({
       }
     },
     getDeliveryCost() {
-      console.log(this.zipCode);
-      axios
-          .post("/api/clients/current/delivery-cost", `zipCode=${this.zipCode}`)
-          .then((response) => {
-            this.deliveryCost = response.data.deliveryCost;
-          })
-          .catch((error) => console.log(error));
+      if (this.zipCode !== "") {
+        axios.post("/api/clients/current/delivery-cost", `zipCode=${this.zipCode}`)
+            .then((response) => {
+              this.deliveryCost = response.data.deliveryCost;
+            })
+            .catch((error) => console.log(error));
+      }
     },
     pay() {
       const orders = this.cart.reduce((acc, curr) => {
@@ -219,7 +219,7 @@ createApp({
               icon: "warning",
               title: "Log out successfully",
             }).then(() => {
-              location.href = "./landing.html";
+              location.href = "index.html";
             });
           })
           .catch((err) => {
